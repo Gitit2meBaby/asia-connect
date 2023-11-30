@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/hero'
 import InfoBoxes from './components/InfoBoxes'
 import HeroSidebar from './components/HeroSidebar'
+import About from './components/About'
 function App() {
 
   return (
@@ -16,6 +17,7 @@ function App() {
         <HeroSidebar />
         <Hero />
         <InfoBoxes />
+        <About />
       </AnimatePresence>
 
     </>

@@ -22,6 +22,7 @@ body {
   margin: 0;
   max-width: 100vw;
   overflow-x: hidden;
+  cursor: crosshair;
 }
 
 button {
@@ -230,6 +231,13 @@ button {
   margin: 0;
 }
 
+.info-paragraph {
+  padding: 4rem 6rem 4rem 4rem;
+  text-align: justify;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+}
+
 .left-info-title {
   text-align: right;
 }
@@ -244,12 +252,16 @@ button {
   border-bottom: 1px solid #040303;
   width: -moz-fit-content;
   width: fit-content;
+  cursor: pointer;
 }
 .info-content p {
   font-weight: 800;
   font-size: 1.2rem;
   margin: 0;
   padding: 1rem 0 0.5rem;
+}
+.info-content p:hover {
+  background-color: #ffffff;
 }
 
 .right-content {
@@ -265,17 +277,22 @@ button {
 }
 
 .see-more-designs {
+  font-family: "Oxygen-mono";
   align-self: flex-end;
   padding-right: 5rem;
   color: #efefef;
   font-size: 0.9rem;
-  width: 200px;
+  width: 300px;
   margin-top: -4rem;
 }
 .see-more-designs button {
   width: 100%;
   text-align: right;
   padding-top: 0.5rem;
+}
+
+.about {
+  height: 80dvh;
 }
 
 .overlay-effect {
@@ -298,15 +315,15 @@ button {
 .slide-in {
   opacity: 1;
   transform: translateX(0%);
-  transition: all 0.5s ease-in;
+  transition: transform 0.5s ease-in;
 }
 
 .black-white {
   background-color: #efefef;
-  transition: all 0.5s ease-in;
+  transition: background-color 0.5s ease-in;
 }
 
 .black-white-text {
   color: #040303 !important;
-  transition: all 0.5s ease-in;
+  transition: color 0.5s ease-in;
 }/*# sourceMappingURL=main.css.map */
