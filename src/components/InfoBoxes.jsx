@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import Typewriter from "typewriter-effect";
+import { paragraphData } from "../paragraphData";
 
 
 const InfoBoxes = () => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('WordPress/ CMS Solutions');
-
 
     const ref1 = useRef(null);
     const ref2 = useRef(null);
@@ -15,36 +15,6 @@ const InfoBoxes = () => {
     const isInView1 = useInView(ref1, { margin: "-600px 0px -200px 0px" });
     const isInView2 = useInView(ref2, { margin: "-600px 0px -200px 0px" });
 
-    const paragraphData = [
-        {
-            info: ""
-        },
-        {
-            info: "With WordPress, ongoing content management becomes straightforward, enabling clients to edit and update content without requiring an extensive IT background. The system's user-friendly nature eliminates the necessity for intricate development-driven processes upon the handover of your new site from our team.",
-
-        },
-        {
-            info: "At our agency, we specialize in crafting fully customizable themes that cater to diverse preferences. Whether it's bespoke designs for a unique touch or quickly deployable templates for budget-friendly options, our range of themes provides versatility without compromising quality.",
-        },
-        {
-            info: "Tap into the wealth of third-party plugins compatible with WordPress, empowering your site with functionalities like bookings, payments, and contact forms. As the foremost website platform globally, WordPress boasts an exceptional plugin infrastructure, ensuring smooth integration and expanded capabilities."
-        },
-        {
-            info: "Should your team prefer internal maintenance, WordPress features an intuitive dashboard allowing effortless customization of diverse content types. Manage visuals, advertisements, and blog posts easily to match your specific needs."
-        },
-        {
-            info: "Responsive design is pivotal in today's digital landscape, especially with Google's emphasis on mobile-first indexing. Non-responsive designs risk alienating a significant portion of your audience, impacting user experience and potentially driving visitors away."
-        },
-        {
-            info: "With a PHP-based foundation, WordPress boasts formidable built-in security features for website protection. However, it's imperative for self-managed sites to prioritize timely updates to ensure ongoing security efficacy."
-        },
-        {
-            info: "Leveraging WordPress for your website means harnessing its built-in SEO-friendly features. Moreover, the platform extends its support through paid services, empowering websites to amplify their visibility on search engines, propelling them ahead in search rankings."
-        },
-        {
-            info: "The scalability inherent in WordPress websites efficiently handles heavy traffic, especially when paired with customized hosting solutions. Additionally, it fosters seamless site management and expansion, catering to the demands of larger development teams."
-        }
-    ];
 
     const handleParagraphHover = (index) => {
         setInfoTitle(paragraphData[index].info);
@@ -100,33 +70,40 @@ const InfoBoxes = () => {
             </div>
 
             <div ref={ref2} className='info-box left-box'>
-                <div className={!isInView2 ? "info-title left-info-title" : "info-title left-info-title black-white"}>
-                    <h3 className={!isInView2 ? "" : "black-white-text"}>Front End</h3>
-                    <h3 className={!isInView2 ? "" : "black-white-text"}>Development</h3>
+                <div className={`${!isInView2 ? "info-title left-info-title" : "info-title left-info-title black-white"} ${hoveredIndex >= 9 ? "info-paragraph left-info-paragraph" : ""}`}>
+                    {hoveredIndex === 0 ? (
+                        <>
+                            <h3 className={!isInView2 ? "" : "black-white-text"}>Front End</h3>
+                            <h3 className={!isInView2 ? "" : "black-white-text"}>Development</h3>
+                        </>
+                    ) : (
+                        <p>{infoTitle}</p>
+                    )}
                 </div>
                 <div className={!isInView2 ? "info-content left-content" : "info-content left-content slide-in"}>
-                    <div>
+                    <div onMouseEnter={() => handleParagraphHover(9)}
+                        onMouseLeave={handleParagraphLeave}>
                         <p>Advanced animations and interactivivity</p>
                     </div>
-                    <div>
+                    <div onMouseEnter={() => handleParagraphHover(10)} onMouseLeave={handleParagraphLeave}>
                         <p>Efficient and well-documented code</p>
                     </div>
-                    <div>
+                    <div onMouseEnter={() => handleParagraphHover(11)} onMouseLeave={handleParagraphLeave}>
                         <p>Lightning-fast loading times</p>
                     </div>
-
-                    <div>
-                        <p>Seamless integration various APIs</p>
+                    <div onMouseEnter={() => handleParagraphHover(12)} onMouseLeave={handleParagraphLeave}>
+                        <p>Seamless integration with various APIs</p>
                     </div>
-                    <div>
+                    <div onMouseEnter={() => handleParagraphHover(13)} onMouseLeave={handleParagraphLeave}>
                         <p>Accessibility-focused designs</p>
                     </div>
-                    <div>
+                    <div onMouseEnter={() => handleParagraphHover(14)} onMouseLeave={handleParagraphLeave}>
                         <p>Responsive layouts</p>
                     </div>
-                    <div>
+                    <div onMouseEnter={() => handleParagraphHover(15)} onMouseLeave={handleParagraphLeave}>
                         <p>Efficient and optimized data management</p>
                     </div>
+
                 </div>
             </div>
 

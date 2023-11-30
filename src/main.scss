@@ -274,6 +274,10 @@ button {
     }
 }
 
+.left-info-title {
+    text-align: right;
+}
+
 .info-paragraph {
     padding: 4rem 6rem 4rem 4rem;
     text-align: justify;
@@ -281,9 +285,11 @@ button {
     line-height: 1.8rem;
 }
 
-.left-info-title {
-    text-align: right;
+.left-info-paragraph {
+    padding: 4rem 4rem 4rem 6rem;
+
 }
+
 
 .info-content {
     background-color: $less-white;
