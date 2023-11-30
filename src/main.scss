@@ -13,6 +13,8 @@
 // variables
 $less-black: #040303;
 $less-white: #efefef;
+$hover: #ffffff73;
+$border: 1px solid #efefef;
 
 // globals
 h2 {
@@ -51,6 +53,12 @@ button {
     align-items: center;
 }
 
+%columnJustify {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 %text-btn {
     border: none;
     background-color: transparent;
@@ -74,6 +82,10 @@ button {
 
     button {
         @extend %text-btn;
+
+        &:hover {
+            background-color: $hover;
+        }
     }
 }
 
@@ -91,23 +103,21 @@ button {
 }
 
 .sidebar-title {
-    border-bottom: 1px solid $less-white;
+    border-bottom: $border;
 
     &:nth-child(2) {
         border-top: none;
-        background-color: red;
     }
 
     &:nth-child(3) {
         border-top: none;
-        background-color: red;
     }
 }
 
 .sidebar-item {
     display: flex;
     gap: 2rem;
-    border-top: 1px solid $less-white;
+    border-top: $border;
     margin-left: 5rem;
 
     &:nth-of-type(2) {
@@ -135,7 +145,7 @@ button {
 
         &:hover {
             cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.451);
+            background-color: $hover;
         }
 
     }
@@ -213,7 +223,7 @@ button {
     @extend %centered;
     width: 80px;
     height: 80px;
-    background-color: #efefef94;
+    background-color: $hover;
     border-radius: 50%;
     position: absolute;
     bottom: 3rem;
@@ -229,9 +239,96 @@ button {
 
 // INFO BOXES
 .info-boxes {
-    height: 100vh;
     background-color: $less-black;
+    @extend %centered;
+    gap: 6rem;
+    padding: 12rem 0;
 }
+
+.info-box {
+    display: grid;
+    width: 80vw;
+    height: 60dvh;
+}
+
+.right-box {
+    grid-template-columns: 44% 1fr;
+}
+
+.left-box {
+    grid-template-columns: 1fr 44%;
+}
+
+.info-title {
+    @extend %columnJustify;
+    border: $border;
+    padding: 1rem;
+    background-color: $less-black;
+    z-index: 5;
+
+    h3 {
+        color: $less-white;
+        font-size: 6rem;
+        margin: 0;
+    }
+}
+
+.left-info-title {
+    text-align: right;
+}
+
+.info-content {
+    background-color: $less-white;
+    @extend %columnJustify;
+    padding: 0 2rem;
+    transition: all .5s ease-in;
+    z-index: 1;
+
+
+
+    div {
+        border-bottom: 1px solid $less-black;
+        width: fit-content;
+    }
+
+    p {
+        font-weight: 800;
+        font-size: 1.2rem;
+        margin: 0;
+        padding: 1rem 0 .5rem;
+    }
+}
+
+.right-content {
+    transform: translateX(100%);
+}
+
+.left-content {
+    transform: translateX(-100%);
+    align-items: flex-end;
+
+    div p {
+        text-align: right;
+    }
+}
+
+.see-more-designs {
+    align-self: flex-end;
+    padding-right: 5rem;
+    color: $less-white;
+    font-size: .9rem;
+    width: 200px;
+    margin-top: -4rem;
+
+    button {
+        @extend %text-btn;
+        width: 100%;
+        text-align: right;
+        padding-top: 0.5rem;
+    }
+}
+
+
 
 // DYNAMIC CLASSES
 .overlay-effect {
@@ -252,10 +349,18 @@ button {
     pointer-events: none;
 }
 
-// .off-left {
-//     transform: translateX(-100vw);
-// }
+.slide-in {
+    opacity: 1;
+    transform: translateX(0%);
+    transition: all .5s ease-in;
+}
 
-// .off-right {
-//     transform: translateX(100vw);
-// }
+.black-white {
+    background-color: $less-white;
+    transition: all .5s ease-in;
+}
+
+.black-white-text {
+    color: $less-black !important;
+    transition: all .5s ease-in;
+}

@@ -81,7 +81,7 @@ const HeroSidebar = () => {
                         animate={designDropdown ? 'visible' : 'hidden'}
                         exit='exit'
                     >
-                        WordPress
+                        WordPress / CMS
                     </motion.p>
                     <motion.p
                         variants={textFadeVariants04}
