@@ -1,7 +1,7 @@
 // animations.js
 export const slideInLeft = {
     initial: { transform: "translateX(-40%)", opacity: 0, transition: { duration: 0.5 } },
-    animate: { transform: "translateX(0%)", opacity: 1, transition: { duration: 0.5, delay: 0.4 } },
+    animate: { transform: "translateX(0%)", opacity: 1, transition: { duration: 0.5, delay: 1 } },
     exit: { transform: "translateX(-40%)", opacity: 0, transition: { duration: 0.5 } },
 };
 

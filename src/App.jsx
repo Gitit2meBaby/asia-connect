@@ -8,6 +8,12 @@ import Hero from './components/hero'
 import InfoBoxes from './components/InfoBoxes'
 import HeroSidebar from './components/HeroSidebar'
 import About from './components/About'
+import AboutLisa from './components/AboutLisa';
+import Create from './components/Create';
+import Projects from './components/Projects';
+import MoreProjects from './components/MoreProjects';
+import EvenMoreProjects from './components/EvenMoreProjects';
+
 function App() {
 
   return (
@@ -18,6 +24,11 @@ function App() {
         <Hero />
         <InfoBoxes />
         <About />
+        <AboutLisa />
+        <Create />
+        <Projects />
+        <MoreProjects />
+        <EvenMoreProjects />
       </AnimatePresence>
 
     </>

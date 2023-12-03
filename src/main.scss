@@ -125,6 +125,13 @@ button {
         border-top: none;
     }
 
+    &:hover {
+        h3 {
+            letter-spacing: .2rem;
+            text-transform: uppercase;
+        }
+    }
+
     h3 {
         font-size: 1.5rem;
         padding: 2rem 3rem;
@@ -243,7 +250,7 @@ button {
     background-color: $less-black;
     @extend %centered;
     gap: 6rem;
-    padding: 12rem 0;
+    padding: 12rem 0 6rem 0;
 }
 
 .info-box {
@@ -332,11 +339,11 @@ button {
 .see-more-designs {
     font-family: 'Oxygen-mono';
     align-self: flex-end;
-    padding-right: 5rem;
+    padding-right: 10vw;
     color: $less-white;
     font-size: .9rem;
     width: 300px;
-    margin-top: -4rem;
+    margin-top: -2rem;
 
     button {
         @extend %text-btn;
@@ -348,7 +355,318 @@ button {
 
 // ABOUT SECTION
 .about {
-    height: 80dvh;
+    height: 100dvh;
+    overflow: hidden;
+    background-color: $less-black;
+    position: relative;
+    @extend %columnJustify;
+}
+
+.about-heading {
+    width: fit-content;
+    flex-wrap: nowrap;
+
+    h3 {
+        color: $less-white;
+        text-transform: uppercase;
+        letter-spacing: 1.5rem;
+        line-height: 18rem;
+        font-family: 'Anton';
+        font-size: 20rem;
+        margin: 0;
+    }
+}
+
+.selfie-container {
+    position: absolute;
+    bottom: 2vh;
+    right: 2vw;
+}
+
+.speech {
+    width: fit-content;
+    align-self: center;
+    margin-top: -10rem;
+    margin-right: 20rem;
+
+    p {
+        margin: 0;
+        color: $less-white;
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    span {
+        font-size: 4rem;
+    }
+}
+
+// ABOUT LISA
+.about-lisa {
+    background-color: $less-black;
+    height: 70dvh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    h4,
+    h3 {
+        color: $less-white;
+        text-transform: uppercase;
+        letter-spacing: 1.5rem;
+        line-height: 8rem;
+        font-family: 'Anton';
+        margin: 0;
+        text-align: right;
+    }
+
+    h3 {
+        font-size: 20rem;
+    }
+
+    h3:last-of-type {
+        font-size: 6rem;
+        margin-top: 5rem;
+    }
+
+    img {
+        max-height: 600px;
+        position: absolute;
+        top: -2rem;
+        left: 4rem;
+    }
+
+    h4 {
+        font-size: 10rem;
+        margin-top: 5rem;
+    }
+}
+
+.we-create {
+    color: $less-white;
+    text-transform: uppercase;
+    letter-spacing: 1.5rem;
+    line-height: 8rem;
+    font-family: 'Anton';
+    margin: 0;
+    text-align: right;
+    font-size: 10rem;
+    margin-top: 5rem;
+}
+
+.lisa-speech {
+    width: fit-content;
+    align-self: flex-end;
+    margin: 8rem 24rem 0 0;
+
+    p {
+        margin: 0;
+        color: $less-white;
+        font-size: 1.4rem;
+        text-align: center;
+    }
+}
+
+.together-text {
+    position: absolute;
+    bottom: 4rem;
+    right: 1rem;
+    margin: 0;
+    width: fit-content;
+    pointer-events: none;
+}
+
+// CREATE 
+.create {
+    background-color: $less-white;
+    overflow: hidden;
+}
+
+.stunning-text {
+    display: 'flex';
+    white-space: nowrap;
+
+    h2 {
+        color: $less-black;
+        text-transform: uppercase;
+        letter-spacing: .8rem;
+        line-height: 10rem;
+        font-family: 'Anton';
+        margin: 0;
+        text-align: right;
+        font-size: 10rem;
+    }
+}
+
+// PROJECTS
+.projects {
+    background-color: $less-black;
+    padding: 6rem 6rem 0rem 6rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 2rem;
+}
+
+.project-box {
+    height: 40dvh;
+    width: 35vw;
+    border: $border;
+    position: relative;
+    padding: 2rem;
+
+    h2 {
+        font-family: 'Oxygen Mono', monospace;
+        color: $less-white;
+        font-size: 4rem;
+        margin: 0;
+    }
+
+    img {
+        position: absolute;
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+        perspective-origin: 100% 100%;
+        transform-origin: 100% 100%;
+        transform-style: preserve-3d;
+        opacity: 0;
+        animation: opacity 0.2s ease-in-out forwards;
+        animation-delay: 0.1s;
+        box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.8);
+
+
+        // Normal animation delays
+        &:nth-of-type(1) {
+            animation-delay: .1s;
+        }
+
+        &:nth-of-type(2) {
+            animation-delay: .2s;
+        }
+
+        &:nth-of-type(3) {
+            animation-delay: .3s;
+        }
+
+        &:nth-of-type(4) {
+            animation-delay: .4s;
+            box-shadow: none;
+        }
+
+        // Animation delays for .animate-out
+        &.animate-out {
+            &:nth-of-type(1) {
+                animation-delay: .4s;
+            }
+
+            &:nth-of-type(2) {
+                animation-delay: .3s;
+            }
+
+            &:nth-of-type(3) {
+                animation-delay: .2s;
+            }
+
+            &:nth-of-type(4) {
+                animation-delay: .1s;
+                box-shadow: none;
+            }
+        }
+    }
+
+
+    @keyframes opacity {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes reverseOpacity {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes slideRight {
+        0% {
+            transform: translateX(90%);
+            opacity: 0
+        }
+
+        100% {
+            transform: translateX(0%);
+            opacity: 1
+        }
+    }
+
+    @keyframes slideLeft {
+        0% {
+            transform: translateX(-90%);
+            opacity: 0
+        }
+
+        100% {
+            transform: translateX(0%);
+            opacity: 1
+        }
+    }
+
+    .slide-left {
+        animation: slideLeft 1s ease forwards;
+    }
+
+    .slide-right {
+        animation: slideRight 1s ease forwards;
+    }
+
+    img:first-of-type {
+        top: -2rem;
+        transform: translate3d(10px, 10px, 10px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-3deg) skew(0deg, 0deg);
+    }
+
+    img:nth-of-type(2) {
+        top: 0rem;
+        transform: translate3d(-20px, -20px, -20px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(3deg) skew(0deg, 0deg);
+        // animation-delay: .2s;
+
+    }
+
+    img:nth-of-type(3) {
+        top: 4rem;
+        left: 8rem;
+        transform: translate3d(20px, 20px, 20px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-5deg) skew(0deg, 0deg);
+        // animation-delay: .3s;
+
+    }
+
+    img:nth-of-type(4) {
+        top: 2rem;
+        left: 8rem;
+        transform: translate3d(20px, 20px, 20px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        // animation-delay: .4s;
+    }
+
+    .animate-out {
+        animation: reverseOpacity 0.2s ease-in-out forwards;
+        opacity: 1;
+    }
+
+    p {
+        color: $less-white;
+        text-align: justify;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+        opacity: 0;
+        animation: opacity 0.2s ease-in-out forwards;
+        animation-delay: .5s;
+    }
 }
 
 // DYNAMIC CLASSES
@@ -384,4 +702,42 @@ button {
 .black-white-text {
     color: $less-black !important;
     transition: color .5s ease-in;
+}
+
+.off-left {
+    transform: translateX(-100%);
+}
+
+.off-right {
+    transform: translateX(100%);
+}
+
+.rotate {
+    transform: rotate(90deg);
+    transform-origin: left bottom;
+    transition: all 5s ease;
+    animation: opacityChange;
+    animation-delay: 5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    margin: 0;
+}
+
+@keyframes opacityChange {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.reverse-rotate {
+    display: inline-block;
+    transform: rotate(-90deg);
+    transition: all 5s ease;
+    letter-spacing: 4rem;
+    flex-wrap: nowrap;
+    margin: 0;
 }

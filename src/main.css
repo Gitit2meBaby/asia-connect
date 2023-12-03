@@ -42,7 +42,7 @@ button {
   align-items: center;
 }
 
-.info-content, .info-title {
+.about, .info-content, .info-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -99,6 +99,10 @@ button {
 }
 .sidebar-item:nth-of-type(2) {
   border-top: none;
+}
+.sidebar-item:hover h3 {
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
 }
 .sidebar-item h3 {
   font-size: 1.5rem;
@@ -202,7 +206,7 @@ button {
 .info-boxes {
   background-color: #040303;
   gap: 6rem;
-  padding: 12rem 0;
+  padding: 12rem 0 6rem 0;
 }
 
 .info-box {
@@ -283,11 +287,11 @@ button {
 .see-more-designs {
   font-family: "Oxygen-mono";
   align-self: flex-end;
-  padding-right: 5rem;
+  padding-right: 10vw;
   color: #efefef;
   font-size: 0.9rem;
   width: 300px;
-  margin-top: -4rem;
+  margin-top: -2rem;
 }
 .see-more-designs button {
   width: 100%;
@@ -296,7 +300,271 @@ button {
 }
 
 .about {
-  height: 80dvh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: #040303;
+  position: relative;
+}
+
+.about-heading {
+  width: -moz-fit-content;
+  width: fit-content;
+  flex-wrap: nowrap;
+}
+.about-heading h3 {
+  color: #efefef;
+  text-transform: uppercase;
+  letter-spacing: 1.5rem;
+  line-height: 18rem;
+  font-family: "Anton";
+  font-size: 20rem;
+  margin: 0;
+}
+
+.selfie-container {
+  position: absolute;
+  bottom: 2vh;
+  right: 2vw;
+}
+
+.speech {
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: center;
+  margin-top: -10rem;
+  margin-right: 20rem;
+}
+.speech p {
+  margin: 0;
+  color: #efefef;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.speech span {
+  font-size: 4rem;
+}
+
+.about-lisa {
+  background-color: #040303;
+  height: 70dvh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.about-lisa h4,
+.about-lisa h3 {
+  color: #efefef;
+  text-transform: uppercase;
+  letter-spacing: 1.5rem;
+  line-height: 8rem;
+  font-family: "Anton";
+  margin: 0;
+  text-align: right;
+}
+.about-lisa h3 {
+  font-size: 20rem;
+}
+.about-lisa h3:last-of-type {
+  font-size: 6rem;
+  margin-top: 5rem;
+}
+.about-lisa img {
+  max-height: 600px;
+  position: absolute;
+  top: -2rem;
+  left: 4rem;
+}
+.about-lisa h4 {
+  font-size: 10rem;
+  margin-top: 5rem;
+}
+
+.we-create {
+  color: #efefef;
+  text-transform: uppercase;
+  letter-spacing: 1.5rem;
+  line-height: 8rem;
+  font-family: "Anton";
+  margin: 0;
+  text-align: right;
+  font-size: 10rem;
+  margin-top: 5rem;
+}
+
+.lisa-speech {
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: flex-end;
+  margin: 8rem 24rem 0 0;
+}
+.lisa-speech p {
+  margin: 0;
+  color: #efefef;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.together-text {
+  position: absolute;
+  bottom: 4rem;
+  right: 1rem;
+  margin: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  pointer-events: none;
+}
+
+.create {
+  background-color: #efefef;
+  overflow: hidden;
+}
+
+.stunning-text {
+  display: "flex";
+  white-space: nowrap;
+}
+.stunning-text h2 {
+  color: #040303;
+  text-transform: uppercase;
+  letter-spacing: 0.8rem;
+  line-height: 10rem;
+  font-family: "Anton";
+  margin: 0;
+  text-align: right;
+  font-size: 10rem;
+}
+
+.projects {
+  background-color: #040303;
+  padding: 6rem 6rem 0rem 6rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 2rem;
+}
+
+.project-box {
+  height: 40dvh;
+  width: 35vw;
+  border: 1px solid #efefef;
+  position: relative;
+  padding: 2rem;
+}
+.project-box h2 {
+  font-family: "Oxygen Mono", monospace;
+  color: #efefef;
+  font-size: 4rem;
+  margin: 0;
+}
+.project-box img {
+  position: absolute;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  perspective-origin: 100% 100%;
+  transform-origin: 100% 100%;
+  transform-style: preserve-3d;
+  opacity: 0;
+  animation: opacity 0.2s ease-in-out forwards;
+  animation-delay: 0.1s;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.8);
+}
+.project-box img:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+.project-box img:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+.project-box img:nth-of-type(3) {
+  animation-delay: 0.3s;
+}
+.project-box img:nth-of-type(4) {
+  animation-delay: 0.4s;
+  box-shadow: none;
+}
+.project-box img.animate-out:nth-of-type(1) {
+  animation-delay: 0.4s;
+}
+.project-box img.animate-out:nth-of-type(2) {
+  animation-delay: 0.3s;
+}
+.project-box img.animate-out:nth-of-type(3) {
+  animation-delay: 0.2s;
+}
+.project-box img.animate-out:nth-of-type(4) {
+  animation-delay: 0.1s;
+  box-shadow: none;
+}
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes reverseOpacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes slideRight {
+  0% {
+    transform: translateX(90%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+@keyframes slideLeft {
+  0% {
+    transform: translateX(-90%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+.project-box .slide-left {
+  animation: slideLeft 1s ease forwards;
+}
+.project-box .slide-right {
+  animation: slideRight 1s ease forwards;
+}
+.project-box img:first-of-type {
+  top: -2rem;
+  transform: translate3d(10px, 10px, 10px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-3deg) skew(0deg, 0deg);
+}
+.project-box img:nth-of-type(2) {
+  top: 0rem;
+  transform: translate3d(-20px, -20px, -20px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(3deg) skew(0deg, 0deg);
+}
+.project-box img:nth-of-type(3) {
+  top: 4rem;
+  left: 8rem;
+  transform: translate3d(20px, 20px, 20px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-5deg) skew(0deg, 0deg);
+}
+.project-box img:nth-of-type(4) {
+  top: 2rem;
+  left: 8rem;
+  transform: translate3d(20px, 20px, 20px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+}
+.project-box .animate-out {
+  animation: reverseOpacity 0.2s ease-in-out forwards;
+  opacity: 1;
+}
+.project-box p {
+  color: #efefef;
+  text-align: justify;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  opacity: 0;
+  animation: opacity 0.2s ease-in-out forwards;
+  animation-delay: 0.5s;
 }
 
 .overlay-effect {
@@ -330,4 +598,40 @@ button {
 .black-white-text {
   color: #040303 !important;
   transition: color 0.5s ease-in;
+}
+
+.off-left {
+  transform: translateX(-100%);
+}
+
+.off-right {
+  transform: translateX(100%);
+}
+
+.rotate {
+  transform: rotate(90deg);
+  transform-origin: left bottom;
+  transition: all 5s ease;
+  animation: opacityChange;
+  animation-delay: 5s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  margin: 0;
+}
+
+@keyframes opacityChange {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.reverse-rotate {
+  display: inline-block;
+  transform: rotate(-90deg);
+  transition: all 5s ease;
+  letter-spacing: 4rem;
+  flex-wrap: nowrap;
+  margin: 0;
 }/*# sourceMappingURL=main.css.map */
