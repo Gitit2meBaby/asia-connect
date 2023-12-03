@@ -42,13 +42,13 @@ button {
   align-items: center;
 }
 
-.about, .info-content, .info-title {
+.grid-section, .about, .info-content, .info-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.see-more-designs button, .nav-btn-container button {
+.grid-section button, .see-more-designs button, .nav-btn-container button {
   border: none;
   background-color: transparent;
   color: #efefef;
@@ -567,6 +567,68 @@ button {
   animation-delay: 0.5s;
 }
 
+.testimonials {
+  background-color: #040303;
+  padding: 12rem 6rem;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(3, 33.3%);
+  gap: 1.4rem;
+  height: 80vh;
+  width: 80vw;
+}
+
+.grid-section {
+  border: 1px solid #efefef;
+  padding: 1rem 2rem;
+}
+.grid-section blockquote {
+  font-family: "Oxygen Mono", monospace;
+  margin: 0;
+  text-align: justify;
+}
+.grid-section h4 {
+  font-family: "Anton", sans-serif;
+  font-size: 1.4rem;
+  margin: 0;
+  padding-bottom: 1rem;
+}
+.grid-section button {
+  display: flex;
+  align-items: center;
+  border: 1px solid #040303;
+  padding: 1rem 2rem 1.2rem 2rem;
+  gap: 0.5rem;
+  color: #040303;
+}
+
+.grid1 {
+  grid-row: span 2;
+}
+
+.grid3 {
+  grid-column: span 2;
+}
+
+.grid4 {
+  grid-column: span 2;
+  align-items: center;
+}
+.grid4 h3 {
+  font-size: 2rem;
+}
+
+.grid5 {
+  grid-row: span 2;
+}
+
+.grid6 {
+  grid-column: span 2;
+}
+
 .overlay-effect {
   color: rgba(0, 0, 0, 0.5) !important;
   transition: all 1.5s ease !important;
@@ -595,8 +657,18 @@ button {
   transition: background-color 0.5s ease-in;
 }
 
+.white-black {
+  background-color: #040303;
+  transition: background-color 0.5s ease-in;
+}
+
 .black-white-text {
   color: #040303 !important;
+  transition: color 0.5s ease-in;
+}
+
+.white-black-text {
+  color: #efefef !important;
   transition: color 0.5s ease-in;
 }
 

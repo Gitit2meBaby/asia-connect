@@ -13,6 +13,9 @@ import Create from './components/Create';
 import Projects from './components/Projects';
 import MoreProjects from './components/MoreProjects';
 import EvenMoreProjects from './components/EvenMoreProjects';
+import FinalProjects from './components/FinalProjects';
+import Customers from './components/Customers';
+import Testimonials from './components/Testimonials';
 
 function App() {
 
@@ -29,6 +32,9 @@ function App() {
         <Projects />
         <MoreProjects />
         <EvenMoreProjects />
+        <FinalProjects />
+        <Customers />
+        <Testimonials />
       </AnimatePresence>
 
     </>
