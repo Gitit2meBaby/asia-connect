@@ -22,7 +22,7 @@ const AboutLisa = () => {
     const lisa = useTransform(scrollYProgress, [0, .5], ['-100%', '0%']);
     const lisaOpacity = useTransform(scrollYProgress, [0.2, .8], ['0', '1']);
     const imgOpacity = useTransform(scrollYProgress, [.3, 1], ['0', '1']);
-
+    const textOpacity = useTransform(scrollYProgress, [.7, 1], ['0', '1'])
     const lisaVisibility = useTransform(scrollYProgress, [0.6, 1], [false, true]);
 
     useEffect(() => {
@@ -35,9 +35,9 @@ const AboutLisa = () => {
         };
     }, [lisaVisibility]);
 
-    const rotate = {
-        transform: 'rotate(90deg)'
-    }
+    // Opacity change for paragraph on scroll
+    const text = `Our core mission is to spotlight the richness of Asia, attracting the attention of global tourists who heavily rely on their smartphones as their travel compass. Through our platform, we seamlessly connect millions of visitors to the array of services they need`;
+
 
     return (
         <section ref={containerRef} className="about-lisa">
@@ -49,37 +49,34 @@ const AboutLisa = () => {
                 <img src={lisa800} alt="Lisa, full stack web engineer" />
             </motion.div>
 
+            {!lisaVisible && (
+                <div className='lisa-speech'>
+                    <motion.p style={{ opacity: '0' }}>Full Stack Engineer</motion.p>
+                </div>
+            )}
+
             {lisaVisible && (
                 <div className='lisa-speech'>
                     <motion.p {...slideInRight}>Full Stack Engineer</motion.p>
                 </div>
             )}
 
-            <motion.h3 ref={textRef} className={isInView ? 'rotate together-text' : 'together-text'}>
-                <span className={isInView ? 'reverse-rotate' : ''}>T</span>
-                <span className={isInView ? 'reverse-rotate' : ''}>o</span>
-                <span className={isInView ? 'reverse-rotate' : ''}>g</span>
-                <span className={isInView ? 'reverse-rotate' : ''}>e</span>
-                <span className={isInView ? 'reverse-rotate' : ''}>t</span>
-                <span className={isInView ? 'reverse-rotate' : ''}>h</span>
-                <span className={isInView ? 'reverse-rotate' : ''}>e</span>
-                <span className={isInView ? 'reverse-rotate' : ''}>r</span>
-            </motion.h3>
-            {isInView && (
-                <div className="we-create">
-                    <Typewriter
-                        options={{
-                            strings: ['We Create'],
-                            autoStart: true,
-                            loop: true,
-                            pause: 8000,
-                            delay: 200,
-                            cursor: '',
-                        }}
-                    />
-                </div>
+            <motion.div className='opacity-paragraph'
+                style={{ opacity: textOpacity }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}>
+                {text.split(' ').map((word, index) => (
+                    <motion.span
+                        key={index}
+                        initial={{ opacity: 0.5 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: index * 0.1 }}
+                    >
+                        {`${word} `}
+                    </motion.span>
+                ))}
+            </motion.div>
 
-            )}
 
         </section>)
 }

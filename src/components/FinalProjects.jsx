@@ -59,7 +59,7 @@ const FinalProjects = () => {
 
     return (
         <section className="projects"
-            style={{ paddingBottom: '6rem' }}>
+            style={{ paddingBottom: '12rem' }}>
             <div onMouseEnter={() => handlebaliHover()}
                 onMouseLeave={() => handlebaliHoverOut()}
                 className="project-box">

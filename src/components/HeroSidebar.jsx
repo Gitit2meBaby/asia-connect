@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react'
-import { motion, useViewportScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { growX, textFadeVariants02, textFadeVariants04, textFadeVariants06, textFadeVariants08, textFadeVariants1, textFadeVariants12, textFadeInDelay24, textFadeInDelay26, textFadeInDelay265, textFadeInDelay275, textFadeInDelay28, textFadeInDelay27, textFadeInDelay29, textFadeInDelay285, textFadeInDelay295, textFadeInDelay3 } from '../animations'
 
 const HeroSidebar = () => {
     const [designDropdown, setDesignDropdown] = useState(false)
     const [projectsDropdown, setProjectsDropdown] = useState(false)
-    const { scrollY } = useViewportScroll();
-    const sidebarOpacity = useTransform(scrollY, [0, 700], [1, 0]);
+    const { scrollY } = useScroll();
+    const sidebarOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
     useEffect(() => {
         return scrollY.onChange(() => {
-            // Here, you can access the updated scrollY value if needed
         });
     }, [scrollY]);
 
@@ -20,12 +19,12 @@ const HeroSidebar = () => {
 
             const interval = setInterval(() => {
                 setDesignDropdown(false);
-            }, 2000); // Set interval to change state back to false after 1000ms
+            }, 2000);
 
             setTimeout(() => {
                 clearInterval(interval);
             }, 2000);
-        }, 4500);
+        }, 4200);
 
         return () => {
             clearTimeout(timeout);
@@ -39,12 +38,12 @@ const HeroSidebar = () => {
 
             const interval = setInterval(() => {
                 setProjectsDropdown(false);
-            }, 2000); // Set interval to change state back to false after 1000ms
+            }, 2000);
 
             setTimeout(() => {
                 clearInterval(interval);
             }, 2000);
-        }, 6500);
+        }, 6200);
 
         return () => {
             clearTimeout(timeout);

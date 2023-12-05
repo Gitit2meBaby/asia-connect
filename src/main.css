@@ -10,7 +10,9 @@ h2 {
   font-family: "Anton", sans-serif;
 }
 
+span,
 button,
+li,
 h1,
 h3,
 p {
@@ -42,13 +44,13 @@ button {
   align-items: center;
 }
 
-.grid-section, .about, .info-content, .info-title {
+.contact-form, .grid-section, .about, .info-content, .info-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.grid-section button, .see-more-designs button, .nav-btn-container button {
+.grid-section button, .button-row button, .nav-btn-container button {
   border: none;
   background-color: transparent;
   color: #efefef;
@@ -110,7 +112,7 @@ button {
 }
 
 .sidebar-dropdown {
-  padding: 0.5rem 0;
+  padding: 0.8rem 0;
   height: 14rem;
   opacity: 1;
   transition: all 1s ease;
@@ -137,7 +139,7 @@ button {
 .hero-section h2 {
   position: fixed;
   padding-top: 2rem;
-  font-family: "Anton", sans-serif;
+  font-family: "Anton", sans-serif !important;
   margin: auto;
   width: 100vw;
   font-size: 33vh;
@@ -206,7 +208,7 @@ button {
 .info-boxes {
   background-color: #040303;
   gap: 6rem;
-  padding: 12rem 0 6rem 0;
+  padding: 12rem 0 2rem 0;
 }
 
 .info-box {
@@ -286,17 +288,23 @@ button {
 
 .see-more-designs {
   font-family: "Oxygen-mono";
-  align-self: flex-end;
+  align-self: center;
   padding-right: 10vw;
   color: #efefef;
   font-size: 0.9rem;
-  width: 300px;
-  margin-top: -2rem;
+  margin-top: 2rem;
 }
-.see-more-designs button {
-  width: 100%;
-  text-align: right;
-  padding-top: 0.5rem;
+
+.button-row {
+  background-color: #040303;
+  display: flex;
+  justify-content: space-around;
+}
+.button-row button {
+  font-size: 2rem;
+}
+.button-row button:hover {
+  background-color: rgba(255, 255, 255, 0.4509803922);
 }
 
 .about {
@@ -346,7 +354,7 @@ button {
 
 .about-lisa {
   background-color: #040303;
-  height: 70dvh;
+  padding-bottom: 6rem;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -364,10 +372,6 @@ button {
 .about-lisa h3 {
   font-size: 20rem;
 }
-.about-lisa h3:last-of-type {
-  font-size: 6rem;
-  margin-top: 5rem;
-}
 .about-lisa img {
   max-height: 600px;
   position: absolute;
@@ -379,16 +383,18 @@ button {
   margin-top: 5rem;
 }
 
-.we-create {
+.opacity-paragraph {
+  width: 45vw;
+  margin-left: auto;
+  padding-right: 7rem;
+  text-align: justify;
+  margin-top: 4rem;
+}
+.opacity-paragraph span {
+  font-size: 1.6rem;
+  line-height: 1.9rem;
   color: #efefef;
-  text-transform: uppercase;
-  letter-spacing: 1.5rem;
-  line-height: 8rem;
-  font-family: "Anton";
-  margin: 0;
-  text-align: right;
-  font-size: 10rem;
-  margin-top: 5rem;
+  opacity: 0.5;
 }
 
 .lisa-speech {
@@ -629,6 +635,102 @@ button {
   grid-column: span 2;
 }
 
+.contact-form {
+  background-color: #040303;
+  align-items: center;
+}
+.contact-form h2 {
+  font-family: "Anton", "sans-serif";
+  color: #efefef;
+  margin: 0;
+  font-size: 12rem;
+  letter-spacing: 1.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  padding: 6rem 0;
+}
+
+.contact-information {
+  padding: 0 2rem 0rem 6rem;
+}
+.contact-information h1 {
+  color: #efefef;
+  font-size: 1.8rem;
+  margin: 0;
+  padding-right: 4rem;
+}
+.contact-information p {
+  color: #efefef;
+  text-align: justify;
+  padding: 0 2rem;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+
+form {
+  padding: 0 4rem;
+  display: flex;
+  flex-direction: column;
+}
+form div {
+  display: grid;
+  grid-template-columns: 18% 1fr;
+  padding-bottom: 1rem;
+}
+form label {
+  font-family: "Oxygen Mono", monospace;
+  color: #efefef;
+}
+form input {
+  padding: 0.2rem;
+  width: 70%;
+}
+form textarea {
+  width: 80%;
+  resize: vertical;
+  min-height: 100px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+form button {
+  background-color: transparent;
+  border: 1px solid #efefef;
+  color: #efefef;
+  padding: 0.5rem 2rem;
+  margin-top: 2rem;
+  align-self: center;
+}
+
+.footer-nav {
+  background-color: #040303;
+}
+.footer-nav ul {
+  color: #efefef;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+  padding: 4rem 0 2rem 0;
+  list-style-type: none;
+}
+.footer-nav li:hover {
+  background-color: rgba(255, 255, 255, 0.4509803922);
+}
+
+.copyright {
+  background-color: #040303;
+}
+.copyright p {
+  color: #efefef;
+  margin: 0;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
 .overlay-effect {
   color: rgba(0, 0, 0, 0.5) !important;
   transition: all 1.5s ease !important;
@@ -637,6 +739,14 @@ button {
 .subtle-overlay {
   transition: all 1.5s ease !important;
   opacity: 0.5 !important;
+}
+
+.hover-overlay {
+  background-color: rgba(255, 255, 255, 0.4509803922) !important;
+}
+
+.hover-bright {
+  background-color: #ffffff;
 }
 
 .hidden {
@@ -658,7 +768,7 @@ button {
 }
 
 .white-black {
-  background-color: #040303;
+  background-color: #040303 !important;
   transition: background-color 0.5s ease-in;
 }
 
@@ -683,7 +793,7 @@ button {
 .rotate {
   transform: rotate(90deg);
   transform-origin: left bottom;
-  transition: all 5s ease;
+  transition: all 3s ease;
   animation: opacityChange;
   animation-delay: 5s;
   animation-duration: 1s;
@@ -702,7 +812,7 @@ button {
 .reverse-rotate {
   display: inline-block;
   transform: rotate(-90deg);
-  transition: all 5s ease;
+  transition: all 3s ease;
   letter-spacing: 4rem;
   flex-wrap: nowrap;
   margin: 0;

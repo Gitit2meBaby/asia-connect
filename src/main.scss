@@ -21,7 +21,9 @@ h2 {
     font-family: 'Anton', sans-serif;
 }
 
+span,
 button,
+li,
 h1,
 h3,
 p {
@@ -140,7 +142,7 @@ button {
 
 // DESIGN DROPDOWNS
 .sidebar-dropdown {
-    padding: .5rem 0;
+    padding: .8rem 0;
     height: 14rem;
     opacity: 1;
     transition: all 1s ease;
@@ -155,7 +157,6 @@ button {
             cursor: pointer;
             background-color: $hover;
         }
-
     }
 }
 
@@ -173,7 +174,7 @@ button {
     h2 {
         position: fixed;
         padding-top: 2rem;
-        font-family: 'Anton', sans-serif;
+        font-family: 'Anton', sans-serif !important;
         margin: auto;
         width: 100vw;
         font-size: 33vh;
@@ -250,7 +251,7 @@ button {
     background-color: $less-black;
     @extend %centered;
     gap: 6rem;
-    padding: 12rem 0 6rem 0;
+    padding: 12rem 0 2rem 0;
 }
 
 .info-box {
@@ -297,7 +298,6 @@ button {
 
 }
 
-
 .info-content {
     background-color: $less-white;
     @extend %columnJustify;
@@ -338,18 +338,26 @@ button {
 
 .see-more-designs {
     font-family: 'Oxygen-mono';
-    align-self: flex-end;
+    align-self: center;
     padding-right: 10vw;
     color: $less-white;
     font-size: .9rem;
-    width: 300px;
-    margin-top: -2rem;
+    margin-top: 2rem;
+}
+
+// BUTTON ROW
+.button-row {
+    background-color: $less-black;
+    display: flex;
+    justify-content: space-around;
 
     button {
         @extend %text-btn;
-        width: 100%;
-        text-align: right;
-        padding-top: 0.5rem;
+        font-size: 2rem;
+
+        &:hover {
+            background-color: $hover;
+        }
     }
 }
 
@@ -404,7 +412,7 @@ button {
 // ABOUT LISA
 .about-lisa {
     background-color: $less-black;
-    height: 70dvh;
+    padding-bottom: 6rem;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -424,11 +432,6 @@ button {
         font-size: 20rem;
     }
 
-    h3:last-of-type {
-        font-size: 6rem;
-        margin-top: 5rem;
-    }
-
     img {
         max-height: 600px;
         position: absolute;
@@ -442,16 +445,19 @@ button {
     }
 }
 
-.we-create {
-    color: $less-white;
-    text-transform: uppercase;
-    letter-spacing: 1.5rem;
-    line-height: 8rem;
-    font-family: 'Anton';
-    margin: 0;
-    text-align: right;
-    font-size: 10rem;
-    margin-top: 5rem;
+.opacity-paragraph {
+    width: 45vw;
+    margin-left: auto;
+    padding-right: 7rem;
+    text-align: justify;
+    margin-top: 4rem;
+
+    span {
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+        color: $less-white;
+        opacity: .5;
+    }
 }
 
 .lisa-speech {
@@ -738,6 +744,118 @@ button {
     grid-column: span 2;
 }
 
+// CONTACT FORM
+.contact-form {
+    background-color: $less-black;
+    @extend %columnJustify;
+    align-items: center;
+
+    h2 {
+        font-family: 'Anton', 'sans-serif';
+        color: $less-white;
+        margin: 0;
+        font-size: 12rem;
+        letter-spacing: 1.5rem;
+
+    }
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    padding: 6rem 0;
+}
+
+.contact-information {
+    padding: 0 2rem 0rem 6rem;
+
+    h1 {
+        color: $less-white;
+        font-size: 1.8rem;
+        margin: 0;
+        padding-right: 4rem;
+    }
+
+    p {
+        color: $less-white;
+        text-align: justify;
+        padding: 0 2rem;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+    }
+}
+
+form {
+    padding: 0 4rem;
+    display: flex;
+    flex-direction: column;
+
+    div {
+        display: grid;
+        grid-template-columns: 18% 1fr;
+        padding-bottom: 1rem;
+    }
+
+    label {
+        font-family: 'Oxygen Mono', monospace;
+        color: $less-white;
+    }
+
+    input {
+        padding: 0.2rem;
+        width: 70%;
+    }
+
+    textarea {
+        width: 80%;
+        resize: vertical;
+        min-height: 100px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: transparent;
+        border: $border;
+        color: $less-white;
+        padding: .5rem 2rem;
+        margin-top: 2rem;
+        // margin-left: auto;
+        align-self: center;
+    }
+}
+
+// FOOTER {
+.footer-nav {
+    background-color: $less-black;
+
+    ul {
+        color: $less-white;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 0;
+        padding: 4rem 0 2rem 0;
+        list-style-type: none;
+    }
+
+    li:hover {
+        background-color: $hover;
+    }
+}
+
+.copyright {
+    background-color: $less-black;
+
+    p {
+        color: $less-white;
+        margin: 0;
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+}
+
 // DYNAMIC CLASSES
 .overlay-effect {
     color: rgba(0, 0, 0, .5) !important;
@@ -748,6 +866,14 @@ button {
     transition: all 1.5s ease !important;
     opacity: .5 !important;
 
+}
+
+.hover-overlay {
+    background-color: $hover !important;
+}
+
+.hover-bright {
+    background-color: #ffffff;
 }
 
 .hidden {
@@ -769,7 +895,7 @@ button {
 }
 
 .white-black {
-    background-color: $less-black;
+    background-color: $less-black !important;
     transition: background-color .5s ease-in;
 }
 
@@ -794,7 +920,7 @@ button {
 .rotate {
     transform: rotate(90deg);
     transform-origin: left bottom;
-    transition: all 5s ease;
+    transition: all 3s ease;
     animation: opacityChange;
     animation-delay: 5s;
     animation-duration: 1s;
@@ -815,7 +941,7 @@ button {
 .reverse-rotate {
     display: inline-block;
     transform: rotate(-90deg);
-    transition: all 5s ease;
+    transition: all 3s ease;
     letter-spacing: 4rem;
     flex-wrap: nowrap;
     margin: 0;

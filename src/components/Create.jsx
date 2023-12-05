@@ -7,7 +7,7 @@ const Create = () => {
         target: targetRef,
     });
 
-    const x = useTransform(scrollYProgress, [0, 1], ["80%", "-115%"]);
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
 
     return (
         <section ref={targetRef} className="create">
@@ -15,7 +15,7 @@ const Create = () => {
                 style={{ x }}
                 className="stunning-text"
             >
-                <h2>Captivating website designs</h2>
+                <h2>..Some Projects</h2>
             </motion.div>
         </section>
     );

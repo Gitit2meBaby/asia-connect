@@ -16,6 +16,9 @@ import EvenMoreProjects from './components/EvenMoreProjects';
 import FinalProjects from './components/FinalProjects';
 import Customers from './components/Customers';
 import Testimonials from './components/Testimonials';
+import ContactForm from './components/ContactForm';
+import Footer from './components/Footer';
+import ButtonRow from './components/ButtonRow';
 
 function App() {
 
@@ -26,6 +29,7 @@ function App() {
         <HeroSidebar />
         <Hero />
         <InfoBoxes />
+        <ButtonRow />
         <About />
         <AboutLisa />
         <Create />
@@ -35,6 +39,8 @@ function App() {
         <FinalProjects />
         <Customers />
         <Testimonials />
+        <ContactForm />
+        <Footer />
       </AnimatePresence>
 
     </>

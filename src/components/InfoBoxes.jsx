@@ -1,13 +1,17 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useInView } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import { paragraphData } from "../paragraphData";
 
-
 const InfoBoxes = () => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('WordPress/ CMS Solutions');
+    const [hoverEffect, setHoverEffect] = useState(1)
+    const [hoverEffect2, setHoverEffect2] = useState(9)
+    const [hasRunEffect, setHasRunEffect] = useState(false);
+    const [hasRunEffect2, setHasRunEffect2] = useState(false);
 
+    // The two section boxes
     const ref1 = useRef(null);
     const ref2 = useRef(null);
 
@@ -15,44 +19,81 @@ const InfoBoxes = () => {
     const isInView1 = useInView(ref1, { margin: "-600px 0px -200px 0px" });
     const isInView2 = useInView(ref2, { margin: "-600px 0px -200px 0px" });
 
-
+    // To display information about each topic
     const handleParagraphHover = (index) => {
         setInfoTitle(paragraphData[index].info);
         setHoveredIndex(index);
     };
 
+    // Revert back to the initial state with heading
     const handleParagraphLeave = () => {
         setInfoTitle('WordPress/ CMS Solutions');
         setHoveredIndex(0);
     };
+
+    // Hover type animation on first section
+    useEffect(() => {
+        if (isInView1 && !hasRunEffect) {
+            const interval = setInterval(() => {
+                setHoverEffect((prevItem) => (prevItem < 9 ? prevItem + 1 : 1));
+                setInfoTitle(paragraphData[hoverEffect].info);
+                setHoveredIndex(hoverEffect);
+            }, 300);
+            if (hoverEffect === 9) {
+                setHasRunEffect(true);
+                setHoveredIndex(0);
+                setHoverEffect(0)
+            }
+            return () => clearInterval(interval);
+        }
+
+    }, [isInView1, hasRunEffect, hoverEffect, paragraphData]);
+
+    // Hover type animation on second section
+    useEffect(() => {
+        if (isInView2 && !hasRunEffect2) {
+            const interval = setInterval(() => {
+                setHoverEffect2((prevItem) => (prevItem < 16 ? prevItem + 1 : 9));
+                setInfoTitle(paragraphData[hoverEffect2].info);
+                setHoveredIndex(hoverEffect2);
+            }, 300);
+            if (hoverEffect2 === 16) {
+                setHasRunEffect2(true);
+                setHoveredIndex(0);
+                setHoverEffect2(0)
+            }
+            return () => clearInterval(interval);
+        }
+
+    }, [isInView2, hasRunEffect2, hoverEffect2, paragraphData]);
 
     return (
         <section className="info-boxes">
             <div ref={ref1} className='info-box right-box'>
                 <div className={!isInView1 ? "info-content right-content" : "info-content right-content slide-in"}>
                     <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}>
-                        <p>Seamless content updates and editing</p>
+                        <p className={hoverEffect === 1 ? 'hover-bright' : ''}>Seamless content updates and editing</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave}>
-                        <p>Fully customisable themes</p>
+                        <p className={hoverEffect === 2 ? 'hover-bright' : ''}>Fully customisable themes</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave}>
-                        <p>Third Party Plugins</p>
+                        <p className={hoverEffect === 3 ? 'hover-overlay' : ''}>Third Party Plugins</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave}>
-                        <p>User-friendly interface</p>
+                        <p className={hoverEffect === 4 ? 'hover-bright' : ''}>User-friendly interface</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave}>
-                        <p>Fully Responsive design</p>
+                        <p className={hoverEffect === 5 ? 'hover-bright' : ''}>Fully Responsive design</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(6)} onMouseLeave={handleParagraphLeave}>
-                        <p>Robust security features</p>
+                        <p className={hoverEffect === 6 ? 'hover-bright' : ''}>Robust security features</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(7)} onMouseLeave={handleParagraphLeave}>
-                        <p>SEO-friendly capabilities</p>
+                        <p className={hoverEffect === 7 ? 'hover-bright' : ''}>SEO-friendly capabilities</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(8)} onMouseLeave={handleParagraphLeave}>
-                        <p>Scalable architecture</p>
+                        <p className={hoverEffect === 8 ? 'hover-bright' : ''}>Scalable architecture</p>
                     </div>
 
                 </div>
@@ -83,25 +124,25 @@ const InfoBoxes = () => {
                 <div className={!isInView2 ? "info-content left-content" : "info-content left-content slide-in"}>
                     <div onMouseEnter={() => handleParagraphHover(9)}
                         onMouseLeave={handleParagraphLeave}>
-                        <p>Advanced animations and interactivivity</p>
+                        <p className={hoverEffect2 === 9 ? 'hover-bright' : ''}>Advanced animations and interactivivity</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(10)} onMouseLeave={handleParagraphLeave}>
-                        <p>Efficient and well-documented code</p>
+                        <p className={hoverEffect2 === 10 ? 'hover-bright' : ''}>Efficient and well-documented code</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(11)} onMouseLeave={handleParagraphLeave}>
-                        <p>Lightning-fast loading times</p>
+                        <p className={hoverEffect2 === 11 ? 'hover-bright' : ''}>Lightning-fast loading times</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(12)} onMouseLeave={handleParagraphLeave}>
-                        <p>Seamless integration with various APIs</p>
+                        <p className={hoverEffect2 === 12 ? 'hover-bright' : ''}>Seamless integration with various APIs</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(13)} onMouseLeave={handleParagraphLeave}>
-                        <p>Accessibility-focused designs</p>
+                        <p className={hoverEffect2 === 13 ? 'hover-bright' : ''}>Accessibility-focused designs</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(14)} onMouseLeave={handleParagraphLeave}>
-                        <p>Responsive layouts</p>
+                        <p className={hoverEffect2 === 14 ? 'hover-bright' : ''}>Responsive layouts</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(15)} onMouseLeave={handleParagraphLeave}>
-                        <p>Efficient and optimized data management</p>
+                        <p className={hoverEffect2 === 15 ? 'hover-bright' : ''}>Efficient and optimized data management</p>
                     </div>
 
                 </div>
@@ -110,15 +151,13 @@ const InfoBoxes = () => {
             <div className="see-more-designs">
                 <Typewriter
                     options={{
-                        strings: ['Check out full list and details'],
+                        strings: ["Don't see what you are looking for? ...... Click below"],
                         autoStart: true,
                         loop: true,
                         pause: 4000,
-                        delay: 30,
+                        delay: 60,
                     }}
                 />
-                <button>More Info...</button>
-
             </div>
 
         </section>
