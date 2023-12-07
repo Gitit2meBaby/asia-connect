@@ -15,7 +15,7 @@ const Customers = () => {
                 style={{ x }}
                 className="stunning-text"
             >
-                <h2>Our happy customers - - - - - testimonials</h2>
+                <h2>Our happy customers - - - - - -  testimonials</h2>
             </motion.div>
         </section>
     );

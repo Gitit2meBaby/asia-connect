@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { forwardRef, useState } from 'react'
+import PropTypes from 'prop-types';
+
 import canguuDesk from '../assets/canguuDesk.webp'
 import canguuDesk2 from '../assets/canguuDesk2.webp'
 import canguuDesk3 from '../assets/canguuDesk3.webp'
@@ -9,7 +11,7 @@ import shodweDesk3 from '../assets/shodweDesk3.webp'
 import shodweMob from '../assets/shodwe-mob.webp'
 
 
-const Projects = () => {
+const Projects = forwardRef(({ refProp }, ref) => {
     const [canguuVisible, setCanguuVisible] = useState(false)
     const [canguuTextVisible, setCanguuTextVisible] = useState(false)
     const [shodweVisible, setShodweVisible] = useState(false)
@@ -57,7 +59,7 @@ const Projects = () => {
     };
 
     return (
-        <section className="projects">
+        <section ref={refProp} className="projects">
             <div onMouseEnter={() => handleCanguuHover()}
                 onMouseLeave={() => handleCanguuHoverOut()}
                 className="project-box">
@@ -118,7 +120,15 @@ const Projects = () => {
                     </>
                 )}
             </div>
-        </section>)
+        </section>
+    )
 }
+)
+
+Projects.propTypes = {
+    refProp: PropTypes.object,
+}
+
+Projects.displayName = "Projects";
 
 export default Projects

@@ -10,7 +10,6 @@ h2 {
   font-family: "Anton", sans-serif;
 }
 
-span,
 button,
 li,
 h1,
@@ -24,6 +23,7 @@ body {
   margin: 0;
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: #040303;
   cursor: crosshair;
 }
 
@@ -50,7 +50,7 @@ button {
   justify-content: center;
 }
 
-.grid-section button, .button-row button, .nav-btn-container button {
+.grid-section button, .button-row button, .extra-info-btns button, .nav-btn-container button {
   border: none;
   background-color: transparent;
   color: #efefef;
@@ -139,7 +139,7 @@ button {
 .hero-section h2 {
   position: fixed;
   padding-top: 2rem;
-  font-family: "Anton", sans-serif !important;
+  font-family: "Anton", sans-serif;
   margin: auto;
   width: 100vw;
   font-size: 33vh;
@@ -293,6 +293,11 @@ button {
   color: #efefef;
   font-size: 0.9rem;
   margin-top: 2rem;
+}
+
+.extra-info-btns button {
+  font-size: 2rem;
+  text-transform: uppercase;
 }
 
 .button-row {

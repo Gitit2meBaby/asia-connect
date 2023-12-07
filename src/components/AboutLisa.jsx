@@ -36,7 +36,7 @@ const AboutLisa = () => {
     }, [lisaVisibility]);
 
     // Opacity change for paragraph on scroll
-    const text = `Our core mission is to spotlight the richness of Asia, attracting the attention of global tourists who heavily rely on their smartphones as their travel compass. Through our platform, we seamlessly connect millions of visitors to the array of services they need`;
+    const text = `Our core mission is to spotlight the richness of Asia, attracting the attention of global tourists who rely on their smartphones as their travel compass. Through our platform, we connect millions of visitors to the services they need`;
 
 
     return (

@@ -3,7 +3,7 @@ import { motion, useTransform, useScroll } from 'framer-motion';
 import { slideInLeft } from '../animations';
 import selfie800 from '../assets/selfie800.webp';
 
-const About = () => {
+const About = ({ refProp }) => {
     const containerRef = useRef(null);
     const [speechVisible, setSpeechVisible] = useState(false);
 
@@ -29,6 +29,7 @@ const About = () => {
 
     return (
         <section ref={containerRef} className='about'>
+            <div ref={refProp}></div>
             <motion.div className={"about-heading"} style={{ translateX: aboutValue }}>
                 <h3>About</h3>
             </motion.div>

@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, forwardRef } from 'react'
+import PropTypes from 'prop-types';
 
-const Testimonials = () => {
+const Testimonials = forwardRef(({ refProp }, ref) => {
     const [black, setBlack] = useState(1)
 
     useEffect(() => {
@@ -14,7 +15,7 @@ const Testimonials = () => {
     }, []);
 
     return (
-        <section className="testimonials">
+        <section ref={refProp} className="testimonials">
             <div className="testimonial-grid">
                 <div className={black === 1 ? "grid-section grid1 black-white" : 'grid-section grid1 white-black'}>
                     <h4 className={black === 1 ? 'black-white-text' : 'white-black-text'}>Uaun Kham</h4>
@@ -57,5 +58,12 @@ const Testimonials = () => {
         </section>
     )
 }
+)
+
+Testimonials.propTypes = {
+    refProp: PropTypes.object,
+}
+
+Testimonials.displayName = "Testimonials"
 
 export default Testimonials

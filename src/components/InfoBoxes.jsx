@@ -1,9 +1,9 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, forwardRef } from "react";
 import { useInView } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import { paragraphData } from "../paragraphData";
 
-const InfoBoxes = () => {
+const InfoBoxes = forwardRef(({ refProp }, ref) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('WordPress/ CMS Solutions');
     const [hoverEffect, setHoverEffect] = useState(1)
@@ -68,7 +68,7 @@ const InfoBoxes = () => {
     }, [isInView2, hasRunEffect2, hoverEffect2, paragraphData]);
 
     return (
-        <section className="info-boxes">
+        <section ref={refProp} className="info-boxes">
             <div ref={ref1} className='info-box right-box'>
                 <div className={!isInView1 ? "info-content right-content" : "info-content right-content slide-in"}>
                     <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}>
@@ -163,5 +163,8 @@ const InfoBoxes = () => {
         </section>
     )
 }
+)
+
+InfoBoxes.displayName = 'InfoBoxes';
 
 export default InfoBoxes

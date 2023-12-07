@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { fadeOut, textFadeInDelay16, textFadeInDelay18, textFadeInDelay2, textSize, textSize1, textSize2, slideInDown } from '../animations';
-import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
+import { textFadeInDelay16, textFadeInDelay18, textFadeInDelay2, textSize, textSize1, textSize2, slideInDown } from '../animations';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
-const Hero = () => {
+const Hero = ({ scrollToDesignRef }) => {
     const { scrollY } = useScroll();
     const x = useTransform(scrollY, [0, 500], [0, -500]);
     const xReverse = useTransform(scrollY, [0, 500], [0, 300]);
@@ -17,6 +17,9 @@ const Hero = () => {
         const timeout = setTimeout(() => {
             setOverlay(true);
         }, 2000);
+        return () => {
+            clearTimeout(timeout);
+        };
     }, [])
 
 
@@ -79,6 +82,7 @@ const Hero = () => {
             {scrollIcon && (
                 <motion.div
                     {...slideInDown}
+                    onClick={() => scrollToDesignRef()}
                     className='scroll-icon'>
                     <svg stroke="#040303" fill="#040303" strokeWidth="1.2" viewBox="0 0 16 16" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clipRule="evenodd"></path></svg>
                 </motion.div>

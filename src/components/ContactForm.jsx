@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import { motion } from 'framer-motion'
+import PropTypes from 'prop-types';
 
-const ContactForm = () => {
+
+const ContactForm = forwardRef(({ refProp }, ref) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -67,7 +69,7 @@ const ContactForm = () => {
     };
 
     return (
-        <section className="contact-form">
+        <section ref={refProp} className="contact-form">
             <motion.h2
                 initial={{ transform: 'scale(0.3)', opacity: 0.2 }}
                 whileInView={{ transform: 'scale(1)', opacity: 1 }}
@@ -148,6 +150,13 @@ const ContactForm = () => {
             </div>
         </section>
     );
-};
+}
+)
+
+ContactForm.propTypes = {
+    refProp: PropTypes.object,
+}
+
+ContactForm.displayName = 'ContactForm'
 
 export default ContactForm;

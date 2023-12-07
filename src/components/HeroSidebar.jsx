@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, forwardRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { growX, textFadeVariants02, textFadeVariants04, textFadeVariants06, textFadeVariants08, textFadeVariants1, textFadeVariants12, textFadeInDelay24, textFadeInDelay26, textFadeInDelay265, textFadeInDelay275, textFadeInDelay28, textFadeInDelay27, textFadeInDelay29, textFadeInDelay285, textFadeInDelay295, textFadeInDelay3 } from '../animations'
 
-const HeroSidebar = () => {
+const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToProjectsRef, scrollToTestimonialsRef, scrollToContactFormRef }, ref) => {
     const [designDropdown, setDesignDropdown] = useState(false)
     const [projectsDropdown, setProjectsDropdown] = useState(false)
     const { scrollY } = useScroll();
@@ -69,7 +69,9 @@ const HeroSidebar = () => {
                 onMouseEnter={() => setDesignDropdown(true)}
                 onMouseLeave={() => setDesignDropdown(false)}>
                 <motion.h3
-                    {...textFadeInDelay26}>
+                    {...textFadeInDelay26}
+                    onClick={() => scrollToDesignRef()}>
+
                     Design
                 </motion.h3>
                 <div className={designDropdown ? "sidebar-dropdown" : "hidden"}
@@ -122,7 +124,8 @@ const HeroSidebar = () => {
 
                 {...textFadeInDelay265}>
                 <motion.h3
-                    {...textFadeInDelay27}>
+                    {...textFadeInDelay27}
+                    onClick={() => scrollToAboutRef()}>
                     About
                 </motion.h3>
             </motion.div>
@@ -132,7 +135,8 @@ const HeroSidebar = () => {
                 onMouseLeave={() => setProjectsDropdown(false)}
                 {...textFadeInDelay275}>
                 <motion.h3
-                    {...textFadeInDelay28}>
+                    {...textFadeInDelay28}
+                    onClick={() => scrollToProjectsRef()}>
                     Projects
                 </motion.h3>
 
@@ -185,7 +189,8 @@ const HeroSidebar = () => {
                 className={projectsDropdown || designDropdown ? 'sidebar-item subtle-overlay' : 'sidebar-item'}
                 {...textFadeInDelay285}>
                 <motion.h3
-                    {...textFadeInDelay29}>
+                    {...textFadeInDelay29}
+                    onClick={() => scrollToTestimonialsRef()}>
                     Testimonials
                 </motion.h3>
             </motion.div>
@@ -194,12 +199,17 @@ const HeroSidebar = () => {
                 className={projectsDropdown || designDropdown ? 'sidebar-item subtle-overlay' : 'sidebar-item'}
                 {...textFadeInDelay295}>
                 <motion.h3
-                    {...textFadeInDelay3}>
+                    {...textFadeInDelay3}
+                    onClick={() => scrollToContactFormRef()}>
                     Contact
                 </motion.h3>
             </motion.div>
         </motion.aside>
     )
 }
+)
+
+HeroSidebar.displayName = 'HeroSidebar'; // Define the display name
+
 
 export default HeroSidebar
