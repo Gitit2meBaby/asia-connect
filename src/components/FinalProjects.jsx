@@ -17,6 +17,15 @@ const FinalProjects = () => {
     const [noHover, setNoHover] = useState(true)
     const [interbali, setInterbali] = useState(false)
     const [interquu, setInterquu] = useState(false)
+    const [zIndexMap, setZIndexMap] = useState({});
+
+    const increaseZIndex = (imageId) => {
+        setZIndexMap(prevZIndexMap => {
+            const updatedZIndexMap = { ...prevZIndexMap };
+            updatedZIndexMap[imageId] = (updatedZIndexMap[imageId] || 0) + 1;
+            return updatedZIndexMap;
+        });
+    };
 
     const handlebaliHover = () => {
         setNoHover(false)
@@ -75,15 +84,23 @@ const FinalProjects = () => {
                     <>
                         <img src={baliDesk} alt="Big Bali Burgers website screenshot"
                             className={interbali && 'animate-out'}
+                            style={{ zIndex: zIndexMap['baliDesk'] || 0 }}
+                            onClick={() => increaseZIndex('baliDesk')}
                         />
                         <img src={baliDesk2} alt="Big Bali Burgers website screenshot"
                             className={interbali && 'animate-out'}
+                            style={{ zIndex: zIndexMap['baliDesk2'] || 0 }}
+                            onClick={() => increaseZIndex('baliDesk2')}
                         />
                         <img src={baliDesk3} alt="Big Bali Burgers website screenshot"
                             className={interbali && 'animate-out'}
+                            style={{ zIndex: zIndexMap['baliDesk3'] || 0 }}
+                            onClick={() => increaseZIndex('baliDesk3')}
                         />
                         <img src={baliMob} alt="Big Bali Burgers mobile website screenshot"
                             className={interbali && 'animate-out'}
+                            style={{ zIndex: zIndexMap['baliMob'] || 0 }}
+                            onClick={() => increaseZIndex('baliMob')}
                         />
                     </>
                 )}
@@ -104,15 +121,23 @@ const FinalProjects = () => {
                     <>
                         <img src={quuDesk} alt="Quu Hotel Chiang Mai website screenshot"
                             className={interquu && 'animate-out'}
+                            style={{ zIndex: zIndexMap['quuDesk'] || 0 }}
+                            onClick={() => increaseZIndex('quuDesk')}
                         />
                         <img src={quuDesk2} alt="Quu Hotel Chiang Mai website screenshot"
                             className={interquu && 'animate-out'}
+                            style={{ zIndex: zIndexMap['quuDesk2'] || 0 }}
+                            onClick={() => increaseZIndex('quuDesk2')}
                         />
                         <img src={quuDesk3} alt="Quu Hotel Chiang Mai website screenshot"
                             className={interquu && 'animate-out'}
+                            style={{ zIndex: zIndexMap['quuDesk3'] || 0 }}
+                            onClick={() => increaseZIndex('quuDesk3')}
                         />
                         <img src={quuMob} alt="Quu Hotel Chiang Mai mobile website screenshot"
                             className={interquu && 'animate-out'}
+                            style={{ zIndex: zIndexMap['quuMob'] || 0 }}
+                            onClick={() => increaseZIndex('quuMob')}
                         />
                     </>
                 )}

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 
 import { AnimatePresence } from 'framer-motion'
@@ -23,12 +23,19 @@ import Ecommerce from './components/Ecommerce';
 import FullStack from './components/FullStack';
 import WebApps from './components/WebApps';
 import Ui from './components/Ui';
+import MobProjects from './components/MobProjects';
+import MobMoreProjects from './components/MobMoreProjects';
+import MobEvenMoreProjects from './components/MobEvenMoreProjects';
+import MobFinalProjects from './components/MobFinalProjects';
 
 function App() {
   const [eCommerce, setEcommerce] = useState(false)
   const [fullStack, setFullStack] = useState(false)
   const [webApps, setWebApps] = useState(false)
   const [ui, setUi] = useState(false)
+  const [isMobile, setIsMobile] = useState(() => {
+    return window.innerWidth < 900 && window.innerHeight < 900;
+  });
 
   const heroRef = useRef(null)
   const infoBoxesRef = useRef(null)
@@ -54,6 +61,21 @@ function App() {
     }
   };
 
+  // Set initial state based on screen width and device orientation
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth > 900 || window.innerHeight > 900);
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);
+
   return (
     <>
       <AnimatePresence>
@@ -68,7 +90,8 @@ function App() {
         <Hero key="hero" refProp={heroRef}
           scrollToDesignRef={() => scrollToRef(infoBoxesRef)}
         />
-        <InfoBoxes key="infoBoxes" refProp={infoBoxesRef} />
+        <InfoBoxes key="infoBoxes" refProp={infoBoxesRef}
+          isMobile={isMobile} />
         <ButtonRow setEcommerce={setEcommerce}
           setFullStack={setFullStack}
           setWebApps={setWebApps}
@@ -92,10 +115,19 @@ function App() {
         <About key="about" refProp={aboutRef} />
         <AboutLisa key="aboutLisa" refProp={aboutLisaRef} />
         <Create key="create" refProp={createRef} />
-        <Projects key="projects" refProp={projectsRef} />
-        <MoreProjects key="moreProjects" refProp={moreProjectsRef} />
-        <EvenMoreProjects key="evenMoreProjects" refProp={evenMoreProjectsRef} />
-        <FinalProjects key="finalProjects" refProp={finalProjectsRef} />
+
+        {isMobile && <MobProjects />}
+        {!isMobile && <Projects key="projects" refProp={projectsRef} />}
+
+        {!isMobile && <MoreProjects key="moreProjects" refProp={moreProjectsRef} />}
+        {isMobile && <MobMoreProjects />}
+
+        {!isMobile && <EvenMoreProjects key="evenMoreProjects" refProp={evenMoreProjectsRef} />}
+        {isMobile && <MobEvenMoreProjects />}
+
+        {!isMobile && <FinalProjects key="finalProjects" refProp={finalProjectsRef} />}
+        {isMobile && <MobFinalProjects />}
+
         <Customers key="customers" refProp={customersRef} />
         <Testimonials key="testimonials" refProp={testimonialsRef}
         />
@@ -107,7 +139,6 @@ function App() {
           scrollToTestimonialsRef={() => scrollToRef(testimonialsRef)}
           scrollToContactFormRef={() => scrollToRef(contactFormRef)} />
       </AnimatePresence>
-
     </>
   )
 }

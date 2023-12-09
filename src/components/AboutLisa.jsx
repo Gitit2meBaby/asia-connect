@@ -44,16 +44,16 @@ const AboutLisa = () => {
             <motion.h3
                 style={{ translateY: lisa, opacity: lisaOpacity }}>& LISA</motion.h3>
 
-            <motion.div
-                style={{ opacity: imgOpacity }}>
-                <img src={lisa800} alt="Lisa, full stack web engineer" />
-            </motion.div>
-
             {!lisaVisible && (
                 <div className='lisa-speech'>
                     <motion.p style={{ opacity: '0' }}>Full Stack Engineer</motion.p>
                 </div>
             )}
+
+            <motion.div
+                style={{ opacity: imgOpacity }}>
+                <img src={lisa800} alt="Lisa, full stack web engineer" />
+            </motion.div>
 
             {lisaVisible && (
                 <div className='lisa-speech'>

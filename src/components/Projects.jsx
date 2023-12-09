@@ -19,6 +19,16 @@ const Projects = forwardRef(({ refProp }, ref) => {
     const [noHover, setNoHover] = useState(true)
     const [interCanguu, setInterCanguu] = useState(false)
     const [interShodwe, setInterShodwe] = useState(false)
+    const [zIndexMap, setZIndexMap] = useState({});
+
+    const increaseZIndex = (imageId) => {
+        setZIndexMap(prevZIndexMap => {
+            const updatedZIndexMap = { ...prevZIndexMap };
+            updatedZIndexMap[imageId] = (updatedZIndexMap[imageId] || 0) + 1;
+            return updatedZIndexMap;
+        });
+    };
+
 
     const handleCanguuHover = () => {
         setNoHover(false)
@@ -75,15 +85,23 @@ const Projects = forwardRef(({ refProp }, ref) => {
                     <>
                         <img src={canguuDesk} alt="Canguu cafe website screenshot"
                             className={interCanguu && 'animate-out'}
+                            style={{ zIndex: zIndexMap['canguuDesk'] || 0 }}
+                            onClick={() => increaseZIndex('canguuDesk')}
                         />
                         <img src={canguuDesk2} alt="Canguu cafe website screenshot"
                             className={interCanguu && 'animate-out'}
+                            style={{ zIndex: zIndexMap['canguuDesk2'] || 0 }}
+                            onClick={() => increaseZIndex('canguuDesk2')}
                         />
                         <img src={canguuDesk3} alt="Canguu cafe website screenshot"
                             className={interCanguu && 'animate-out'}
+                            style={{ zIndex: zIndexMap['canguuDesk3'] || 0 }}
+                            onClick={() => increaseZIndex('canguuDesk3')}
                         />
                         <img src={canguuMob} alt="Canguu cafe mobile website screenshot"
                             className={interCanguu && 'animate-out'}
+                            style={{ zIndex: zIndexMap['canguuMob'] || 0 }}
+                            onClick={() => increaseZIndex('canguuMob')}
                         />
                     </>
                 )}
@@ -107,15 +125,23 @@ const Projects = forwardRef(({ refProp }, ref) => {
                     <>
                         <img src={shodweDesk} alt="Studio Shodwe website screenshot"
                             className={interShodwe && 'animate-out'}
+                            style={{ zIndex: zIndexMap['shodweDesk'] || 0 }}
+                            onClick={() => increaseZIndex('shodweDesk')}
                         />
                         <img src={shodweDesk2} alt="Studio Shodwe website screenshot"
                             className={interShodwe && 'animate-out'}
+                            style={{ zIndex: zIndexMap['shodweDesk2'] || 0 }}
+                            onClick={() => increaseZIndex('shodweDesk2')}
                         />
                         <img src={shodweDesk3} alt="Studio Shodwe website screenshot"
                             className={interShodwe && 'animate-out'}
+                            style={{ zIndex: zIndexMap['shodweDesk3'] || 0 }}
+                            onClick={() => increaseZIndex('shodweDesk3')}
                         />
                         <img src={shodweMob} alt="Studio Shodwe mobile website screenshot"
                             className={interShodwe && 'animate-out'}
+                            style={{ zIndex: zIndexMap['shodweMob'] || 0 }}
+                            onClick={() => increaseZIndex('shodweMob')}
                         />
                     </>
                 )}

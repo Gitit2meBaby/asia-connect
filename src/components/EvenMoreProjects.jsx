@@ -17,6 +17,15 @@ const Projects = () => {
     const [noHover, setNoHover] = useState(true)
     const [interask, setInterask] = useState(false)
     const [interginger, setInterginger] = useState(false)
+    const [zIndexMap, setZIndexMap] = useState({});
+
+    const increaseZIndex = (imageId) => {
+        setZIndexMap(prevZIndexMap => {
+            const updatedZIndexMap = { ...prevZIndexMap };
+            updatedZIndexMap[imageId] = (updatedZIndexMap[imageId] || 0) + 1;
+            return updatedZIndexMap;
+        });
+    };
 
     const handleaskHover = () => {
         setNoHover(false)
@@ -73,15 +82,23 @@ const Projects = () => {
                     <>
                         <img src={askDesk} alt="ask motorbike rental website screenshot"
                             className={interask && 'animate-out'}
+                            style={{ zIndex: zIndexMap['askDesk'] || 0 }}
+                            onClick={() => increaseZIndex('askDesk')}
                         />
                         <img src={askDesk2} alt="ask motorbike rental website screenshot"
                             className={interask && 'animate-out'}
+                            style={{ zIndex: zIndexMap['askDesk2'] || 0 }}
+                            onClick={() => increaseZIndex('askDesk2')}
                         />
                         <img src={askDesk3} alt="ask motorbike rental website screenshot"
                             className={interask && 'animate-out'}
+                            style={{ zIndex: zIndexMap['askDesk3'] || 0 }}
+                            onClick={() => increaseZIndex('askDesk3')}
                         />
                         <img src={askMob} alt="ask motorbike rental mobile website screenshot"
                             className={interask && 'animate-out'}
+                            style={{ zIndex: zIndexMap['askMob'] || 0 }}
+                            onClick={() => increaseZIndex('askMob')}
                         />
                     </>
                 )}
@@ -102,15 +119,23 @@ const Projects = () => {
                     <>
                         <img src={gingerDesk} alt="The house by ginger website screenshot"
                             className={interginger && 'animate-out'}
+                            style={{ zIndex: zIndexMap['gingerDesk'] || 0 }}
+                            onClick={() => increaseZIndex('gingerDesk')}
                         />
                         <img src={gingerDesk2} alt="The house by ginger website screenshot"
                             className={interginger && 'animate-out'}
+                            style={{ zIndex: zIndexMap['gingerDesk2'] || 0 }}
+                            onClick={() => increaseZIndex('gingerDesk2')}
                         />
                         <img src={gingerDesk3} alt="The house by ginger website screenshot"
                             className={interginger && 'animate-out'}
+                            style={{ zIndex: zIndexMap['gingerDesk3'] || 0 }}
+                            onClick={() => increaseZIndex('gingerDesk3')}
                         />
                         <img src={gingerMob} alt="The house by ginger mobile website screenshot"
                             className={interginger && 'animate-out'}
+                            style={{ zIndex: zIndexMap['gingerMob'] || 0 }}
+                            onClick={() => increaseZIndex('gingerMob')}
                         />
                     </>
                 )}

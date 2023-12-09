@@ -17,6 +17,15 @@ const MoreProjects = () => {
     const [noHover, setNoHover] = useState(true)
     const [interxmax, setInterxmax] = useState(false)
     const [interthamel, setInterthamel] = useState(false)
+    const [zIndexMap, setZIndexMap] = useState({});
+
+    const increaseZIndex = (imageId) => {
+        setZIndexMap(prevZIndexMap => {
+            const updatedZIndexMap = { ...prevZIndexMap };
+            updatedZIndexMap[imageId] = (updatedZIndexMap[imageId] || 0) + 1;
+            return updatedZIndexMap;
+        });
+    };
 
     const handlexmaxHover = () => {
         setNoHover(false)
@@ -76,15 +85,23 @@ const MoreProjects = () => {
                     <>
                         <img src={xmaxDesk} alt="xmax thai boxing club website screenshot"
                             className={interxmax && 'animate-out'}
+                            style={{ zIndex: zIndexMap['xmaxDesk'] || 0 }}
+                            onClick={() => increaseZIndex('xmaxDesk')}
                         />
                         <img src={xmaxDesk2} alt="xmax thai boxing club website screenshot"
                             className={interxmax && 'animate-out'}
+                            style={{ zIndex: zIndexMap['xmaxDesk2'] || 0 }}
+                            onClick={() => increaseZIndex('xmaxDesk2')}
                         />
                         <img src={xmaxDesk3} alt="xmax thai boxing club website screenshot"
                             className={interxmax && 'animate-out'}
+                            style={{ zIndex: zIndexMap['xmaxDesk3'] || 0 }}
+                            onClick={() => increaseZIndex('xmaxDesk3')}
                         />
                         <img src={xmaxMob} alt="xmax thai boxing club mobile website screenshot"
                             className={interxmax && 'animate-out'}
+                            style={{ zIndex: zIndexMap['xmaxMob'] || 0 }}
+                            onClick={() => increaseZIndex('xmaxMob')}
                         />
                     </>
                 )}
@@ -105,15 +122,23 @@ const MoreProjects = () => {
                     <>
                         <img src={thamelDesk} alt="Thamel Dentistry website screenshot"
                             className={interthamel && 'animate-out'}
+                            style={{ zIndex: zIndexMap['thamelDesk'] || 0 }}
+                            onClick={() => increaseZIndex('thamelDesk')}
                         />
                         <img src={thamelDesk2} alt="Thamel Dentistry website screenshot"
                             className={interthamel && 'animate-out'}
+                            style={{ zIndex: zIndexMap['thamelDesk2'] || 0 }}
+                            onClick={() => increaseZIndex('thamelDesk2')}
                         />
                         <img src={thamelDesk3} alt="Thamel Dentistry website screenshot"
                             className={interthamel && 'animate-out'}
+                            style={{ zIndex: zIndexMap['thamelDesk3'] || 0 }}
+                            onClick={() => increaseZIndex('thamelDesk3')}
                         />
                         <img src={thamelMob} alt="Thamel Dentistry mobile website screenshot"
                             className={interthamel && 'animate-out'}
+                            style={{ zIndex: zIndexMap['thamelMob'] || 0 }}
+                            onClick={() => increaseZIndex('thamelMob')}
                         />
                     </>
                 )}
