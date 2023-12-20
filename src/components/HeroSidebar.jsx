@@ -1,9 +1,15 @@
 import { useState, useEffect, forwardRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import PropTypes from 'prop-types';
-import { growX, textFadeVariants02, textFadeVariants04, textFadeVariants06, textFadeVariants08, textFadeVariants1, textFadeVariants12, textFadeInDelay24, textFadeInDelay26, textFadeInDelay265, textFadeInDelay275, textFadeInDelay28, textFadeInDelay27, textFadeInDelay29, textFadeInDelay285, textFadeInDelay295, textFadeInDelay3 } from '../animations'
+import { growX, textFadeVariants02, textFadeVariants04, textFadeVariants06, textFadeVariants08, textFadeVariants1, textFadeVariants12, textFadeInDelay24, textFadeInDelay26, textFadeInDelay265, textFadeInDelay275, textFadeInDelay28, textFadeInDelay27, textFadeInDelay29, textFadeInDelay285, textFadeInDelay295, textFadeInDelay3, } from '../animations'
 
-const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToProjectsRef, scrollToTestimonialsRef, scrollToContactFormRef, isMobile }, ref) => {
+const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToProjectsRef, scrollToTestimonialsRef, scrollToContactFormRef, isMobile, scrollToMobProjectsRef,
+    scrollToMoreProjectsRef,
+    scrollToMobMoreProjectsRef,
+    scrollToEvenMoreProjectsRef,
+    scrollToMobEvenMoreProjectsRef,
+    scrollToFinalProjectsRef,
+    scrollToMobFinalProjectsRef, scrollToMobTestimonialsRef }, ref) => {
     const [designDropdown, setDesignDropdown] = useState(false)
     const [projectsDropdown, setProjectsDropdown] = useState(false)
     const { scrollY } = useScroll();
@@ -37,7 +43,7 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
                 onMouseLeave={() => setDesignDropdown(false)}>
                 <motion.h3
                     {...textFadeInDelay26}
-                    onClick={() => scrollToDesignRef()}>
+                    onClick={!isMobile ? scrollToDesignRef : () => setDesignDropdown(!designDropdown)}>
 
                     Design
                 </motion.h3>
@@ -103,7 +109,7 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
                 {...textFadeInDelay275}>
                 <motion.h3
                     {...textFadeInDelay28}
-                    onClick={() => scrollToProjectsRef()}>
+                    onClick={!isMobile ? scrollToProjectsRef : () => setProjectsDropdown(true)}>
                     Projects
                 </motion.h3>
 
@@ -114,41 +120,45 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
                         initial='hidden'
                         animate={projectsDropdown ? 'visible' : 'hidden'}
                         exit='exit'
+                        onClick={!isMobile ? scrollToProjectsRef : scrollToMobProjectsRef}
                     >
-                        Studio Shodwe
+                        Canguu Cafe
                     </motion.p>
                     <motion.p
                         variants={textFadeVariants04}
                         initial='hidden'
                         animate={projectsDropdown ? 'visible' : 'hidden'}
                         exit='exit'
+                        onClick={!isMobile ? scrollToProjectsRef : scrollToMobProjectsRef}
                     >
-                        Canguu Cafe
+                        Studio Shodwe
                     </motion.p>
                     <motion.p
                         variants={textFadeVariants06}
                         initial='hidden'
                         animate={projectsDropdown ? 'visible' : 'hidden'}
                         exit='exit'
+                        onClick={!isMobile ? scrollToMoreProjectsRef : scrollToMobMoreProjectsRef}
                     >XMAX Thai Boxing Club</motion.p>
                     <motion.p
                         variants={textFadeVariants08}
                         initial='hidden'
                         animate={projectsDropdown ? 'visible' : 'hidden'}
                         exit='exit'
-                    >Off Grid Power</motion.p>
+                        onClick={!isMobile ? scrollToMoreProjectsRef : scrollToMobMoreProjectsRef}
+                    >Thamel Dentistry</motion.p>
                     <motion.p
                         variants={textFadeVariants1}
                         initial='hidden'
                         animate={projectsDropdown ? 'visible' : 'hidden'}
                         exit='exit'
-                    >Thamel Dentistry</motion.p>
+                    >Ask</motion.p>
                     <motion.p
                         variants={textFadeVariants12}
                         initial='hidden'
                         animate={projectsDropdown ? 'visible' : 'hidden'}
                         exit='exit'
-                    >Big Bali Burgers</motion.p>
+                    >more...</motion.p>
                 </div>
             </motion.div>
 
@@ -157,7 +167,7 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
                 {...textFadeInDelay285}>
                 <motion.h3
                     {...textFadeInDelay29}
-                    onClick={() => scrollToTestimonialsRef()}>
+                    onClick={!isMobile ? scrollToTestimonialsRef : scrollToMobTestimonialsRef}>
                     Testimonials
                 </motion.h3>
             </motion.div>

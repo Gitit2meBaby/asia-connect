@@ -11,7 +11,7 @@ const AboutLisa = () => {
     const textRef = useRef(null)
     const [lisaVisible, setLisaVisible] = useState(false);
     const [isSmall, setIsSmall] = useState(() => {
-        return window.innerWidth < 500 && window.innerHeight < 500;
+        return window.innerWidth < 500
     });
     const controls = useAnimation();
     const isInView = useInView(textRef, { margin: '-200px' });
@@ -44,7 +44,7 @@ const AboutLisa = () => {
     // Just to put a line break in the 'full stack engineer' text
     useEffect(() => {
         const handleResize = () => {
-            setIsSmall(window.innerWidth > 500 || window.innerHeight > 500);
+            setIsSmall(window.innerWidth > 500);
         };
 
         window.addEventListener('resize', handleResize);
@@ -63,9 +63,11 @@ const AboutLisa = () => {
 
             {!lisaVisible && (
                 <div className='lisa-speech'>
-                    <motion.p style={{ opacity: '0' }}>Full Stack Engineer</motion.p>
+                    <motion.p style={{ opacity: '0' }}>Full Stack{isSmall && <br />} Engineer</motion.p>
                 </div>
             )}
+
+            {console.log(isSmall)}
 
             <motion.div
                 style={{ opacity: imgOpacity }}>

@@ -2,17 +2,22 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
 
 
-const Footer = ({ scrollToAboutRef, scrollToDesignRef, scrollToProjectsRef, scrollToTestimonialsRef, scrollToContactFormRef }) => {
+const Footer = ({ scrollToAboutRef, scrollToDesignRef, scrollToProjectsRef, scrollToTestimonialsRef, scrollToContactFormRef, isMobile }) => {
     const [hoverEffect, setHoverEffect] = useState(1)
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setHoverEffect(prevItem => (prevItem < 7 ? prevItem + 1 : 1));
-        }, 1500);
+        if (!isMobile) {
+            const interval = setInterval(() => {
+                setHoverEffect(prevItem => (prevItem < 7 ? prevItem + 1 : 1));
+            }, 1500);
 
-        return () => {
-            clearInterval(interval);
-        };
+            return () => {
+                clearInterval(interval);
+            };
+        }
+        else {
+            setHoverEffect(0)
+        }
     }, []);
 
     return (

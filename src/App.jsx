@@ -52,8 +52,13 @@ function App() {
   const moreProjectsRef = useRef(null);
   const evenMoreProjectsRef = useRef(null);
   const finalProjectsRef = useRef(null);
+  const mobProjectsRef = useRef(null);
+  const mobMoreProjectsRef = useRef(null);
+  const mobEvenMoreProjectsRef = useRef(null);
+  const mobFinalProjectsRef = useRef(null);
   const customersRef = useRef(null);
   const testimonialsRef = useRef(null);
+  const mobTestimonialsRef = useRef(null);
   const contactFormRef = useRef(null);
 
   const scrollToRef = (ref) => {
@@ -85,7 +90,15 @@ function App() {
           scrollToAboutRef={() => scrollToRef(aboutRef)}
           scrollToDesignRef={() => scrollToRef(infoBoxesRef)}
           scrollToProjectsRef={() => scrollToRef(projectsRef)}
+          scrollToMobProjectsRef={() => scrollToRef(mobProjectsRef)}
+          scrollToMoreProjectsRef={() => scrollToRef(moreProjectsRef)}
+          scrollToMobMoreProjectsRef={() => scrollToRef(mobMoreProjectsRef)}
+          scrollToEvenMoreProjectsRef={() => scrollToRef(evenMoreProjectsRef)}
+          scrollToMobEvenMoreProjectsRef={() => scrollToRef(mobEvenMoreProjectsRef)}
+          scrollToFinalProjectsRef={() => scrollToRef(finalProjectsRef)}
+          scrollToMobFinalProjectsRef={() => scrollToRef(mobFinalProjectsRef)}
           scrollToTestimonialsRef={() => scrollToRef(testimonialsRef)}
+          scrollToMobTestimonialsRef={() => scrollToRef(mobTestimonialsRef)}
           scrollToContactFormRef={() => scrollToRef(contactFormRef)}
           isMobile={isMobile}
         />
@@ -117,17 +130,17 @@ function App() {
 
         <Create key="create" refProp={createRef} />
 
-        {isMobile && <MobProjects key="Mobprojects" />}
+        {isMobile && <MobProjects key="Mobprojects" refProp={mobProjectsRef} />}
         {!isMobile && <Projects key="projects" refProp={projectsRef} />}
 
         {!isMobile && <MoreProjects key="moreProjects" refProp={moreProjectsRef} />}
-        {isMobile && <MobMoreProjects key="MobMoreProjects" />}
+        {isMobile && <MobMoreProjects key="MobMoreProjects" refProp={mobMoreProjectsRef} />}
 
         {!isMobile && <EvenMoreProjects key="evenMoreProjects" refProp={evenMoreProjectsRef} />}
-        {isMobile && <MobEvenMoreProjects key="MobEvenMoreProjects" />}
+        {isMobile && <MobEvenMoreProjects key="MobEvenMoreProjects" refProp={mobEvenMoreProjectsRef} />}
 
         {!isMobile && <FinalProjects key="finalProjects" refProp={finalProjectsRef} />}
-        {isMobile && <MobFinalProjects key="MobFinalProjects" />}
+        {isMobile && <MobFinalProjects key="MobFinalProjects" refProp={mobFinalProjectsRef} />}
 
 
         <About key="about" refProp={aboutRef} isMobile={isMobile} />
@@ -146,7 +159,8 @@ function App() {
           scrollToDesignRef={() => scrollToRef(infoBoxesRef)}
           scrollToProjectsRef={() => scrollToRef(projectsRef)}
           scrollToTestimonialsRef={() => scrollToRef(testimonialsRef)}
-          scrollToContactFormRef={() => scrollToRef(contactFormRef)} />
+          scrollToContactFormRef={() => scrollToRef(contactFormRef)}
+          isMobile={isMobile} />
       </AnimatePresence>
     </>
   )

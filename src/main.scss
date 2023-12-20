@@ -539,6 +539,10 @@ $breakpoints: (
     @include media(medium) {
         height: 80dvh;
     }
+
+    @include media(small) {
+        height: 60dvh;
+    }
 }
 
 .about-heading {
@@ -560,7 +564,9 @@ $breakpoints: (
             padding-left: 2rem;
         }
 
-        @include media(small) {}
+        @include media(small) {
+            line-height: 7rem;
+        }
     }
 }
 
@@ -1127,6 +1133,10 @@ $breakpoints: (
             letter-spacing: 0.1rem;
             line-height: 10rem;
         }
+
+        @include media(small) {
+            line-height: 6rem;
+        }
     }
 }
 
@@ -1161,7 +1171,8 @@ $breakpoints: (
         }
 
         @include media(small) {
-            padding-right: 0rem;
+            padding: 0rem 1rem;
+            text-align: center;
         }
     }
 

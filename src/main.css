@@ -485,6 +485,11 @@ button {
     height: 80dvh;
   }
 }
+@media (max-width: 500px) {
+  .about {
+    height: 60dvh;
+  }
+}
 
 .about-heading {
   width: -moz-fit-content;
@@ -507,6 +512,12 @@ button {
     padding-left: 2rem;
   }
 }
+@media (max-width: 500px) {
+  .about-heading h3 {
+    line-height: 7rem;
+  }
+}
+
 .selfie-container {
   position: absolute;
   bottom: 2vh;
@@ -1045,6 +1056,11 @@ button {
     line-height: 10rem;
   }
 }
+@media (max-width: 500px) {
+  .contact-form h2 {
+    line-height: 6rem;
+  }
+}
 
 .form-grid {
   display: grid;
@@ -1081,7 +1097,8 @@ button {
 }
 @media (max-width: 500px) {
   .contact-information h1 {
-    padding-right: 0rem;
+    padding: 0rem 1rem;
+    text-align: center;
   }
 }
 .contact-information p {
