@@ -79,9 +79,9 @@ const InfoBoxes = forwardRef(({ refProp, isMobile }, ref) => {
     const toggleDropdown = (itemId) => {
         if (isMobile) {
             if (activeDropdown === itemId) {
-                setActiveDropdown(null); // Close the dropdown if already open
+                setActiveDropdown(null);
             } else {
-                setActiveDropdown(itemId); // Set the active dropdown
+                setActiveDropdown(itemId);
             }
         }
     };

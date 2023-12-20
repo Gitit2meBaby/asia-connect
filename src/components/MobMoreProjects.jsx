@@ -73,7 +73,8 @@ const MobMoreProjects = () => {
                 <h2>XMAX Thai Boxing Club</h2>
                 <p>Explore XMAX's engaging website, designed to captivate and invite a global audience into the realm of Muay Thai in Chiang Mai.</p>
                 <button onClick={() => setXmaxTextVisible(!xmaxTextVisible)}>{xmaxTextVisible ? '...Hide' : 'More...'}</button>
-                {xmaxTextVisible && <p>This online platform serves as a gateway, enticing international visitors with its Education Visa program and regularly updated event listings.</p>}
+                {xmaxTextVisible && <p>This online platform serves as a gateway, enticing international visitors with its Education Visa program and regularly updated event listings.
+                    Built using the WordPress CMS, A simple user interface and pligin system allows for this site to be entirely self-managed by the XMAX team</p>}
             </motion.div>
 
             <motion.div className="project-box">
@@ -122,7 +123,7 @@ const MobMoreProjects = () => {
                     was unreadable on a mobile device and outdated in its design.</p>
                 <button onClick={() => setThamelTextVisible(!thamelTextVisible)}>{thamelTextVisible ? '...Hide' : 'More...'}</button>
                 {thamelTextVisible && <p> Since the launch of the new
-                    site the practitioners now report a consistent flow of english speaking clientele.</p>}
+                    site the practitioners now report a consistent flow of english speaking clientele. Online bookings have become crucial in the success of the business and now outweigh the bookings made in person by almost a factor of 10</p>}
             </motion.div>
         </section >
     )

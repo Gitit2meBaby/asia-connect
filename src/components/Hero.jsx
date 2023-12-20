@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react';
 import { textFadeInDelay16, textFadeInDelay18, textFadeInDelay2, textSize, textSize1, textSize2, slideInDown } from '../animations';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-const Hero = ({ scrollToDesignRef }) => {
+const Hero = ({ scrollToDesignRef, isMobile }) => {
     const { scrollY } = useScroll();
     const x = useTransform(scrollY, [0, 500], [0, -500]);
     const xReverse = useTransform(scrollY, [0, 500], [0, 300]);
     const opacityRemove = useTransform(scrollY, [0, 30], [1, 0]); // Website
-    const opacity = useTransform(scrollY, [30, 100, 130], [0, 1, 0]); // Design"
+    const opacity = useTransform(scrollY, [30, 100, 130], [0, 1, 0]); // Design
     const opacityDelay = useTransform(scrollY, [130, 180], [0, 1]); // conversion
 
     const [overlay, setOverlay] = useState(false)
     const [scrollIcon, setScrollIcon] = useState(false)
+    const [heroPosition, setHeroPosition] = useState(false)
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -22,18 +23,30 @@ const Hero = ({ scrollToDesignRef }) => {
         };
     }, [])
 
-
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            setScrollIcon(true);
-        }, 3000);
+        let timeout;
+        let initialScroll = true;
 
+        // Function to handle scroll event
         const handleScroll = () => {
-            setScrollIcon(false);
-            window.removeEventListener('scroll', handleScroll);
+            if (initialScroll) {
+                clearTimeout(timeout);
+                initialScroll = false;
+                setScrollIcon(false);
+            }
+            if (!initialScroll) {
+                const scrollPosition = window.scrollY;
+                if (scrollPosition > 500)
+                    setHeroPosition(true);
+
+                window.removeEventListener('scroll', handleScroll);
+            }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        timeout = setTimeout(() => {
+            setScrollIcon(true);
+            window.addEventListener('scroll', handleScroll);
+        }, 3000);
 
         return () => {
             clearTimeout(timeout);
@@ -44,12 +57,13 @@ const Hero = ({ scrollToDesignRef }) => {
     return (
         <section>
             <div className="hero-section">
-                <h2 className={overlay ? "overlay-effect" : ""}>
-                    <motion.span {...textSize} className='asia-text'>Asia</motion.span>
+                <h2 className={`${overlay ? "overlay-effect" : ""} ${heroPosition ? "absolute" : "fixed"}`}>
+                    <motion.span {...(!isMobile ? textSize : {})} className='asia-text'
+                    >Asia</motion.span>
                     <br />
-                    <motion.span {...textSize1}  >Tourist</motion.span>
+                    <motion.span {...(!isMobile ? textSize : {})}  >Tourist</motion.span>
                     <br />
-                    <motion.span {...textSize2}  >Connect</motion.span>
+                    <motion.span {...(!isMobile ? textSize : {})}  >Connect</motion.span>
                 </h2>
 
                 <motion.div

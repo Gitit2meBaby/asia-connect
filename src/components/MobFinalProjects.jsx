@@ -75,7 +75,8 @@ const MobFinalProjects = () => {
                 <h2 className='slide-left'>Big Bali Burgers</h2>
                 <p>Just a quick look at Big Bali's website is enough to make one salivate.</p>
                 <button onClick={() => setBaliTextVisible(!baliTextVisible)}>{baliTextVisible ? '...Hide' : 'More...'}</button>
-                {baliTextVisible && <p>  A simple aproach on this website provides customers with all the important information in a clear and succint fashion</p>}           </motion.div>
+                {baliTextVisible && <p>  A simple aproach on this website provides customers with all the important information in a clear and succint fashion
+                    The scope of the website was aimed at directing the consumer to the app to promote future purchases, without requiring the E-commerce functionality on site.</p>}           </motion.div>
 
             <motion.div
                 className="project-box">
@@ -121,7 +122,7 @@ const MobFinalProjects = () => {
                     <h2 className='slide-right'>Quu Hotel</h2>
                     <p>The website's design mirrors the hotel's contemporary, artistic ambiance. Drawing inspiration from the hotel's interior,</p>
                     <button onClick={() => setQuuTextVisible(!quuTextVisible)}>{quuTextVisible ? '...Hide' : 'More...'}</button>
-                    {quuTextVisible && <p>  the modern and clean style complements the establishment's online presence, aligning with various external booking applications</p>}  </>
+                    {quuTextVisible && <p>  the modern and clean style complements the establishment's online presence, aligning with various external booking applications the site is primarily a promotional tool for the Hotel to compiment its existing listings on large scale applications.</p>}  </>
             </motion.div>
         </section>)
 }

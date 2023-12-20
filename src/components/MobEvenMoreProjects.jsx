@@ -75,7 +75,8 @@ const MobEvenMoreProjects = () => {
                     <h2>ASK</h2>
                     <p>We where tasked for a complete rebranding at ASK and chose this sleek looking palette paired with a simple logo.</p>
                     <button onClick={() => setAskTextVisible(!askTextVisible)}>{askTextVisible ? '...Hide' : 'More...'}</button>
-                    {askTextVisible && <p>Moving to online bookings increased sales by over 1000%</p>}                   </>
+                    {askTextVisible && <p>Moving to online bookings increased sales by over 1000% and allowed ASK to stand out within a highly competetive industry in Bangkok
+                        Prior to working with us they relied on facebook marketing and word of mouth, but now see a steady stream of clients pre-booking rentals before even arriving in the country.</p>}                   </>
             </motion.div>
 
             <motion.div
@@ -126,7 +127,8 @@ const MobEvenMoreProjects = () => {
                     <h2>The House</h2>
                     <p>An elegant site to reflect the establishment itself,</p>
                     <button onClick={() => setGingerTextVisible(!gingerTextVisible)}>{gingerTextVisible ? '...Hide' : 'More...'}</button>
-                    {gingerTextVisible && <p> on this site we opted for an image rich design, minimalist curves and white space to accentuate the mood.</p>}         </>
+                    {gingerTextVisible && <p> on this site we opted for an image rich design, minimalist curves and white space to accentuate the mood.
+                        We where provided an extensive image gallery to choose from, and where tasked to create the written content from a few notes about the business. When coupled with some stock photos and a bit of artsy flair we are proud of this modern stylish site.</p>}         </>
             </motion.div>
         </section>)
 }

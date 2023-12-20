@@ -3,9 +3,9 @@ import { motion, useTransform, useScroll } from 'framer-motion';
 import { slideInLeft } from '../animations';
 import selfie800 from '../assets/selfie800.webp';
 
-const About = ({ refProp }) => {
+const About = ({ refProp, isMobile }) => {
     const containerRef = useRef(null);
-    const [speechVisible, setSpeechVisible] = useState(false);
+    // const [speechVisible, setSpeechVisible] = useState(false);
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -17,36 +17,37 @@ const About = ({ refProp }) => {
     const imgValue = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.5, 0.8]);
     const speechVisibility = useTransform(scrollYProgress, [0.8, 1], [false, true]);
 
-    useEffect(() => {
-        const unsubscribe = speechVisibility.onChange((value) => {
-            setSpeechVisible(value);
-        });
+    // useEffect(() => {
+    //     const unsubscribe = speechVisibility.onChange((value) => {
+    //         setSpeechVisible(value);
+    //     });
 
-        return () => {
-            unsubscribe();
-        };
-    }, [speechVisibility]);
+    //     return () => {
+    //         unsubscribe();
+    //     };
+    // }, [speechVisibility]);
 
     return (
         <section ref={containerRef} className='about'>
             <div ref={refProp}></div>
-            <motion.div className={"about-heading"} style={{ translateX: aboutValue }}>
+            <motion.div className={"about-heading"} style={!isMobile ? { translateX: aboutValue } : {}}>
                 <h3>About</h3>
             </motion.div>
 
-            <motion.div className={"about-heading"} style={{ translateX: usValue }}>
+            <motion.div className={"about-heading"} style={!isMobile ? { translateX: usValue } : {}}>
                 <h3>US</h3>
             </motion.div>
 
+
             <motion.div className='selfie-container' style={{ scale: imgValue }}>
-                <img src={selfie800} alt="Daniel Thomas, frontend Web Developer" />
+                <img src={selfie800} alt="Daniel Thomas, frontend Web Developer, founder Asia Tourist Connect" />
             </motion.div>
 
-            {speechVisible && (
-                <div className='speech'>
-                    <motion.p {...slideInLeft}><span>Dan</span><br /> Frontend Developer</motion.p>
-                </div>
-            )}
+            {/* {speechVisible && ( */}
+            <div className='speech'>
+                <motion.p {...slideInLeft}><span>Dan</span><br /> Frontend Developer</motion.p>
+            </div>
+            {/* )} */}
         </section>
     );
 };

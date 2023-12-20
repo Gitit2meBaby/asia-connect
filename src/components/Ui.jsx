@@ -29,9 +29,7 @@ const Ui = ({ setUi }) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('UI/UX Design');
     const [hoverEffect, setHoverEffect] = useState(1)
-    const [hasRunEffect, setHasRunEffect] = useState(false);
 
-    const buttonRef = useRef(null)
     const ref1 = useRef(null);
     const isInView1 = useInView(ref1, { margin: "-600px 0px -200px 0px" });
 
@@ -46,29 +44,6 @@ const Ui = ({ setUi }) => {
         setInfoTitle('UI/UX Design');
         setHoveredIndex(0);
     };
-
-    // Hover type animation on first section
-    useEffect(() => {
-        if (isInView1 && !hasRunEffect) {
-            const interval = setInterval(() => {
-                setHoverEffect((prevItem) => (prevItem < 8 ? prevItem + 1 : 1));
-                setInfoTitle(UiData[hoverEffect].info);
-                setHoveredIndex(hoverEffect);
-            }, 300);
-            if (hoverEffect === 8) {
-                setHasRunEffect(true);
-                setHoveredIndex(0);
-                setHoverEffect(0)
-            }
-            return () => clearInterval(interval);
-        }
-
-    }, [isInView1, hasRunEffect, hoverEffect]);
-
-    // Hide the extra content 
-    const handleLessButton = () => {
-        setUi(false)
-    }
 
     return (
         <motion.section className="info-boxes"
@@ -111,11 +86,6 @@ const Ui = ({ setUi }) => {
                     </div>
                 </div>
             </div>
-
-            <div className="extra-info-btns" ref={buttonRef}>
-                <button onClick={() => handleLessButton()}>See Less...</button>
-            </div>
-
         </motion.section>
     )
 }

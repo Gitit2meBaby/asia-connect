@@ -32,7 +32,6 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('WordPress/ CMS Solutions');
     const [hoverEffect, setHoverEffect] = useState(1)
-    const [hasRunEffect, setHasRunEffect] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
 
     const ref1 = useRef(null);
@@ -49,24 +48,6 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
         setInfoTitle('WordPress/ CMS Solutions');
         setHoveredIndex(0);
     };
-
-    // Hover type animation on first section
-    useEffect(() => {
-        if (isInView1 && !hasRunEffect) {
-            const interval = setInterval(() => {
-                setHoverEffect((prevItem) => (prevItem < 9 ? prevItem + 1 : 1));
-                setInfoTitle(eCommerceData[hoverEffect].info);
-                setHoveredIndex(hoverEffect);
-            }, 300);
-            if (hoverEffect === 9) {
-                setHasRunEffect(true);
-                setHoveredIndex(0);
-                setHoverEffect(0)
-            }
-            return () => clearInterval(interval);
-        }
-
-    }, [isInView1, hasRunEffect, hoverEffect]);
 
     // Handle mobile dropdown toggle
     const toggleDropdown = (itemId) => {
@@ -162,7 +143,6 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
                     )}
                 </div>
             </div>
-
         </motion.section>
     )
 }

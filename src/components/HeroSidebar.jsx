@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import PropTypes from 'prop-types';
 import { growX, textFadeVariants02, textFadeVariants04, textFadeVariants06, textFadeVariants08, textFadeVariants1, textFadeVariants12, textFadeInDelay24, textFadeInDelay26, textFadeInDelay265, textFadeInDelay275, textFadeInDelay28, textFadeInDelay27, textFadeInDelay29, textFadeInDelay285, textFadeInDelay295, textFadeInDelay3 } from '../animations'
 
-const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToProjectsRef, scrollToTestimonialsRef, scrollToContactFormRef }, ref) => {
+const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToProjectsRef, scrollToTestimonialsRef, scrollToContactFormRef, isMobile }, ref) => {
     const [designDropdown, setDesignDropdown] = useState(false)
     const [projectsDropdown, setProjectsDropdown] = useState(false)
     const { scrollY } = useScroll();
@@ -14,44 +14,9 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
         });
     }, [scrollY]);
 
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setDesignDropdown(true);
-
-            const interval = setInterval(() => {
-                setDesignDropdown(false);
-            }, 2000);
-
-            setTimeout(() => {
-                clearInterval(interval);
-            }, 2000);
-        }, 2200);
-
-        return () => {
-            clearTimeout(timeout);
-            setDesignDropdown(false);
-        };
-    }, []);
-
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setProjectsDropdown(true);
-
-            const interval = setInterval(() => {
-                setProjectsDropdown(false);
-            }, 2000);
-
-            setTimeout(() => {
-                clearInterval(interval);
-            }, 2000);
-        }, 3200);
-
-        return () => {
-            clearTimeout(timeout);
-            setProjectsDropdown(false);
-        };
-    }, []);
+    if (isMobile) {
+        growX.animate.width = '60%';
+    }
 
     return (
         <motion.aside className='hero-sidebar'

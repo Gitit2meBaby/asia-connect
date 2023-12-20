@@ -10,6 +10,9 @@ const AboutLisa = () => {
     const containerRef = useRef(null);
     const textRef = useRef(null)
     const [lisaVisible, setLisaVisible] = useState(false);
+    const [isSmall, setIsSmall] = useState(() => {
+        return window.innerWidth < 500 && window.innerHeight < 500;
+    });
     const controls = useAnimation();
     const isInView = useInView(textRef, { margin: '-200px' });
 
@@ -38,6 +41,20 @@ const AboutLisa = () => {
     // Opacity change for paragraph on scroll
     const text = `Our core mission is to spotlight the richness of Asia, attracting the attention of global tourists who rely on their smartphones as their travel compass. Through our platform, we connect millions of visitors to the services they need`;
 
+    // Just to put a line break in the 'full stack engineer' text
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmall(window.innerWidth > 500 || window.innerHeight > 500);
+        };
+
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('orientationchange', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('orientationchange', handleResize);
+        };
+    }, []);
 
     return (
         <section ref={containerRef} className="about-lisa">
@@ -57,7 +74,7 @@ const AboutLisa = () => {
 
             {lisaVisible && (
                 <div className='lisa-speech'>
-                    <motion.p {...slideInRight}>Full Stack Engineer</motion.p>
+                    <motion.p {...slideInRight}>Full Stack{isSmall && <br />} Engineer</motion.p>
                 </div>
             )}
 

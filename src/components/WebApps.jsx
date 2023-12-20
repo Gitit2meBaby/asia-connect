@@ -44,29 +44,6 @@ const WebApps = ({ setWebApps }) => {
         setHoveredIndex(0);
     };
 
-    // Hover type animation on first section
-    useEffect(() => {
-        if (isInView1 && !hasRunEffect) {
-            const interval = setInterval(() => {
-                setHoverEffect((prevItem) => (prevItem < 7 ? prevItem + 1 : 1));
-                setInfoTitle(WebAppsData[hoverEffect].info);
-                setHoveredIndex(hoverEffect);
-            }, 300);
-            if (hoverEffect === 7) {
-                setHasRunEffect(true);
-                setHoveredIndex(0);
-                setHoverEffect(0)
-            }
-            return () => clearInterval(interval);
-        }
-
-    }, [isInView1, hasRunEffect, hoverEffect]);
-
-    // Hide the extra content 
-    const handleLessButton = () => {
-        setWebApps(false)
-    }
-
     return (
         <motion.section className="info-boxes"
             initial={{ transform: 'translateY(100%' }}
@@ -103,11 +80,6 @@ const WebApps = ({ setWebApps }) => {
 
                 </div>
             </div>
-
-            <div className="extra-info-btns" ref={buttonRef}>
-                <button onClick={() => handleLessButton()}>See Less...</button>
-            </div>
-
         </motion.section>
     )
 }

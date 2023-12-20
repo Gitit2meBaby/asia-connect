@@ -83,7 +83,7 @@ const MobProjects = forwardRef(({ refProp }, ref) => {
                     community
                     based in Canguu.</p>
                 <button onClick={() => setCanguuTextVisible(!canguuTextVisible)}>{canguuTextVisible ? '...Hide' : 'More...'}</button>
-                {canguuTextVisible && <p>The site was built with a tight budget over a period of just one week. The
+                {canguuTextVisible && <p>The site was built using WordPress with a tight budget over a period of just one week. The
                     managers reported a 15% increase in clientele after the site launch.</p>}
             </motion.div>
 
@@ -132,7 +132,8 @@ const MobProjects = forwardRef(({ refProp }, ref) => {
                 <h2>Studio Shodwe</h2>
                 <p>Studio Shodwe's e-commerce platform is a testament to minimalism and modernity. The websites clean interface, adorns subtle yet captivating animations.</p>
                 <button onClick={() => setShodweTextVisible(!shodweTextVisible)}>{shodweTextVisible ? '...Hide' : 'More...'}</button>
-                {shodweTextVisible && <p>It boasts an elegant three-tone palette that highlights their exquisite range of fashion products, capturing the attention of every visitor.</p>}
+                {shodweTextVisible && <p>It boasts an elegant three-tone palette that highlights their range of fashion products, capturing the attention of every visitor.
+                    The site was built using the React.js Framework and subtle animations implemented for smooth page transitions</p>}
             </motion.div>
         </section>
     )

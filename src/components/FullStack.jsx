@@ -32,10 +32,8 @@ const FullStack = ({ setFullStack, isMobile }) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('WordPress/ CMS Solutions');
     const [hoverEffect, setHoverEffect] = useState(1)
-    const [hasRunEffect, setHasRunEffect] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
 
-    const buttonRef = useRef(null)
     const ref1 = useRef(null);
     const isInView1 = useInView(ref1, { margin: "-600px 0px -200px 0px" });
 
@@ -54,25 +52,6 @@ const FullStack = ({ setFullStack, isMobile }) => {
             setHoveredIndex(0);
         }
     };
-
-
-    // Hover type animation on first section
-    useEffect(() => {
-        if (isInView1 && !hasRunEffect) {
-            const interval = setInterval(() => {
-                setHoverEffect((prevItem) => (prevItem < 9 ? prevItem + 1 : 1));
-                setInfoTitle(fullStackData[hoverEffect].info);
-                setHoveredIndex(hoverEffect);
-            }, 300);
-            if (hoverEffect === 9) {
-                setHasRunEffect(true);
-                setHoveredIndex(0);
-                setHoverEffect(0)
-            }
-            return () => clearInterval(interval);
-        }
-
-    }, [isInView1, hasRunEffect, hoverEffect]);
 
     // Handle mobile dropdown toggle
     const toggleDropdown = (itemId) => {

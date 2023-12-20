@@ -148,7 +148,6 @@ $breakpoints: (
 
 .sidebar-item {
     display: flex;
-    gap: 2rem;
     border-top: $border;
     margin-left: 5rem;
 
@@ -166,6 +165,10 @@ $breakpoints: (
     h3 {
         font-size: 1.5rem;
         padding: 2rem 3rem;
+    }
+
+    @include media(medium) {
+        flex-direction: column;
     }
 }
 
@@ -201,7 +204,6 @@ $breakpoints: (
     flex-direction: column;
 
     h2 {
-        position: fixed;
         padding-top: 2rem;
         font-family: 'Anton', sans-serif;
         margin: auto;
@@ -220,19 +222,35 @@ $breakpoints: (
         z-index: -1;
 
         @include media(large) {
-            font-size: 2rem;
-            line-height: 3rem;
+            font-size: 28vw;
+            line-height: 14rem;
             background-image: url('assets/cityTab.webp');
+            letter-spacing: .1rem;
+        }
+
+        @include media(medium) {
+            font-size: 12rem;
+            line-height: 11rem;
         }
 
         @include media(small) {
             background-image: url('assets/cityMob.webp');
+            font-size: 8rem;
+            line-height: 9rem;
         }
+    }
+
+    @include media(small) {
+        padding-top: 6rem;
     }
 }
 
 .asia-text {
     font-size: 35vh;
+
+    @include media(small) {
+        font-size: 15rem;
+    }
 }
 
 .text-container {
@@ -427,6 +445,12 @@ $breakpoints: (
         text-align: right;
     }
 
+    .info-dropdown p {
+        @include media(small) {
+            text-align: justify;
+        }
+    }
+
     @include media(large) {
         transform: translateX(0%);
         transform: translateY(50%);
@@ -467,6 +491,7 @@ $breakpoints: (
         font-weight: 400;
         font-size: 1rem;
         line-height: 1.4rem;
+        text-align: justify;
     }
 }
 
@@ -510,6 +535,10 @@ $breakpoints: (
     background-color: $less-black;
     position: relative;
     @extend %columnJustify;
+
+    @include media(medium) {
+        height: 80dvh;
+    }
 }
 
 .about-heading {
@@ -524,7 +553,14 @@ $breakpoints: (
         font-family: 'Anton';
         font-size: clamp(4rem, 25vw, 20rem);
         margin: 0;
-        // @include media(xlarge)
+
+        @include media(medium) {
+            line-height: 10rem;
+            letter-spacing: normal;
+            padding-left: 2rem;
+        }
+
+        @include media(small) {}
     }
 }
 
@@ -533,9 +569,27 @@ $breakpoints: (
     bottom: 2vh;
     right: 2vw;
 
+    @include media(medium) {
+        right: -0vw;
+        bottom: 4vh;
+    }
+
+    @include media(small) {
+        right: -14vw;
+        bottom: 8vh;
+    }
+
     img {
         @include media(xlarge) {
             width: 60vw;
+        }
+
+        @include media(medium) {
+            width: 80vw;
+        }
+
+        @include media(small) {
+            width: 100vw;
         }
     }
 }
@@ -543,7 +597,7 @@ $breakpoints: (
 .speech {
     width: fit-content;
     align-self: center;
-    margin-top: -10rem;
+    margin-top: 0rem;
     margin-right: 16vw;
 
     @include media(xlarge) {
@@ -570,6 +624,10 @@ $breakpoints: (
     display: flex;
     flex-direction: column;
 
+    @include media(medium) {
+        padding-bottom: 0;
+    }
+
     h3 {
         color: $less-white;
         text-transform: uppercase;
@@ -586,6 +644,7 @@ $breakpoints: (
 
         @include media(medium) {
             font-size: 10rem;
+            letter-spacing: .1rem;
         }
     }
 
@@ -607,8 +666,15 @@ $breakpoints: (
         }
 
         @include media(medium) {
-            max-width: 100vw;
-            top: 12.5rem;
+            max-width: 70vw;
+            top: 2rem;
+            bottom: 0;
+        }
+
+        @include media(small) {
+            max-width: 70vw;
+            top: 4rem;
+            left: -1rem;
         }
     }
 }
@@ -635,6 +701,10 @@ $breakpoints: (
     @include media(medium) {
         opacity: 0 !important;
     }
+
+    @include media(small) {
+        height: 130px;
+    }
 }
 
 .lisa-speech {
@@ -647,10 +717,18 @@ $breakpoints: (
         color: $less-white;
         font-size: 1.4rem;
         text-align: center;
+
+        @include media(small) {
+            text-align: right;
+        }
     }
 
     @include media(medium) {
-        margin-top: 2rem;
+        margin: 2rem 2rem 0 0;
+    }
+
+    @include media(small) {
+        margin: 2rem 1rem 0 0;
     }
 }
 
@@ -667,6 +745,11 @@ $breakpoints: (
 .create {
     background-color: $less-white;
     overflow: hidden;
+    margin-top: 4rem;
+
+    @include media(medium) {
+        margin-top: 0;
+    }
 }
 
 .stunning-text {
@@ -1038,6 +1121,12 @@ $breakpoints: (
         font-size: clamp(3rem, 14vw, 12rem);
         letter-spacing: clamp(0rem, 7vw, 1.5rem);
         text-align: center;
+
+        @include media(medium) {
+            font-size: clamp(4rem, 25vw, 20rem);
+            letter-spacing: 0.1rem;
+            line-height: 10rem;
+        }
     }
 }
 
@@ -1066,6 +1155,10 @@ $breakpoints: (
         font-size: 1.8rem;
         margin: 0;
         padding-right: 4rem;
+
+        @include media(medium) {
+            padding: 0 2rem;
+        }
 
         @include media(small) {
             padding-right: 0rem;
@@ -1305,4 +1398,12 @@ form {
         transform: translateX(-100%);
         opacity: 0;
     }
+}
+
+.fixed {
+    position: fixed;
+}
+
+.absolute {
+    position: absolute;
 }

@@ -87,9 +87,11 @@ function App() {
           scrollToProjectsRef={() => scrollToRef(projectsRef)}
           scrollToTestimonialsRef={() => scrollToRef(testimonialsRef)}
           scrollToContactFormRef={() => scrollToRef(contactFormRef)}
+          isMobile={isMobile}
         />
         <Hero key="hero" refProp={heroRef}
           scrollToDesignRef={() => scrollToRef(infoBoxesRef)}
+          isMobile={isMobile}
         />
         <InfoBoxes key="infoBoxes" refProp={infoBoxesRef}
           isMobile={isMobile} />
@@ -113,8 +115,6 @@ function App() {
           key="uiKey"
           refProp={uiRef} />}
 
-        <About key="about" refProp={aboutRef} />
-        <AboutLisa key="aboutLisa" refProp={aboutLisaRef} />
         <Create key="create" refProp={createRef} />
 
         {isMobile && <MobProjects key="Mobprojects" />}
@@ -128,6 +128,10 @@ function App() {
 
         {!isMobile && <FinalProjects key="finalProjects" refProp={finalProjectsRef} />}
         {isMobile && <MobFinalProjects key="MobFinalProjects" />}
+
+
+        <About key="about" refProp={aboutRef} isMobile={isMobile} />
+        <AboutLisa key="aboutLisa" refProp={aboutLisaRef} />
 
         <Customers key="customers" refProp={customersRef} />
 

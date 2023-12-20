@@ -107,7 +107,6 @@ button {
 
 .sidebar-item {
   display: flex;
-  gap: 2rem;
   border-top: 1px solid #efefef;
   margin-left: 5rem;
 }
@@ -121,6 +120,11 @@ button {
 .sidebar-item h3 {
   font-size: 1.5rem;
   padding: 2rem 3rem;
+}
+@media (max-width: 700px) {
+  .sidebar-item {
+    flex-direction: column;
+  }
 }
 
 .sidebar-dropdown {
@@ -149,7 +153,6 @@ button {
   flex-direction: column;
 }
 .hero-section h2 {
-  position: fixed;
   padding-top: 2rem;
   font-family: "Anton", sans-serif;
   margin: auto;
@@ -169,19 +172,38 @@ button {
 }
 @media (max-width: 900px) {
   .hero-section h2 {
-    font-size: 2rem;
-    line-height: 3rem;
+    font-size: 28vw;
+    line-height: 14rem;
     background-image: url("assets/cityTab.webp");
+    letter-spacing: 0.1rem;
+  }
+}
+@media (max-width: 700px) {
+  .hero-section h2 {
+    font-size: 12rem;
+    line-height: 11rem;
   }
 }
 @media (max-width: 500px) {
   .hero-section h2 {
     background-image: url("assets/cityMob.webp");
+    font-size: 8rem;
+    line-height: 9rem;
+  }
+}
+@media (max-width: 500px) {
+  .hero-section {
+    padding-top: 6rem;
   }
 }
 
 .asia-text {
   font-size: 35vh;
+}
+@media (max-width: 500px) {
+  .asia-text {
+    font-size: 15rem;
+  }
 }
 
 .text-container {
@@ -374,6 +396,11 @@ button {
 .left-content div p {
   text-align: right;
 }
+@media (max-width: 500px) {
+  .left-content .info-dropdown p {
+    text-align: justify;
+  }
+}
 @media (max-width: 900px) {
   .left-content {
     transform: translateX(0%);
@@ -414,6 +441,7 @@ button {
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.4rem;
+  text-align: justify;
 }
 
 .btn-grid {
@@ -452,6 +480,11 @@ button {
   background-color: #040303;
   position: relative;
 }
+@media (max-width: 700px) {
+  .about {
+    height: 80dvh;
+  }
+}
 
 .about-heading {
   width: -moz-fit-content;
@@ -467,15 +500,43 @@ button {
   font-size: clamp(4rem, 25vw, 20rem);
   margin: 0;
 }
-
+@media (max-width: 700px) {
+  .about-heading h3 {
+    line-height: 10rem;
+    letter-spacing: normal;
+    padding-left: 2rem;
+  }
+}
 .selfie-container {
   position: absolute;
   bottom: 2vh;
   right: 2vw;
 }
+@media (max-width: 700px) {
+  .selfie-container {
+    right: 0vw;
+    bottom: 4vh;
+  }
+}
+@media (max-width: 500px) {
+  .selfie-container {
+    right: -14vw;
+    bottom: 8vh;
+  }
+}
 @media (max-width: 1150px) {
   .selfie-container img {
     width: 60vw;
+  }
+}
+@media (max-width: 700px) {
+  .selfie-container img {
+    width: 80vw;
+  }
+}
+@media (max-width: 500px) {
+  .selfie-container img {
+    width: 100vw;
   }
 }
 
@@ -483,7 +544,7 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   align-self: center;
-  margin-top: -10rem;
+  margin-top: 0rem;
   margin-right: 16vw;
 }
 @media (max-width: 1150px) {
@@ -508,6 +569,11 @@ button {
   display: flex;
   flex-direction: column;
 }
+@media (max-width: 700px) {
+  .about-lisa {
+    padding-bottom: 0;
+  }
+}
 .about-lisa h3 {
   color: #efefef;
   text-transform: uppercase;
@@ -526,6 +592,7 @@ button {
 @media (max-width: 700px) {
   .about-lisa h3 {
     font-size: 10rem;
+    letter-spacing: 0.1rem;
   }
 }
 .about-lisa img {
@@ -549,8 +616,16 @@ button {
 }
 @media (max-width: 700px) {
   .about-lisa img {
-    max-width: 100vw;
-    top: 12.5rem;
+    max-width: 70vw;
+    top: 2rem;
+    bottom: 0;
+  }
+}
+@media (max-width: 500px) {
+  .about-lisa img {
+    max-width: 70vw;
+    top: 4rem;
+    left: -1rem;
   }
 }
 
@@ -578,6 +653,11 @@ button {
     opacity: 0 !important;
   }
 }
+@media (max-width: 500px) {
+  .opacity-paragraph {
+    height: 130px;
+  }
+}
 
 .lisa-speech {
   width: -moz-fit-content;
@@ -591,9 +671,19 @@ button {
   font-size: 1.4rem;
   text-align: center;
 }
+@media (max-width: 500px) {
+  .lisa-speech p {
+    text-align: right;
+  }
+}
 @media (max-width: 700px) {
   .lisa-speech {
-    margin-top: 2rem;
+    margin: 2rem 2rem 0 0;
+  }
+}
+@media (max-width: 500px) {
+  .lisa-speech {
+    margin: 2rem 1rem 0 0;
   }
 }
 
@@ -610,6 +700,12 @@ button {
 .create {
   background-color: #efefef;
   overflow: hidden;
+  margin-top: 4rem;
+}
+@media (max-width: 700px) {
+  .create {
+    margin-top: 0;
+  }
 }
 
 .stunning-text {
@@ -942,6 +1038,13 @@ button {
   letter-spacing: clamp(0rem, 7vw, 1.5rem);
   text-align: center;
 }
+@media (max-width: 700px) {
+  .contact-form h2 {
+    font-size: clamp(4rem, 25vw, 20rem);
+    letter-spacing: 0.1rem;
+    line-height: 10rem;
+  }
+}
 
 .form-grid {
   display: grid;
@@ -970,6 +1073,11 @@ button {
   font-size: 1.8rem;
   margin: 0;
   padding-right: 4rem;
+}
+@media (max-width: 700px) {
+  .contact-information h1 {
+    padding: 0 2rem;
+  }
 }
 @media (max-width: 500px) {
   .contact-information h1 {
@@ -1200,4 +1308,11 @@ form button {
     transform: translateX(-100%);
     opacity: 0;
   }
+}
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
 }/*# sourceMappingURL=main.css.map */
