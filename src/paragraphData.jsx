@@ -49,7 +49,7 @@ export const paragraphData = [
         title: "Lightning-fast loading times"
     },
     {
-        info: "API integration connects your website with vast data sources; it also involves creating custom databases. These databases like organised libraries, securely store and manage vast amounts of information. They're tailored to precisely fit your business needs, ensuring that you can efficiently access and utilize external data, such as real-time updates, industry-specific insights, or functionalities like maps, weather forecasts and social media feeds.",
+        info: "API integration connects your website with vast data sources; it also involves creating custom databases. Allowing for efficient access to utilize external data, such as real-time news, industry-specific insights, or functionalities like maps, weather forecasts and social media feeds.",
         title: "Seamless integration with various APIs"
     },
     {

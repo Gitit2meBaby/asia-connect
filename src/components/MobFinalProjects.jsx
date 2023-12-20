@@ -27,7 +27,7 @@ const MobFinalProjects = () => {
 
     return (
         <section className="projects"
-            style={{ paddingBottom: '12rem' }}>
+            style={{ paddingBottom: '2rem' }}>
             <motion.div
                 className="project-box">
                 <h2>Big Bali Burgers</h2>

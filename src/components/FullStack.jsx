@@ -28,11 +28,12 @@ const fullStackData = [
     }
 ]
 
-const FullStack = ({ setFullStack }) => {
+const FullStack = ({ setFullStack, isMobile }) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('WordPress/ CMS Solutions');
     const [hoverEffect, setHoverEffect] = useState(1)
     const [hasRunEffect, setHasRunEffect] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
 
     const buttonRef = useRef(null)
     const ref1 = useRef(null);
@@ -40,15 +41,20 @@ const FullStack = ({ setFullStack }) => {
 
     // To display information about each topic
     const handleParagraphHover = (index) => {
-        setInfoTitle(fullStackData[index].info);
-        setHoveredIndex(index);
+        if (!isMobile) {
+            setInfoTitle(fullStackData[index].info);
+            setHoveredIndex(index);
+        }
     };
 
     // Revert back to the initial state with heading
     const handleParagraphLeave = () => {
-        setInfoTitle('WordPress/ CMS Solutions');
-        setHoveredIndex(0);
+        if (!isMobile) {
+            setInfoTitle('WordPress/ CMS Solutions');
+            setHoveredIndex(0);
+        }
     };
+
 
     // Hover type animation on first section
     useEffect(() => {
@@ -68,10 +74,17 @@ const FullStack = ({ setFullStack }) => {
 
     }, [isInView1, hasRunEffect, hoverEffect]);
 
-    // Hide the extra content 
-    const handleLessButton = () => {
-        setFullStack(false)
-    }
+    // Handle mobile dropdown toggle
+    const toggleDropdown = (itemId) => {
+        if (isMobile) {
+            if (activeDropdown === itemId) {
+                setActiveDropdown(null);
+            } else {
+                setActiveDropdown(itemId);
+            }
+        }
+    };
+    console.log(isMobile);
 
     return (
         <motion.section className="info-boxes"
@@ -90,38 +103,79 @@ const FullStack = ({ setFullStack }) => {
                     ) : (
                         <p>{infoTitle}</p>
                     )}
-
                 </div>
 
-                <div className={!isInView1 ? "info-content left-content" : "info-content left-content slide-in"}>
-                    <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}>
+                <div className={`info-content left-content ${!isInView1 && !isMobile ? '' : 'slide-in'}`}>
+
+                    <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}
+                        onClick={() => toggleDropdown(1)}
+                    >
                         <p className={hoverEffect === 1 ? 'hover-bright' : ''}>Seamless Front-End & Back-End Integration</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 1 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{fullStackData[0].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave}
+                        onClick={() => toggleDropdown(2)}
+                    >
                         <p className={hoverEffect === 2 ? 'hover-bright' : ''}>Robust API Development and Integration</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 2 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{fullStackData[1].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave}
+                        onClick={() => toggleDropdown(3)}
+                    >
                         <p className={hoverEffect === 3 ? 'hover-bright' : ''}>Scalable Architecture for Future Growth</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 3 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{fullStackData[2].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave}
+                        onClick={() => toggleDropdown(4)}
+                    >
                         <p className={hoverEffect === 4 ? 'hover-bright' : ''}>Optimized Server-Side Rendering</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 4 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{fullStackData[3].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave}
+                        onClick={() => toggleDropdown(5)}
+                    >
                         <p className={hoverEffect === 5 ? 'hover-bright' : ''}>Advanced Caching Mechanisms</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(6)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 5 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{fullStackData[4].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(6)} onMouseLeave={handleParagraphLeave}
+                        onClick={() => toggleDropdown(6)}>
                         <p className={hoverEffect === 6 ? 'hover-bright' : ''}>Data Encryption and Security Measures</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(7)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 6 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{fullStackData[5].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(7)} onMouseLeave={handleParagraphLeave}
+                        onClick={() => toggleDropdown(7)}>
                         <p className={hoverEffect === 7 ? 'hover-bright' : ''}>Automated Testing and Continuous Integration</p>
+                    </div>
+                    <div
+                        className={activeDropdown === 7 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{fullStackData[6].info}</p>
                     </div>
                 </div>
             </div>
-
-            <div className="extra-info-btns" ref={buttonRef}>
-                <button onClick={() => handleLessButton()}>See Less...</button>
-            </div>
-
         </motion.section>
     )
 }

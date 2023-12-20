@@ -2,7 +2,6 @@ import { useRef, useState, useEffect, forwardRef } from "react";
 import { useInView } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import { paragraphData } from "../paragraphData";
-import ButtonRow from "./ButtonRow";
 
 const InfoBoxes = forwardRef(({ refProp, isMobile }, ref) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
@@ -216,7 +215,8 @@ const InfoBoxes = forwardRef(({ refProp, isMobile }, ref) => {
                     )}
                 </div>
 
-                <div className={!isInView2 ? "info-content left-content" : "info-content left-content slide-in"}>
+                <div className={`info-content left-content ${!isInView2 && !isMobile ? '' : 'slide-in'}`}>
+
                     <div onMouseEnter={() => handleParagraphHover(9)}
                         onMouseLeave={handleParagraphLeave}>
                         <p key={paragraphData[9]}

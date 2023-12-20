@@ -25,13 +25,14 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
             setTimeout(() => {
                 clearInterval(interval);
             }, 2000);
-        }, 4200);
+        }, 2200);
 
         return () => {
             clearTimeout(timeout);
             setDesignDropdown(false);
         };
     }, []);
+
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -44,7 +45,7 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
             setTimeout(() => {
                 clearInterval(interval);
             }, 2000);
-        }, 6200);
+        }, 3200);
 
         return () => {
             clearTimeout(timeout);

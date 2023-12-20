@@ -28,13 +28,13 @@ const eCommerceData = [
     }
 ]
 
-const Ecommerce = ({ setEcommerce }) => {
+const Ecommerce = ({ setEcommerce, isMobile }) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('WordPress/ CMS Solutions');
     const [hoverEffect, setHoverEffect] = useState(1)
     const [hasRunEffect, setHasRunEffect] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
 
-    const buttonRef = useRef(null)
     const ref1 = useRef(null);
     const isInView1 = useInView(ref1, { margin: "-600px 0px -200px 0px" });
 
@@ -68,11 +68,16 @@ const Ecommerce = ({ setEcommerce }) => {
 
     }, [isInView1, hasRunEffect, hoverEffect]);
 
-    // Hide the extra content 
-    const handleLessButton = () => {
-        setEcommerce(false)
-    }
-
+    // Handle mobile dropdown toggle
+    const toggleDropdown = (itemId) => {
+        if (isMobile) {
+            if (activeDropdown === itemId) {
+                setActiveDropdown(null);
+            } else {
+                setActiveDropdown(itemId);
+            }
+        }
+    };
 
     return (
         <motion.section className="info-boxes"
@@ -82,26 +87,68 @@ const Ecommerce = ({ setEcommerce }) => {
         >
             <div ref={ref1} className='info-box right-box'>
                 <div className={!isInView1 ? "info-content right-content" : "info-content right-content slide-in"}>
-                    <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}>
+                    <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}
+                        onClick={() => toggleDropdown(1)}
+                    >
                         <p className={hoverEffect === 1 ? 'hover-bright' : ''}>WooCommerce, Shopify, Shopee</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 1 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{eCommerceData[0].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(2)}
+                    >
                         <p className={hoverEffect === 2 ? 'hover-bright' : ''}>Optimized Stripe Payment Gateways</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 2 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{eCommerceData[1].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(3)}
+                    >
                         <p className={hoverEffect === 3 ? 'hover-bright' : ''}>Efficient Inventory Management</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 3 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{eCommerceData[2].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(4)}
+                    >
                         <p className={hoverEffect === 4 ? 'hover-bright' : ''}>Conversion-Driven UI/UX Design</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 4 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{eCommerceData[3].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(5)}
+                    >
                         <p className={hoverEffect === 5 ? 'hover-bright' : ''}>Automated Order Fulfillment</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(6)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 5 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{eCommerceData[4].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(6)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(6)}
+                    >
                         <p className={hoverEffect === 6 ? 'hover-bright' : ''}>SEO-Optimized Product Pages</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(7)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 6 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{eCommerceData[5].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(7)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(7)}
+                    >
                         <p className={hoverEffect === 7 ? 'hover-bright' : ''}>Analytics-Driven Decision Making</p>
+                    </div>
+                    <div
+                        className={activeDropdown === 7 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{eCommerceData[6].info}</p>
                     </div>
                 </div>
 
@@ -113,12 +160,7 @@ const Ecommerce = ({ setEcommerce }) => {
                     ) : (
                         <p>{infoTitle}</p>
                     )}
-
                 </div>
-            </div>
-
-            <div className="extra-info-btns" ref={buttonRef}>
-                <button onClick={() => handleLessButton()}>See Less...</button>
             </div>
 
         </motion.section>

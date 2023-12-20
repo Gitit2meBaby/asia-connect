@@ -1,4 +1,4 @@
-import { useState, useEffect, forwardRef } from 'react'
+import { useState, useEffect, forwardRef, useRef } from 'react'
 // import { useScroll } from 'framer-motion';
 import PropTypes from 'prop-types';
 
@@ -8,6 +8,7 @@ const ButtonRow = forwardRef(({ setEcommerce, setFullStack, setWebApps, setUi },
     const [hoverEffect, setHoverEffect] = useState(1)
     const [stopEffect, setStopEffect] = useState(false)
 
+    const buttonRowRef = useRef(null)
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -40,6 +41,7 @@ const ButtonRow = forwardRef(({ setEcommerce, setFullStack, setWebApps, setUi },
         setFullStack(false)
         setWebApps(false)
         setUi(false)
+        scrollToComponent()
     }
 
     const handleFullStack = () => {
@@ -47,22 +49,31 @@ const ButtonRow = forwardRef(({ setEcommerce, setFullStack, setWebApps, setUi },
         setFullStack(true)
         setWebApps(false)
         setUi(false)
+        scrollToComponent()
     }
     const handleWebApps = () => {
         setEcommerce(false)
         setFullStack(false)
         setWebApps(true)
         setUi(false)
+        scrollToComponent()
     }
     const handleUi = () => {
         setEcommerce(false)
         setFullStack(false)
         setWebApps(false)
         setUi(true)
+        scrollToComponent()
     }
 
+    const scrollToComponent = () => {
+        if (buttonRowRef.current) {
+            buttonRowRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     return (
-        <section className="button-row">
+        <section ref={buttonRowRef} className="button-row">
             <button onMouseEnter={() => handleStopEffect()}
                 onMouseLeave={() => handleMouseOut()}
                 onClick={() => handleEcommerce()}
@@ -70,7 +81,7 @@ const ButtonRow = forwardRef(({ setEcommerce, setFullStack, setWebApps, setUi },
             <button onMouseEnter={() => handleStopEffect()}
                 onMouseLeave={() => handleMouseOut()}
                 onClick={() => handleFullStack()}
-                className={hoverEffect === 3 ? "hover-overlay" : ""}>Full Stack Applications</button>
+                className={hoverEffect === 3 ? "hover-overlay" : ""}>Full Stack </button>
             <button onMouseEnter={() => handleStopEffect()}
                 onMouseLeave={() => handleMouseOut()}
                 onClick={() => handleWebApps()}

@@ -44,12 +44,14 @@ button {
   align-items: center;
 }
 
-.contact-form, .grid-section, .project-info-box, .about, .info-content, .info-title {
+.fade-slide, .contact-form, .flex-testimonial,
+.grid-section, .project-info-box, .about, .info-content, .info-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+.flex-testimonial button,
 .grid-section button, .project-info-box button, .button-row button, .extra-info-btns button, .nav-btn-container button {
   border: none;
   background-color: transparent;
@@ -248,6 +250,11 @@ button {
   gap: 6rem;
   padding: 12rem 0 2rem 0;
 }
+@media (max-width: 700px) {
+  .info-boxes {
+    padding: 2rem 0;
+  }
+}
 
 .info-box {
   display: grid;
@@ -262,14 +269,14 @@ button {
     padding-top: 6rem;
   }
 }
+@media (max-width: 700px) {
+  .info-box {
+    width: 80vw;
+  }
+}
 
 .right-box {
   grid-template-columns: 44% 1fr;
-}
-@media (max-width: 900px) {
-  .right-box {
-    grid-template-columns: 50% 1fr;
-  }
 }
 
 .left-box {
@@ -277,7 +284,6 @@ button {
 }
 @media (max-width: 900px) {
   .left-box {
-    grid-template-columns: 50% 1fr;
     flex-direction: column;
   }
 }
@@ -290,12 +296,17 @@ button {
 }
 .info-title h3 {
   color: #efefef;
-  font-size: 6rem;
+  font-size: clamp(2rem, 8vw, 6rem);
   margin: 0;
 }
 @media (max-width: 1150px) {
   .info-title h3 {
-    font-size: 4rem;
+    font-size: 3.5rem;
+  }
+}
+@media (max-width: 900px) {
+  .info-title h3 {
+    font-size: clamp(2rem, 8vw, 6rem);
   }
 }
 
@@ -350,6 +361,11 @@ button {
     transform: translateY(50%);
   }
 }
+@media (max-width: 500px) {
+  .right-content {
+    margin-bottom: 3rem;
+  }
+}
 
 .left-content {
   transform: translateX(-100%);
@@ -364,6 +380,11 @@ button {
     transform: translateY(50%);
   }
 }
+@media (max-width: 500px) {
+  .left-content {
+    margin-bottom: 4rem;
+  }
+}
 
 .see-more-designs {
   font-family: "Oxygen-mono";
@@ -372,6 +393,11 @@ button {
   color: #efefef;
   font-size: 0.9rem;
   margin-top: 2rem;
+}
+@media (max-width: 500px) {
+  .see-more-designs {
+    display: none;
+  }
 }
 
 .extra-info-btns button {
@@ -382,6 +408,7 @@ button {
 .info-dropdown {
   height: 0px;
   opacity: 0;
+  pointer-events: none;
 }
 .info-dropdown p {
   font-weight: 400;
@@ -405,6 +432,19 @@ button {
 .button-row button:hover {
   background-color: rgba(255, 255, 255, 0.4509803922);
 }
+@media (max-width: 700px) {
+  .button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+@media (max-width: 500px) {
+  .button-row {
+    gap: 0.5rem;
+    margin-top: 8rem;
+  }
+}
 
 .about {
   height: 100dvh;
@@ -424,7 +464,7 @@ button {
   letter-spacing: 1.5rem;
   line-height: 18rem;
   font-family: "Anton";
-  font-size: 20rem;
+  font-size: clamp(4rem, 25vw, 20rem);
   margin: 0;
 }
 
@@ -433,13 +473,23 @@ button {
   bottom: 2vh;
   right: 2vw;
 }
+@media (max-width: 1150px) {
+  .selfie-container img {
+    width: 60vw;
+  }
+}
 
 .speech {
   width: -moz-fit-content;
   width: fit-content;
   align-self: center;
   margin-top: -10rem;
-  margin-right: 20rem;
+  margin-right: 16vw;
+}
+@media (max-width: 1150px) {
+  .speech {
+    margin-right: 1vw;
+  }
 }
 .speech p {
   margin: 0;
@@ -576,6 +626,12 @@ button {
   text-align: right;
   font-size: 10rem;
 }
+@media (max-width: 500px) {
+  .stunning-text h2 {
+    font-size: 6rem;
+    line-height: 6rem;
+  }
+}
 
 .projects {
   background-color: #040303;
@@ -591,6 +647,13 @@ button {
     gap: 6rem;
   }
 }
+@media (max-width: 500px) {
+  .projects {
+    align-items: center;
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+}
 
 .project-box {
   height: 40dvh;
@@ -604,10 +667,18 @@ button {
     width: 65vw;
   }
 }
+@media (max-width: 500px) {
+  .project-box {
+    height: 30dvh;
+  }
+  .project-box:first-of-type {
+    margin-top: 4rem;
+  }
+}
 .project-box h2 {
   font-family: "Oxygen Mono", monospace;
   color: #efefef;
-  font-size: 4rem;
+  font-size: clamp(2rem, 12vw, 4rem);
   margin: 0;
 }
 .project-box img {
@@ -622,6 +693,12 @@ button {
   animation-delay: 0.1s;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.8);
   cursor: pointer;
+}
+@media (max-width: 900px) {
+  .project-box img {
+    max-width: 60vw;
+    max-height: 50vw;
+  }
 }
 .project-box img:nth-of-type(1) {
   animation-delay: 0.1s;
@@ -699,6 +776,13 @@ button {
   top: 0rem;
   transform: translate3d(-20px, -20px, -20px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(3deg) skew(0deg, 0deg);
 }
+@media (max-width: 700px) {
+  .project-box img:nth-of-type(2) {
+    top: 10rem;
+    left: -2rem;
+    transform: translate3d(-30px, -30px, -30px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(8deg) skew(0deg, 0deg);
+  }
+}
 .project-box img:nth-of-type(3) {
   top: 4rem;
   left: 8rem;
@@ -766,21 +850,25 @@ button {
   }
 }
 
+.flex-testimonial,
 .grid-section {
   border: 1px solid #efefef;
   padding: 1rem 2rem;
 }
+.flex-testimonial blockquote,
 .grid-section blockquote {
   font-family: "Oxygen Mono", monospace;
   margin: 0;
   text-align: justify;
 }
+.flex-testimonial h4,
 .grid-section h4 {
   font-family: "Anton", sans-serif;
   font-size: 1.4rem;
   margin: 0;
   padding-bottom: 1rem;
 }
+.flex-testimonial button,
 .grid-section button {
   display: flex;
   align-items: center;
@@ -814,6 +902,34 @@ button {
   grid-column: span 2;
 }
 
+.testimonials-mob {
+  background-color: #040303;
+  position: relative;
+  height: 40dvh;
+}
+
+.flex-testimonial {
+  background-color: #efefef;
+  position: absolute;
+  width: 70vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: slideIn;
+  animation-duration: 1s;
+  text-align: center;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+}
 .contact-form {
   background-color: #040303;
   align-items: center;
@@ -822,8 +938,9 @@ button {
   font-family: "Anton", "sans-serif";
   color: #efefef;
   margin: 0;
-  font-size: 12rem;
-  letter-spacing: 1.5rem;
+  font-size: clamp(3rem, 14vw, 12rem);
+  letter-spacing: clamp(0rem, 7vw, 1.5rem);
+  text-align: center;
 }
 
 .form-grid {
@@ -831,9 +948,22 @@ button {
   grid-template-columns: 50% 1fr;
   padding: 6rem 0;
 }
+@media (max-width: 900px) {
+  .form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem 0;
+  }
+}
 
 .contact-information {
   padding: 0 2rem 0rem 6rem;
+}
+@media (max-width: 700px) {
+  .contact-information {
+    padding: 0 2rem;
+  }
 }
 .contact-information h1 {
   color: #efefef;
@@ -841,12 +971,22 @@ button {
   margin: 0;
   padding-right: 4rem;
 }
+@media (max-width: 500px) {
+  .contact-information h1 {
+    padding-right: 0rem;
+  }
+}
 .contact-information p {
   color: #efefef;
   text-align: justify;
   padding: 0 2rem;
   font-size: 1.2rem;
   line-height: 1.6rem;
+}
+@media (max-width: 500px) {
+  .contact-information p {
+    padding: 1rem;
+  }
 }
 
 form {
@@ -859,6 +999,13 @@ form div {
   grid-template-columns: 18% 1fr;
   padding-bottom: 1rem;
 }
+@media (max-width: 700px) {
+  form div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
 form label {
   font-family: "Oxygen Mono", monospace;
   color: #efefef;
@@ -867,12 +1014,22 @@ form input {
   padding: 0.2rem;
   width: 70%;
 }
+@media (max-width: 500px) {
+  form input {
+    width: 80%;
+  }
+}
 form textarea {
   width: 80%;
   resize: vertical;
   min-height: 100px;
   padding: 10px;
   box-sizing: border-box;
+}
+@media (max-width: 500px) {
+  form textarea {
+    width: 90%;
+  }
 }
 form button {
   background-color: transparent;
@@ -881,6 +1038,11 @@ form button {
   padding: 0.5rem 2rem;
   margin-top: 2rem;
   align-self: center;
+}
+@media (max-width: 500px) {
+  form {
+    padding: 1rem;
+  }
 }
 
 .footer-nav {
@@ -896,6 +1058,14 @@ form button {
   padding: 4rem 0 2rem 0;
   list-style-type: none;
 }
+@media (max-width: 700px) {
+  .footer-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 0rem;
+  }
+}
 .footer-nav li:hover {
   background-color: rgba(255, 255, 255, 0.4509803922);
 }
@@ -908,6 +1078,11 @@ form button {
   margin: 0;
   text-align: center;
   padding-bottom: 1rem;
+}
+@media (max-width: 500px) {
+  .copyright p {
+    font-size: 0.8rem;
+  }
 }
 
 .overlay-effect {
@@ -1002,4 +1177,27 @@ form button {
   letter-spacing: 4rem;
   flex-wrap: nowrap;
   margin: 0;
+}
+
+.fade-slide {
+  padding: 1rem 2rem;
+  transition: all 0.5s ease-in-out;
+  animation: slideOut;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }/*# sourceMappingURL=main.css.map */

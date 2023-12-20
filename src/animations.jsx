@@ -133,13 +133,13 @@ export const textSize1 = {
     initial: { fontSize: "2rem" },
     animate: { fontSize: "33vh", },
     exit: { fontSize: "2rem" },
-    transition: { delay: .2, duration: 1.5 },
+    transition: { delay: .2, duration: .75 },
 };
 export const textSize2 = {
     initial: { fontSize: "2rem" },
     animate: { fontSize: "33vh", },
     exit: { fontSize: "2rem" },
-    transition: { delay: .2, duration: 2 },
+    transition: { delay: .2, duration: 1 },
 };
 
 export const fadeOut = {

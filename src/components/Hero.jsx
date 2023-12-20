@@ -16,7 +16,7 @@ const Hero = ({ scrollToDesignRef }) => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setOverlay(true);
-        }, 2000);
+        }, 1000);
         return () => {
             clearTimeout(timeout);
         };
@@ -26,7 +26,7 @@ const Hero = ({ scrollToDesignRef }) => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setScrollIcon(true);
-        }, 9000);
+        }, 3000);
 
         const handleScroll = () => {
             setScrollIcon(false);

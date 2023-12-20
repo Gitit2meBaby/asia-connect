@@ -27,6 +27,7 @@ import MobProjects from './components/MobProjects';
 import MobMoreProjects from './components/MobMoreProjects';
 import MobEvenMoreProjects from './components/MobEvenMoreProjects';
 import MobFinalProjects from './components/MobFinalProjects';
+import TestimonialsSlider from './components/TestimonialSlider';
 
 function App() {
   const [eCommerce, setEcommerce] = useState(false)
@@ -99,16 +100,16 @@ function App() {
           key="buttonRowKey"
           refProp={buttonRowRef}
         />
-        {eCommerce && <Ecommerce setEcommerce={setEcommerce}
+        {eCommerce && <Ecommerce setEcommerce={setEcommerce} isMobile={isMobile}
           key="eCommerceKey"
           refProp={eCommerceRef} />}
-        {fullStack && <FullStack setFullStack={setFullStack}
+        {fullStack && <FullStack setFullStack={setFullStack} isMobile={isMobile}
           key="fullStackKey"
           refProp={fullStackRef} />}
-        {webApps && <WebApps setWebApps={setWebApps}
+        {webApps && <WebApps setWebApps={setWebApps} isMobile={isMobile}
           key="webAppsKey"
           refProp={webAppsRef} />}
-        {ui && <Ui setUi={setUi}
+        {ui && <Ui setUi={setUi} isMobile={isMobile}
           key="uiKey"
           refProp={uiRef} />}
 
@@ -116,21 +117,25 @@ function App() {
         <AboutLisa key="aboutLisa" refProp={aboutLisaRef} />
         <Create key="create" refProp={createRef} />
 
-        {isMobile && <MobProjects />}
+        {isMobile && <MobProjects key="Mobprojects" />}
         {!isMobile && <Projects key="projects" refProp={projectsRef} />}
 
         {!isMobile && <MoreProjects key="moreProjects" refProp={moreProjectsRef} />}
-        {isMobile && <MobMoreProjects />}
+        {isMobile && <MobMoreProjects key="MobMoreProjects" />}
 
         {!isMobile && <EvenMoreProjects key="evenMoreProjects" refProp={evenMoreProjectsRef} />}
-        {isMobile && <MobEvenMoreProjects />}
+        {isMobile && <MobEvenMoreProjects key="MobEvenMoreProjects" />}
 
         {!isMobile && <FinalProjects key="finalProjects" refProp={finalProjectsRef} />}
-        {isMobile && <MobFinalProjects />}
+        {isMobile && <MobFinalProjects key="MobFinalProjects" />}
 
         <Customers key="customers" refProp={customersRef} />
-        <Testimonials key="testimonials" refProp={testimonialsRef}
-        />
+
+
+        {!isMobile && <Testimonials key="testimonials" refProp={testimonialsRef}
+        />}
+        {isMobile && <TestimonialsSlider key="testimonialsSlider" />}
+
         <ContactForm key="contactForm" refProp={contactFormRef} />
         <Footer key="footer"
           scrollToAboutRef={() => scrollToRef(aboutRef)}
