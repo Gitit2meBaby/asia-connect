@@ -28,6 +28,7 @@ import MobMoreProjects from './components/MobMoreProjects';
 import MobEvenMoreProjects from './components/MobEvenMoreProjects';
 import MobFinalProjects from './components/MobFinalProjects';
 import TestimonialsSlider from './components/TestimonialSlider';
+import MobileNav from './components/MobileNav';
 
 function App() {
   const [eCommerce, setEcommerce] = useState(false)
@@ -106,6 +107,7 @@ function App() {
           scrollToDesignRef={() => scrollToRef(infoBoxesRef)}
           isMobile={isMobile}
         />
+        <MobileNav key="mobileNav" />
         <InfoBoxes key="infoBoxes" refProp={infoBoxesRef}
           isMobile={isMobile} />
         <ButtonRow setEcommerce={setEcommerce}

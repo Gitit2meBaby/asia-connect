@@ -25,10 +25,7 @@ const WebAppsData = [
 const WebApps = ({ setWebApps }) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('Web Applications');
-    const [hoverEffect, setHoverEffect] = useState(1)
-    const [hasRunEffect, setHasRunEffect] = useState(false);
 
-    const buttonRef = useRef(null)
     const ref1 = useRef(null);
     const isInView1 = useInView(ref1, { margin: "-600px 0px -200px 0px" });
 
@@ -53,19 +50,19 @@ const WebApps = ({ setWebApps }) => {
             <div ref={ref1} className='info-box right-box'>
                 <div className={!isInView1 ? "info-content right-content" : "info-content right-content slide-in"}>
                     <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}>
-                        <p className={hoverEffect === 1 ? 'hover-bright' : ''}>Custom Software Development</p>
+                        <p>Custom Software Development</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave}>
-                        <p className={hoverEffect === 2 ? 'hover-bright' : ''}>Business Process Automation</p>
+                        <p>Business Process Automation</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave}>
-                        <p className={hoverEffect === 3 ? 'hover-bright' : ''}>Industry-Specific Solutions</p>
+                        <p>Industry-Specific Solutions</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave}>
-                        <p className={hoverEffect === 4 ? 'hover-bright' : ''}>Platform-Independent Applications</p>
+                        <p>Platform-Independent Applications</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave}>
-                        <p className={hoverEffect === 5 ? 'hover-bright' : ''}>Vertical Integration Software</p>
+                        <p>Vertical Integration Software</p>
                     </div>
                 </div>
 

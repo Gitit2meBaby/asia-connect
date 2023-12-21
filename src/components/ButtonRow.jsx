@@ -16,7 +16,7 @@ const ButtonRow = forwardRef(({ setEcommerce, setFullStack, setWebApps, setUi },
                 !stopEffect &&
                     setHoverEffect(prevItem => (prevItem < 4 ? prevItem + 1 : 1));
             }
-        }, 1500);
+        }, 3500);
 
 
         return () => {

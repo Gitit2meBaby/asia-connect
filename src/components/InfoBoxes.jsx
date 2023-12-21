@@ -15,7 +15,7 @@ const InfoBoxes = forwardRef(({ refProp, isMobile }, ref) => {
     // The two section boxes
     const ref1 = useRef(null);
     const ref2 = useRef(null);
-    const marginValue = isMobile ? "-600px 0px -200px 0px" : "-100px 0px 100px 0px";
+    const marginValue = isMobile ? "-200px 0px -200px 0px" : "-100px 0px 100px 0px";
     const isInView1 = useInView(ref1, { margin: marginValue });
     const isInView2 = useInView(ref2, { margin: marginValue });
 

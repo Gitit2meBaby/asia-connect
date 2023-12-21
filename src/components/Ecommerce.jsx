@@ -31,7 +31,6 @@ const eCommerceData = [
 const Ecommerce = ({ setEcommerce, isMobile }) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('WordPress/ CMS Solutions');
-    const [hoverEffect, setHoverEffect] = useState(1)
     const [activeDropdown, setActiveDropdown] = useState(null);
 
     const ref1 = useRef(null);
@@ -71,7 +70,7 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
                     <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}
                         onClick={() => toggleDropdown(1)}
                     >
-                        <p className={hoverEffect === 1 ? 'hover-bright' : ''}>WooCommerce, Shopify, Shopee</p>
+                        <p>WooCommerce, Shopify, Shopee</p>
                     </div>
                     <div
                         className={activeDropdown === 1 ? 'info-dropdown resize' : 'info-dropdown'}>
@@ -80,7 +79,7 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
 
                     <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(2)}
                     >
-                        <p className={hoverEffect === 2 ? 'hover-bright' : ''}>Optimized Stripe Payment Gateways</p>
+                        <p>Optimized Stripe Payment Gateways</p>
                     </div>
                     <div
                         className={activeDropdown === 2 ? 'info-dropdown resize' : 'info-dropdown'}>
@@ -89,7 +88,7 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
 
                     <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(3)}
                     >
-                        <p className={hoverEffect === 3 ? 'hover-bright' : ''}>Efficient Inventory Management</p>
+                        <p>Efficient Inventory Management</p>
                     </div>
                     <div
                         className={activeDropdown === 3 ? 'info-dropdown resize' : 'info-dropdown'}>
@@ -98,7 +97,7 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
 
                     <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(4)}
                     >
-                        <p className={hoverEffect === 4 ? 'hover-bright' : ''}>Conversion-Driven UI/UX Design</p>
+                        <p>Conversion-Driven UI/UX Design</p>
                     </div>
                     <div
                         className={activeDropdown === 4 ? 'info-dropdown resize' : 'info-dropdown'}>
@@ -107,7 +106,7 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
 
                     <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(5)}
                     >
-                        <p className={hoverEffect === 5 ? 'hover-bright' : ''}>Automated Order Fulfillment</p>
+                        <p >Automated Order Fulfillment</p>
                     </div>
                     <div
                         className={activeDropdown === 5 ? 'info-dropdown resize' : 'info-dropdown'}>
@@ -116,7 +115,7 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
 
                     <div onMouseEnter={() => handleParagraphHover(6)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(6)}
                     >
-                        <p className={hoverEffect === 6 ? 'hover-bright' : ''}>SEO-Optimized Product Pages</p>
+                        <p>SEO-Optimized Product Pages</p>
                     </div>
                     <div
                         className={activeDropdown === 6 ? 'info-dropdown resize' : 'info-dropdown'}>
@@ -125,7 +124,7 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
 
                     <div onMouseEnter={() => handleParagraphHover(7)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(7)}
                     >
-                        <p className={hoverEffect === 7 ? 'hover-bright' : ''}>Analytics-Driven Decision Making</p>
+                        <p>Analytics-Driven Decision Making</p>
                     </div>
                     <div
                         className={activeDropdown === 7 ? 'info-dropdown resize' : 'info-dropdown'}>

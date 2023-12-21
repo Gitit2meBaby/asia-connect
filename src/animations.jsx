@@ -44,6 +44,21 @@ export const slideInDown4 = {
     exit: { transform: "translateY(-40%)", opacity: 0, transition: { duration: 0.1, delay: 0.4 } },
 };
 
+export const textFadeInDelay1 = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 1.2, delay: 1 } },
+    exit: { opacity: 0, transition: { duration: 0.1 } },
+};
+export const textFadeInDelay12 = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 1.2, delay: 1.2 } },
+    exit: { opacity: 0, transition: { duration: 0.1 } },
+};
+export const textFadeInDelay14 = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 1.2, delay: 1.4 } },
+    exit: { opacity: 0, transition: { duration: 0.1 } },
+};
 export const textFadeInDelay16 = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { duration: 1.2, delay: 1.6 } },

@@ -9,7 +9,9 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
     scrollToEvenMoreProjectsRef,
     scrollToMobEvenMoreProjectsRef,
     scrollToFinalProjectsRef,
-    scrollToMobFinalProjectsRef, scrollToMobTestimonialsRef }, ref) => {
+    scrollToMobFinalProjectsRef,
+    scrollToMobTestimonialsRef,
+    scrollToInfoBoxesRef }, ref) => {
     const [designDropdown, setDesignDropdown] = useState(false)
     const [projectsDropdown, setProjectsDropdown] = useState(false)
     const { scrollY } = useScroll();
@@ -54,6 +56,7 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
                         initial='hidden'
                         animate={designDropdown ? 'visible' : 'hidden'}
                         exit='exit'
+                        onClick={() => scrollToDesignRef()}
                     >
                         WordPress / CMS
                     </motion.p>
@@ -62,6 +65,7 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
                         initial='hidden'
                         animate={designDropdown ? 'visible' : 'hidden'}
                         exit='exit'
+                        onClick={() => scrollToDesignRef()}
                     >
                         E-commerce
                     </motion.p>
@@ -152,12 +156,14 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
                         initial='hidden'
                         animate={projectsDropdown ? 'visible' : 'hidden'}
                         exit='exit'
+                        onClick={!isMobile ? scrollToEvenMoreProjectsRef : scrollToMobEvenMoreProjectsRef}
                     >Ask</motion.p>
                     <motion.p
                         variants={textFadeVariants12}
                         initial='hidden'
                         animate={projectsDropdown ? 'visible' : 'hidden'}
                         exit='exit'
+                        onClick={!isMobile ? scrollToFinalProjectsRef : scrollToMobFinalProjectsRef}
                     >more...</motion.p>
                 </div>
             </motion.div>

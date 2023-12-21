@@ -28,7 +28,6 @@ const UiData = [
 const Ui = ({ setUi }) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('UI/UX Design');
-    const [hoverEffect, setHoverEffect] = useState(1)
 
     const ref1 = useRef(null);
     const isInView1 = useInView(ref1, { margin: "-600px 0px -200px 0px" });
@@ -67,22 +66,22 @@ const Ui = ({ setUi }) => {
 
                 <div className={!isInView1 ? "info-content left-content" : "info-content left-content slide-in"}>
                     <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}>
-                        <p className={hoverEffect === 1 ? 'hover-bright' : ''}>Wireframing and Prototyping</p>
+                        <p>Wireframing and Prototyping</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave}>
-                        <p className={hoverEffect === 2 ? 'hover-bright' : ''}>Figma Design Mockups</p>
+                        <p>Figma Design Mockups</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave}>
-                        <p className={hoverEffect === 3 ? 'hover-bright' : ''}>Art Direction and Branding</p>
+                        <p>Art Direction and Branding</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave}>
-                        <p className={hoverEffect === 4 ? 'hover-bright' : ''}>Graphic Design</p>
+                        <p>Graphic Design</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave}>
-                        <p className={hoverEffect === 5 ? 'hover-bright' : ''}>Logo Creation</p>
+                        <p>Logo Creation</p>
                     </div>
                     <div onMouseEnter={() => handleParagraphHover(6)} onMouseLeave={handleParagraphLeave}>
-                        <p className={hoverEffect === 6 ? 'hover-bright' : ''}>Language Quality Assurance</p>
+                        <p>Language Quality Assurance</p>
                     </div>
                 </div>
             </div>

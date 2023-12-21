@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { textFadeInDelay16, textFadeInDelay18, textFadeInDelay2, textSize, textSize1, textSize2, slideInDown } from '../animations';
+import { textFadeInDelay1, textFadeInDelay12, textFadeInDelay14, textFadeInDelay16, textFadeInDelay18, textFadeInDelay2, textSize, textSize1, textSize2, slideInDown } from '../animations';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Hero = ({ scrollToDesignRef, isMobile }) => {
@@ -91,6 +91,21 @@ const Hero = ({ scrollToDesignRef, isMobile }) => {
                 >
                     <h1>Solutions</h1>
                 </motion.div>
+
+                <div className="mob-hero-text">
+                    <motion.div
+                        {...textFadeInDelay1}>
+                        <h1>Professional</h1>
+                    </motion.div>
+                    <motion.div
+                        {...textFadeInDelay12}>
+                        <h1>Website</h1>
+                    </motion.div>
+                    <motion.div
+                        {...textFadeInDelay14}>
+                        <h1>Solutions</h1>
+                    </motion.div>
+                </div>
             </div>
 
             {scrollIcon && (
