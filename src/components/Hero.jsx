@@ -3,7 +3,7 @@ import { textFadeInDelay1, textFadeInDelay12, textFadeInDelay14, textFadeInDelay
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Hero = ({ scrollToDesignRef, isMobile, isMobOpen,
-    setIsMobOpen }) => {
+    setIsMobOpen, }) => {
     const { scrollY } = useScroll();
     const x = useTransform(scrollY, [0, 500], [0, -500]);
     const xReverse = useTransform(scrollY, [0, 500], [0, 300]);

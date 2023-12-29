@@ -10,6 +10,11 @@ h2 {
   font-family: "Anton", sans-serif;
 }
 
+input::-moz-placeholder {
+  font-family: "Oxygen Mono", monospace;
+}
+
+input::placeholder,
 button,
 li,
 h1,
@@ -61,6 +66,14 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.contact-information p, .contact-information h1 {
+  color: hsla(0, 0%, 100%, 0.1);
+  -webkit-background-clip: text;
+          background-clip: text;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(90deg, rgb(253, 206, 0), red);
 }
 
 .nav-btn-container {
@@ -223,7 +236,7 @@ button {
 .text-container:first-of-type {
   margin-top: auto;
 }
-.text-container:last-of-type {
+.text-container:nth-of-type(3) {
   margin-bottom: 5rem;
 }
 .text-container h1 {
@@ -1244,6 +1257,7 @@ h3 {
 .contact-form {
   background-color: #040303;
   align-items: center;
+  position: relative;
 }
 .contact-form h2 {
   font-family: "Anton", "sans-serif";
@@ -1289,7 +1303,6 @@ h3 {
   }
 }
 .contact-information h1 {
-  color: #efefef;
   font-size: 1.8rem;
   margin: 0;
   padding-right: 4rem;
@@ -1306,7 +1319,6 @@ h3 {
   }
 }
 .contact-information p {
-  color: #efefef;
   text-align: justify;
   padding: 0 2rem;
   font-size: 1.2rem;
@@ -1378,6 +1390,38 @@ form button:hover {
   color: #040303;
   transform: scale(1.1);
   transition: all 1s ease-in-out;
+}
+
+.error {
+  color: rgb(233, 37, 37);
+  grid-column: 2;
+  font-style: italic;
+  font-size: 0.8rem;
+  padding-left: 0.5rem;
+  font-family: "Oxygen Mono", monospace;
+}
+
+.success-modal {
+  position: absolute;
+  transform: translate(-50% -50%);
+  background-color: #efefef;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 0 1000px 1000px rgba(0, 0, 0, 0.8);
+}
+.success-modal button {
+  background-color: #040303;
+  color: #efefef;
+  font-size: 1.4rem;
+  border: none;
+  padding: 0.3rem 1rem 0.5rem 1rem;
+  cursor: pointer;
+}
+@media (max-width: 500px) {
+  .success-modal {
+    max-width: 70vw;
+    padding: 1rem;
+  }
 }
 
 .footer-nav {

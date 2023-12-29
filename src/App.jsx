@@ -89,7 +89,7 @@ function App() {
   return (
     <>
       <AnimatePresence>
-        <Navbar key="navbar" />
+        <Navbar key="navbar" scrollToContactFormRef={() => scrollToRef(contactFormRef)} />
         <HeroSidebar key="heroSidebar"
           scrollToAboutRef={() => scrollToRef(aboutRef)}
           scrollToDesignRef={() => scrollToRef(infoBoxesRef)}
@@ -118,6 +118,7 @@ function App() {
           scrollToDesignRef={() => scrollToRef(infoBoxesRef)}
           isMobOpen={isMobOpen}
           setIsMobOpen={setIsMobOpen}
+          scrollToContactFormRef={() => scrollToRef(contactFormRef)}
           isMobile={isMobile}
         />
         <MobileNav key="mobileNav"

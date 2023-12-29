@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, forwardRef } from "react";
 import PropTypes from 'prop-types';
 
 import { useInView, motion } from "framer-motion";
@@ -28,7 +28,7 @@ const eCommerceData = [
     }
 ]
 
-const Ecommerce = ({ setEcommerce, isMobile }) => {
+const Ecommerce = forwardRef(({ setEcommerce, isMobile, refProp }, ref) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('WordPress/ CMS Solutions');
     const [activeDropdown, setActiveDropdown] = useState(null);
@@ -64,7 +64,7 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
     };
 
     return (
-        <motion.section className="info-boxes"
+        <motion.section ref={refProp} className="info-boxes"
             initial={{ transform: 'translateY(100%' }}
             animate={{ transform: 'translateY(0%)', transition: { duration: .8 } }}
             exit={{ transform: 'translateY(100%', transition: { duration: .8 } }}
@@ -149,6 +149,9 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
         </motion.section>
     )
 }
+)
+
+Ecommerce.displayName = 'Ecommerce'
 
 Ecommerce.propTypes = {
     setEcommerce: PropTypes.func,

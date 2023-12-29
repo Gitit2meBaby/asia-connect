@@ -69,7 +69,7 @@ const ButtonRow = forwardRef(({ setEcommerce, setFullStack, setWebApps, setUi, i
         setFullStack(false)
         setWebApps(false)
         setUi(true)
-        scrollToComponent()
+        scrollToComponent(refProp)
         setPadBottom(false)
     }
 

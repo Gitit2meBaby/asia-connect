@@ -21,6 +21,7 @@ h2 {
     font-family: 'Anton', sans-serif;
 }
 
+input::placeholder,
 button,
 li,
 h1,
@@ -71,6 +72,13 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+%yellow-red-text {
+    color: hsl(0 0% 100% / 0.1);
+    background-clip: text;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(90deg, rgb(253, 206, 0), red);
 }
 
 // MEDIA QUERY 
@@ -270,7 +278,7 @@ $breakpoints: (
         margin-top: auto;
     }
 
-    &:last-of-type {
+    &:nth-of-type(3) {
         margin-bottom: 5rem;
     }
 
@@ -1350,6 +1358,7 @@ h3 {
     background-color: $less-black;
     @extend %columnJustify;
     align-items: center;
+    position: relative;
 
     h2 {
         font-family: 'Anton', 'sans-serif';
@@ -1392,7 +1401,7 @@ h3 {
     }
 
     h1 {
-        color: $less-white;
+        @extend %yellow-red-text;
         font-size: 1.8rem;
         margin: 0;
         padding-right: 4rem;
@@ -1408,7 +1417,7 @@ h3 {
     }
 
     p {
-        color: $less-white;
+        @extend %yellow-red-text;
         text-align: justify;
         padding: 0 2rem;
         font-size: 1.2rem;
@@ -1481,6 +1490,39 @@ form {
             transform: scale(1.1);
             transition: all 1s ease-in-out;
         }
+    }
+}
+
+.error {
+    color: rgb(233, 37, 37);
+    grid-column: 2;
+    font-style: italic;
+    font-size: .8rem;
+    padding-left: .5rem;
+    font-family: 'Oxygen Mono', monospace;
+}
+
+// SUCCESS MODAL
+.success-modal {
+    position: absolute;
+    transform: translate(-50% -50%);
+    background-color: $less-white;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 0 1000px 1000px rgba(0, 0, 0, 0.8);
+
+    button {
+        background-color: $less-black;
+        color: $less-white;
+        font-size: 1.4rem;
+        border: none;
+        padding: .3rem 1rem .5rem 1rem;
+        cursor: pointer;
+    }
+
+    @include media(small) {
+        max-width: 70vw;
+        padding: 1rem;
     }
 }
 

@@ -5,8 +5,8 @@ import { paragraphData } from "../paragraphData";
 import PropTypes from 'prop-types';
 
 const Frontend = forwardRef(({ refProp, isMobile }, ref) => {
-    const [hoveredIndex, setHoveredIndex] = useState(0);
-    const [infoTitle, setInfoTitle] = useState('WordPress/ CMS Solutions');
+    const [hoveredIndex2, setHoveredIndex2] = useState(0);
+    const [infoTitle2, setInfoTitle2] = useState('Frontend Development');
     const [hoverEffect2, setHoverEffect2] = useState(0)
     const [hasRunEffect2, setHasRunEffect2] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
@@ -20,16 +20,16 @@ const Frontend = forwardRef(({ refProp, isMobile }, ref) => {
     // To display information about each topic
     const handleParagraphHover = (index) => {
         if (!isMobile) {
-            setInfoTitle(paragraphData[index].info);
-            setHoveredIndex(index);
+            setInfoTitle2(paragraphData[index].info);
+            setHoveredIndex2(index);
         }
     };
 
     // Revert back to the initial state with heading
     const handleParagraphLeave = () => {
         if (!isMobile) {
-            setInfoTitle('Frontend Development');
-            setHoveredIndex(0);
+            setInfoTitle2('Frontend Development');
+            setHoveredIndex2(0);
         }
     };
 
@@ -39,12 +39,12 @@ const Frontend = forwardRef(({ refProp, isMobile }, ref) => {
             if (isInView2 && !hasRunEffect2) {
                 const interval = setInterval(() => {
                     setHoverEffect2((prevItem) => (prevItem < 16 ? prevItem + 1 : 9));
-                    setInfoTitle(paragraphData[hoverEffect2].info);
-                    setHoveredIndex(hoverEffect2);
+                    setInfoTitle2(paragraphData[hoverEffect2].info);
+                    setHoveredIndex2(hoverEffect2);
                 }, 300);
                 if (hoverEffect2 === 16) {
                     setHasRunEffect2(true);
-                    setHoveredIndex(0);
+                    setHoveredIndex2(0);
                     setHoverEffect2(0)
                 }
                 return () => clearInterval(interval);
@@ -66,14 +66,14 @@ const Frontend = forwardRef(({ refProp, isMobile }, ref) => {
     return (
         <section ref={refProp} className="info-boxes">
             <div ref={ref2} className='info-box left-box'>
-                <div className={`${!isInView2 ? "info-title left-info-title" : "info-title left-info-title black-white"} ${hoveredIndex >= 9 ? "info-paragraph left-info-paragraph" : ""}`}>
-                    {hoveredIndex === 0 ? (
+                <div className={`${!isInView2 ? "info-title left-info-title" : "info-title left-info-title black-white"} ${hoveredIndex2 >= 9 ? "info-paragraph left-info-paragraph" : ""}`}>
+                    {hoveredIndex2 === 0 ? (
                         <>
                             <h3 className={!isInView2 ? "" : "black-white-text"}>Front End</h3>
                             <h3 className={!isInView2 ? "" : "black-white-text"}>Development</h3>
                         </>
                     ) : (
-                        <p>{infoTitle}</p>
+                        <p>{infoTitle2}</p>
                     )}
                 </div>
 
