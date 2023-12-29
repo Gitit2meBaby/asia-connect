@@ -1,7 +1,7 @@
 import { useState, useEffect, forwardRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import PropTypes from 'prop-types';
-import { growX, textFadeVariants02, textFadeVariants04, textFadeVariants06, textFadeVariants08, textFadeVariants1, textFadeVariants12, textFadeInDelay24, textFadeInDelay26, textFadeInDelay265, textFadeInDelay275, textFadeInDelay28, textFadeInDelay27, textFadeInDelay29, textFadeInDelay285, textFadeInDelay295, textFadeInDelay3, } from '../animations'
+import { growX, growXmob, textFadeVariants02, textFadeVariants04, textFadeVariants06, textFadeVariants08, textFadeVariants1, textFadeVariants12, textFadeInDelay24, textFadeInDelay26, textFadeInDelay265, textFadeInDelay275, textFadeInDelay28, textFadeInDelay27, textFadeInDelay29, textFadeInDelay285, textFadeInDelay295, textFadeInDelay3, } from '../animations'
 
 const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToProjectsRef, scrollToTestimonialsRef, scrollToContactFormRef, isMobile, scrollToMobProjectsRef,
     scrollToMoreProjectsRef,
@@ -11,7 +11,14 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
     scrollToFinalProjectsRef,
     scrollToMobFinalProjectsRef,
     scrollToMobTestimonialsRef,
-    scrollToInfoBoxesRef }, ref) => {
+    scrollToFrontendRef,
+    scrollToButtonRowRef,
+    setEcommerce,
+    setFullStack,
+    setWebApps,
+    setUi,
+    isMobOpen,
+    setIsMobOpen }, ref) => {
     const [designDropdown, setDesignDropdown] = useState(false)
     const [projectsDropdown, setProjectsDropdown] = useState(false)
     const { scrollY } = useScroll();
@@ -22,8 +29,98 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
         });
     }, [scrollY]);
 
-    if (isMobile) {
-        growX.animate.width = '60%';
+    const growVariant = isMobile ? growXmob : growX;
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setDesignDropdown(false)
+            setProjectsDropdown(false)
+            setIsMobOpen(false)
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const handleDesignClick = () => {
+        if (!isMobile) {
+            scrollToDesignRef();
+        } else {
+            setDesignDropdown(prevState => !prevState);
+            setIsMobOpen(prevState => !prevState);
+        }
+    };
+
+    const handleDesignMouseOver = () => {
+        if (!isMobile) {
+            setDesignDropdown(!designDropdown)
+            setIsMobOpen(!isMobOpen)
+        }
+    }
+    const handleProjectsClick = () => {
+        if (!isMobile) {
+            scrollToProjectsRef();
+        } else {
+            setIsMobOpen(prevState => !prevState);
+            setProjectsDropdown(prevState => !prevState)
+        }
+    }
+
+    const handleProjectsMouseOver = () => {
+        if (!isMobile) {
+            setProjectsDropdown(!projectsDropdown)
+            setIsMobOpen(!isMobOpen)
+        }
+    }
+
+    const handleScrollToDesignRef = () => {
+        scrollToDesignRef()
+        setDesignDropdown(prevState => !prevState);
+    }
+
+    const handleScrollToFrontendRef = () => {
+        scrollToFrontendRef()
+        setDesignDropdown(prevState => !prevState);
+    }
+
+    const handleScrollToEcommerceRef = () => {
+        scrollToButtonRowRef()
+        setEcommerce(true)
+        setFullStack(false)
+        setWebApps(false)
+        setUi(false)
+        setDesignDropdown(prevState => !prevState);
+    }
+    const handleScrollToFullStackRef = () => {
+        scrollToButtonRowRef()
+        setEcommerce(false)
+        setFullStack(true)
+        setWebApps(false)
+        setUi(false)
+        setDesignDropdown(prevState => !prevState);
+    }
+    const handleScrollToWebAppsRef = () => {
+        scrollToButtonRowRef()
+        setEcommerce(false)
+        setFullStack(false)
+        setWebApps(true)
+        setUi(false)
+        setDesignDropdown(prevState => !prevState);
+    }
+    const handleScrollToUiRef = () => {
+        scrollToButtonRowRef()
+        setEcommerce(false)
+        setFullStack(false)
+        setWebApps(false)
+        setUi(true)
+        setDesignDropdown(prevState => !prevState);
+    }
+
+    const handleScrollToAboutRef = () => {
+        scrollToAboutRef()
     }
 
     return (
@@ -32,7 +129,7 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
         >
             <motion.div
                 className='sidebar-title'
-                {...growX}>
+                variants={growVariant}>
                 <motion.h3
                     {...textFadeInDelay24}>
                     Explore
@@ -41,11 +138,11 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
 
             <motion.div
                 className={!projectsDropdown ? 'sidebar-item' : 'sidebar-item subtle-overlay'}
-                onMouseEnter={() => setDesignDropdown(true)}
-                onMouseLeave={() => setDesignDropdown(false)}>
+                onMouseEnter={() => handleDesignMouseOver()}
+                onMouseLeave={() => handleDesignMouseOver()}>
                 <motion.h3
                     {...textFadeInDelay26}
-                    onClick={!isMobile ? scrollToDesignRef : () => setDesignDropdown(!designDropdown)}>
+                    onClick={() => handleDesignClick()}>
 
                     Design
                 </motion.h3>
@@ -65,33 +162,37 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
                         initial='hidden'
                         animate={designDropdown ? 'visible' : 'hidden'}
                         exit='exit'
-                        onClick={() => scrollToDesignRef()}
+                        onClick={() => handleScrollToFrontendRef()}
                     >
-                        E-commerce
+                        FrontEnd Development
                     </motion.p>
                     <motion.p
                         variants={textFadeVariants06}
                         initial='hidden'
                         animate={designDropdown ? 'visible' : 'hidden'}
                         exit='exit'
-                    >FrontEnd Development</motion.p>
+                        onClick={() => handleScrollToEcommerceRef()}
+                    >E-commerce</motion.p>
                     <motion.p
                         variants={textFadeVariants08}
                         initial='hidden'
                         animate={designDropdown ? 'visible' : 'hidden'}
                         exit='exit'
+                        onClick={() => handleScrollToFullStackRef()}
                     >Full Stack</motion.p>
                     <motion.p
                         variants={textFadeVariants1}
                         initial='hidden'
                         animate={designDropdown ? 'visible' : 'hidden'}
                         exit='exit'
+                        onClick={() => handleScrollToWebAppsRef()}
                     >Web Applications</motion.p>
                     <motion.p
                         variants={textFadeVariants12}
                         initial='hidden'
                         animate={designDropdown ? 'visible' : 'hidden'}
                         exit='exit'
+                        onClick={() => handleScrollToUiRef()}
                     >UI/UX Design</motion.p>
                 </div>
             </motion.div>
@@ -102,18 +203,18 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
                 {...textFadeInDelay265}>
                 <motion.h3
                     {...textFadeInDelay27}
-                    onClick={() => scrollToAboutRef()}>
+                    onClick={() => handleScrollToAboutRef()}>
                     About
                 </motion.h3>
             </motion.div>
 
             <motion.div
-                className={designDropdown ? 'sidebar-item subtle-overlay' : 'sidebar-item'} onMouseEnter={() => setProjectsDropdown(true)}
-                onMouseLeave={() => setProjectsDropdown(false)}
+                className={designDropdown ? 'sidebar-item subtle-overlay' : 'sidebar-item'} onMouseEnter={() => handleProjectsMouseOver()}
+                onMouseLeave={() => handleProjectsMouseOver()}
                 {...textFadeInDelay275}>
                 <motion.h3
                     {...textFadeInDelay28}
-                    onClick={!isMobile ? scrollToProjectsRef : () => setProjectsDropdown(true)}>
+                    onClick={() => handleProjectsClick()}>
                     Projects
                 </motion.h3>
 
@@ -199,7 +300,19 @@ HeroSidebar.propTypes = {
     scrollToDesignRef: PropTypes.func,
     scrollToProjectsRef: PropTypes.func,
     scrollToTestimonialsRef: PropTypes.func,
-    scrollToContactFormRef: PropTypes.func
+    scrollToContactFormRef: PropTypes.func,
+    isMobile: PropTypes.bool,
+    scrollToMobProjectsRef: PropTypes.func,
+    scrollToMoreProjectsRef: PropTypes.func,
+    scrollToMobMoreProjectsRef: PropTypes.func,
+    scrollToEvenMoreProjectsRef: PropTypes.func,
+    scrollToMobEvenMoreProjectsRef: PropTypes.func,
+    scrollToFinalProjectsRef: PropTypes.func,
+    scrollToMobFinalProjectsRef: PropTypes.func,
+    scrollToMobTestimonialsRef: PropTypes.func,
+    scrollToInfoBoxesRef: PropTypes.func,
+    scrollToFrontendRef: PropTypes.func,
 };
+
 
 export default HeroSidebar

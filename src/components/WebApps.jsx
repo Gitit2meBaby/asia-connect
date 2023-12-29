@@ -22,23 +22,39 @@ const WebAppsData = [
     },
 ]
 
-const WebApps = ({ setWebApps }) => {
+const WebApps = ({ setWebApps, isMobile }) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('Web Applications');
+    const [activeDropdown, setActiveDropdown] = useState(null);
 
     const ref1 = useRef(null);
     const isInView1 = useInView(ref1, { margin: "-600px 0px -200px 0px" });
 
     // To display information about each topic
     const handleParagraphHover = (index) => {
-        setInfoTitle(WebAppsData[index].info);
-        setHoveredIndex(index);
+        if (!isMobile) {
+            setInfoTitle(WebAppsData[index].info);
+            setHoveredIndex(index);
+        }
     };
 
     // Revert back to the initial state with heading
     const handleParagraphLeave = () => {
-        setInfoTitle('Web Applications');
-        setHoveredIndex(0);
+        if (!isMobile) {
+            setInfoTitle('Web Applications');
+            setHoveredIndex(0);
+        }
+    };
+
+    // Handle mobile dropdown toggle
+    const toggleDropdown = (itemId) => {
+        if (isMobile) {
+            if (activeDropdown === itemId) {
+                setActiveDropdown(null);
+            } else {
+                setActiveDropdown(itemId);
+            }
+        }
     };
 
     return (
@@ -48,22 +64,49 @@ const WebApps = ({ setWebApps }) => {
             exit={{ transform: 'translateY(100%', transition: { duration: .8 } }}
         >
             <div ref={ref1} className='info-box right-box'>
-                <div className={!isInView1 ? "info-content right-content" : "info-content right-content slide-in"}>
-                    <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}>
+                <div className={`info-content right-content ${!isInView1 && !isMobile ? '' : 'slide-in'}`}>
+                    <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}
+                        onClick={() => toggleDropdown(1)}
+                    >
                         <p>Custom Software Development</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 1 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{WebAppsData[0].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(2)}>
                         <p>Business Process Automation</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 2 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{WebAppsData[1].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(3)}>
                         <p>Industry-Specific Solutions</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 3 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{WebAppsData[2].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(4)}>
                         <p>Platform-Independent Applications</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 4 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{WebAppsData[3].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(5)}>
                         <p>Vertical Integration Software</p>
                     </div>
+                    <div
+                        className={activeDropdown === 5 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{WebAppsData[4].info}</p>
+                    </div>
+
                 </div>
 
                 <div className={`${!isInView1 ? "info-title" : "info-title black-white"} ${hoveredIndex >= 1 ? "info-paragraph" : ""}`}>

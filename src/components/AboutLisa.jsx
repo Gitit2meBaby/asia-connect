@@ -67,8 +67,6 @@ const AboutLisa = () => {
                 </div>
             )}
 
-            {console.log(isSmall)}
-
             <motion.div
                 style={{ opacity: imgOpacity }}>
                 <img src={lisa800} alt="Lisa, full stack web engineer" />

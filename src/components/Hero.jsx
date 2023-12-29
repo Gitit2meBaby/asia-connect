@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { textFadeInDelay1, textFadeInDelay12, textFadeInDelay14, textFadeInDelay16, textFadeInDelay18, textFadeInDelay2, textSize, textSize1, textSize2, slideInDown } from '../animations';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-const Hero = ({ scrollToDesignRef, isMobile }) => {
+const Hero = ({ scrollToDesignRef, isMobile, isMobOpen,
+    setIsMobOpen }) => {
     const { scrollY } = useScroll();
     const x = useTransform(scrollY, [0, 500], [0, -500]);
     const xReverse = useTransform(scrollY, [0, 500], [0, 300]);
@@ -92,7 +93,7 @@ const Hero = ({ scrollToDesignRef, isMobile }) => {
                     <h1>Solutions</h1>
                 </motion.div>
 
-                <div className="mob-hero-text">
+                <div className="mob-hero-text" style={isMobOpen ? { opacity: 0.2, transition: 'all 1s ease' } : { opacity: 1, transition: 'all 1s ease' }}>
                     <motion.div
                         {...textFadeInDelay1}>
                         <h1>Professional</h1>

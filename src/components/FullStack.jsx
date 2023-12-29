@@ -62,7 +62,6 @@ const FullStack = ({ setFullStack, isMobile }) => {
             }
         }
     };
-    console.log(isMobile);
 
     return (
         <motion.section className="info-boxes"

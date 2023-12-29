@@ -38,14 +38,18 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
 
     // To display information about each topic
     const handleParagraphHover = (index) => {
-        setInfoTitle(eCommerceData[index].info);
-        setHoveredIndex(index);
+        if (!isMobile) {
+            setInfoTitle(eCommerceData[index].info);
+            setHoveredIndex(index);
+        }
     };
 
     // Revert back to the initial state with heading
     const handleParagraphLeave = () => {
-        setInfoTitle('WordPress/ CMS Solutions');
-        setHoveredIndex(0);
+        if (!isMobile) {
+            setInfoTitle('WordPress/ CMS Solutions');
+            setHoveredIndex(0);
+        }
     };
 
     // Handle mobile dropdown toggle
@@ -66,7 +70,7 @@ const Ecommerce = ({ setEcommerce, isMobile }) => {
             exit={{ transform: 'translateY(100%', transition: { duration: .8 } }}
         >
             <div ref={ref1} className='info-box right-box'>
-                <div className={!isInView1 ? "info-content right-content" : "info-content right-content slide-in"}>
+                <div className={`info-content right-content ${!isInView1 && !isMobile ? '' : 'slide-in'}`}>
                     <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}
                         onClick={() => toggleDropdown(1)}
                     >

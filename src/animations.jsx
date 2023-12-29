@@ -171,6 +171,10 @@ export const growX = {
     initial: { width: 0 },
     animate: { width: '40vw', transition: { duration: 1, delay: 1.8 } },
 };
+export const growXmob = {
+    initial: { width: 0 },
+    animate: { width: '80vw', transition: { duration: 1, delay: 1.8 } },
+};
 
 export const textFadeVariants02 = {
     hidden: { opacity: 0 },

@@ -5,7 +5,6 @@ import { AnimatePresence } from 'framer-motion'
 import './main.css';
 import Navbar from './components/Navbar'
 import Hero from './components/hero'
-import InfoBoxes from './components/InfoBoxes'
 import HeroSidebar from './components/HeroSidebar'
 import About from './components/About'
 import AboutLisa from './components/AboutLisa';
@@ -29,18 +28,22 @@ import MobEvenMoreProjects from './components/MobEvenMoreProjects';
 import MobFinalProjects from './components/MobFinalProjects';
 import TestimonialsSlider from './components/TestimonialSlider';
 import MobileNav from './components/MobileNav';
+import WordPress from './components/WordPress';
+import Frontend from './components/Frontend';
 
 function App() {
   const [eCommerce, setEcommerce] = useState(false)
   const [fullStack, setFullStack] = useState(false)
   const [webApps, setWebApps] = useState(false)
   const [ui, setUi] = useState(false)
+  const [isMobOpen, setIsMobOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(() => {
-    return window.innerWidth < 900 && window.innerHeight < 900;
+    return window.innerWidth < 900;
   });
 
   const heroRef = useRef(null)
   const infoBoxesRef = useRef(null)
+  const frontendRef = useRef(null)
   const buttonRowRef = useRef(null)
   const eCommerceRef = useRef(null)
   const fullStackRef = useRef(null)
@@ -71,7 +74,7 @@ function App() {
   // Set initial state based on screen width and device orientation
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth > 900 || window.innerHeight > 900);
+      setIsMobile(window.innerWidth < 900);
     };
 
     window.addEventListener('resize', handleResize);
@@ -90,6 +93,8 @@ function App() {
         <HeroSidebar key="heroSidebar"
           scrollToAboutRef={() => scrollToRef(aboutRef)}
           scrollToDesignRef={() => scrollToRef(infoBoxesRef)}
+          scrollToFrontendRef={() => scrollToRef(frontendRef)}
+          scrollToButtonRowRef={() => scrollToRef(buttonRowRef)}
           scrollToProjectsRef={() => scrollToRef(projectsRef)}
           scrollToMobProjectsRef={() => scrollToRef(mobProjectsRef)}
           scrollToMoreProjectsRef={() => scrollToRef(moreProjectsRef)}
@@ -101,14 +106,39 @@ function App() {
           scrollToTestimonialsRef={() => scrollToRef(testimonialsRef)}
           scrollToMobTestimonialsRef={() => scrollToRef(mobTestimonialsRef)}
           scrollToContactFormRef={() => scrollToRef(contactFormRef)}
+          isMobOpen={isMobOpen}
+          setIsMobOpen={setIsMobOpen}
           isMobile={isMobile}
+          setEcommerce={setEcommerce}
+          setFullStack={setFullStack}
+          setWebApps={setWebApps}
+          setUi={setUi}
         />
         <Hero key="hero" refProp={heroRef}
           scrollToDesignRef={() => scrollToRef(infoBoxesRef)}
+          isMobOpen={isMobOpen}
+          setIsMobOpen={setIsMobOpen}
           isMobile={isMobile}
         />
-        <MobileNav key="mobileNav" />
-        <InfoBoxes key="infoBoxes" refProp={infoBoxesRef}
+        <MobileNav key="mobileNav"
+          scrollToDesignRef={() => scrollToRef(infoBoxesRef)}
+          scrollToFrontendRef={() => scrollToRef(frontendRef)}
+          scrollToButtonRowRef={() => scrollToRef(buttonRowRef)}
+          scrollToAboutRef={() => scrollToRef(aboutRef)}
+          scrollToMobProjectsRef={() => scrollToRef(mobProjectsRef)}
+          scrollToMobMoreProjectsRef={() => scrollToRef(mobMoreProjectsRef)}
+          scrollToMobEvenMoreProjectsRef={() => scrollToRef(mobEvenMoreProjectsRef)}
+          scrollToMobFinalProjectsRef={() => scrollToRef(mobFinalProjectsRef)}
+          scrollToMobTestimonialsRef={() => scrollToRef(mobTestimonialsRef)}
+          scrollToContactFormRef={() => scrollToRef(contactFormRef)}
+          setEcommerce={setEcommerce}
+          setFullStack={setFullStack}
+          setWebApps={setWebApps}
+          setUi={setUi} />
+
+        <WordPress key="wordpress" refProp={infoBoxesRef}
+          isMobile={isMobile} />
+        <Frontend key='frontend' refProp={frontendRef}
           isMobile={isMobile} />
         <ButtonRow setEcommerce={setEcommerce}
           setFullStack={setFullStack}
@@ -116,6 +146,7 @@ function App() {
           setUi={setUi}
           key="buttonRowKey"
           refProp={buttonRowRef}
+          isMobile={isMobile}
         />
         {eCommerce && <Ecommerce setEcommerce={setEcommerce} isMobile={isMobile}
           key="eCommerceKey"
@@ -130,7 +161,8 @@ function App() {
           key="uiKey"
           refProp={uiRef} />}
 
-        <Create key="create" refProp={createRef} />
+        <Create key="create" refProp={createRef}
+          isMobile={isMobile} />
 
         {isMobile && <MobProjects key="Mobprojects" refProp={mobProjectsRef} />}
         {!isMobile && <Projects key="projects" refProp={projectsRef} />}
@@ -148,7 +180,8 @@ function App() {
         <About key="about" refProp={aboutRef} isMobile={isMobile} />
         <AboutLisa key="aboutLisa" refProp={aboutLisaRef} />
 
-        <Customers key="customers" refProp={customersRef} />
+        <Customers key="customers" refProp={customersRef}
+          isMobile={isMobile} />
 
 
         {!isMobile && <Testimonials key="testimonials" refProp={testimonialsRef}

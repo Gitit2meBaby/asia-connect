@@ -1,7 +1,9 @@
 import { useRef } from 'react';
 import { motion, useTransform, useScroll } from 'framer-motion';
+import PropTypes from 'prop-types';
 
-const Customers = () => {
+
+const Customers = ({ isMobile }) => {
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
@@ -15,10 +17,19 @@ const Customers = () => {
                 style={{ x }}
                 className="stunning-text"
             >
-                <h2>Our happy customers - - - - - -  testimonials</h2>
+                {isMobile ? (
+                    <h2>Testimonials...</h2>
+                ) : (
+                    <h2>Our happy customers - - - - - -  testimonials</h2>
+                )}
             </motion.div>
         </section>
     );
 };
+
+Customers.propTypes = {
+    isMobile: PropTypes.bool,
+};
+
 
 export default Customers;

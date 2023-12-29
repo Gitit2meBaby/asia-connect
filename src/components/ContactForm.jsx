@@ -79,7 +79,7 @@ const ContactForm = forwardRef(({ refProp }, ref) => {
             <div className="form-grid">
                 <div className="contact-information">
                     <h1>Crafting Websites Tailored for the Asian Tourism Industry</h1>
-                    <p>Our array of services caters to businesses of all sizes. No project is too big or too small. Every project is unique, and planning might seem overwhelming, So don't hesitate to connect with us and provide insights into your business. We're enthusiastic about discussing and guiding you toward the ideal path for your brand.</p>
+                    <p>We're all about making our services fit just right for businesses of any size. Every project has its own story, and we're thrilled to be a part of it, big or small. Planning can be overwhelming, so how about sharing some insights about your business? We genuinely love a good chat and can't wait to help map out your brand's unique journey.</p>
                 </div>
                 <motion.form onSubmit={handleSubmit}
                 >

@@ -1,7 +1,9 @@
 import { useRef } from 'react';
 import { motion, useTransform, useScroll } from 'framer-motion';
+import PropTypes from 'prop-types';
 
-const Create = () => {
+
+const Create = ({ isMobile }) => {
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
@@ -15,10 +17,18 @@ const Create = () => {
                 style={{ x }}
                 className="stunning-text"
             >
-                <h2>..Some Projects</h2>
+                {isMobile ? (
+                    <h2>Projects</h2>
+                ) : (
+                    <h2>..Some Projects</h2>
+                )}
             </motion.div>
         </section>
     );
+};
+
+Create.propTypes = {
+    isMobile: PropTypes.bool,
 };
 
 export default Create;

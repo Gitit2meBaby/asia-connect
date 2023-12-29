@@ -25,23 +25,39 @@ const UiData = [
     },
 ]
 
-const Ui = ({ setUi }) => {
+const Ui = ({ setUi, isMobile }) => {
     const [hoveredIndex, setHoveredIndex] = useState(0);
     const [infoTitle, setInfoTitle] = useState('UI/UX Design');
+    const [activeDropdown, setActiveDropdown] = useState(null);
 
     const ref1 = useRef(null);
     const isInView1 = useInView(ref1, { margin: "-600px 0px -200px 0px" });
 
     // To display information about each topic
     const handleParagraphHover = (index) => {
-        setInfoTitle(UiData[index].info);
-        setHoveredIndex(index);
+        if (!isMobile) {
+            setInfoTitle(UiData[index].info);
+            setHoveredIndex(index);
+        }
     };
 
     // Revert back to the initial state with heading
     const handleParagraphLeave = () => {
-        setInfoTitle('UI/UX Design');
-        setHoveredIndex(0);
+        if (!isMobile) {
+            setInfoTitle('UI/UX Design');
+            setHoveredIndex(0);
+        }
+    };
+
+    // Handle mobile dropdown toggle
+    const toggleDropdown = (itemId) => {
+        if (isMobile) {
+            if (activeDropdown === itemId) {
+                setActiveDropdown(null);
+            } else {
+                setActiveDropdown(itemId);
+            }
+        }
     };
 
     return (
@@ -64,25 +80,55 @@ const Ui = ({ setUi }) => {
 
                 </div>
 
-                <div className={!isInView1 ? "info-content left-content" : "info-content left-content slide-in"}>
-                    <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave}>
+                <div className={`info-content left-content ${!isInView1 && !isMobile ? '' : 'slide-in'}`}>
+                    <div onMouseEnter={() => handleParagraphHover(1)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(1)}>
                         <p>Wireframing and Prototyping</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 1 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{UiData[0].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(2)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(2)}>
                         <p>Figma Design Mockups</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 2 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{UiData[1].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(3)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(3)}>
                         <p>Art Direction and Branding</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 3 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{UiData[2].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(4)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(4)}>
                         <p>Graphic Design</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 4 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{UiData[3].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(5)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(5)}>
                         <p>Logo Creation</p>
                     </div>
-                    <div onMouseEnter={() => handleParagraphHover(6)} onMouseLeave={handleParagraphLeave}>
+                    <div
+                        className={activeDropdown === 5 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{UiData[4].info}</p>
+                    </div>
+
+                    <div onMouseEnter={() => handleParagraphHover(6)} onMouseLeave={handleParagraphLeave} onClick={() => toggleDropdown(6)}>
                         <p>Language Quality Assurance</p>
                     </div>
+                    <div
+                        className={activeDropdown === 6 ? 'info-dropdown resize' : 'info-dropdown'}>
+                        <p>{UiData[5].info}</p>
+                    </div>
+
                 </div>
             </div>
         </motion.section>

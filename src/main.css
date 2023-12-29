@@ -302,12 +302,13 @@ header {
   top: 0rem;
   right: 0rem;
   padding: 1rem;
-  width: 100vw;
+  width: 16vw;
   z-index: 10;
 }
 @media (max-width: 700px) {
   header {
     display: flex;
+    flex-direction: column;
   }
 }
 
@@ -422,6 +423,22 @@ header {
     opacity: 0;
   }
 }
+.mobile-nav {
+  height: 90vh;
+  transition: all 1s ease forwards;
+  opacity: 1;
+  box-shadow: 0 0 1000px 1000px rgba(0, 0, 0, 0.5);
+}
+.mobile-nav p,
+.mobile-nav h3 {
+  color: #efefef;
+  padding-left: 1rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
 .info-boxes {
   background-color: #040303;
   gap: 6rem;
@@ -454,6 +471,7 @@ header {
 @media (max-width: 500px) {
   .info-box {
     height: auto;
+    padding-top: 3rem;
   }
 }
 
@@ -518,6 +536,11 @@ header {
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
+}
+@media (max-width: 500px) {
+  .info-content div {
+    width: 100%;
+  }
 }
 .info-content p {
   font-weight: 800;
@@ -620,6 +643,12 @@ header {
 .button-row button:hover {
   background-color: rgba(255, 255, 255, 0.4509803922);
 }
+@media (max-width: 500px) {
+  .button-row button {
+    justify-content: space-between;
+    padding: 0 2rem;
+  }
+}
 @media (max-width: 700px) {
   .button-row {
     display: grid;
@@ -629,8 +658,9 @@ header {
 }
 @media (max-width: 500px) {
   .button-row {
-    gap: 0.5rem;
-    margin-top: 8rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -647,7 +677,8 @@ header {
 }
 @media (max-width: 500px) {
   .about {
-    height: 60dvh;
+    height: 50dvh;
+    justify-content: flex-start;
   }
 }
 
@@ -729,6 +760,11 @@ header {
   font-size: 1.4rem;
   text-align: center;
 }
+@media (max-width: 500px) {
+  .speech p {
+    margin-top: 20rem;
+  }
+}
 .speech span {
   font-size: 4rem;
 }
@@ -753,16 +789,10 @@ header {
   font-family: "Anton";
   margin: 0;
   text-align: right;
-  font-size: 20rem;
-}
-@media (max-width: 900px) {
-  .about-lisa h3 {
-    font-size: 15rem;
-  }
+  font-size: clamp(4rem, 25vw, 20rem);
 }
 @media (max-width: 700px) {
   .about-lisa h3 {
-    font-size: 10rem;
     letter-spacing: 0.1rem;
   }
 }
@@ -1122,6 +1152,12 @@ header {
   border: 1px solid #efefef;
   padding: 1rem 2rem;
 }
+@media (max-width: 500px) {
+  .flex-testimonial,
+  .grid-section {
+    padding: 1rem 2rem 2rem 2rem;
+  }
+}
 .flex-testimonial blockquote,
 .grid-section blockquote {
   font-family: "Oxygen Mono", monospace;
@@ -1173,7 +1209,8 @@ header {
 .testimonials-mob {
   background-color: #040303;
   position: relative;
-  height: 40dvh;
+  height: 45dvh;
+  padding-bottom: 2rem;
 }
 
 .flex-testimonial {
@@ -1187,6 +1224,11 @@ header {
   animation-duration: 1s;
   text-align: center;
   margin: -6rem 0 2rem 0;
+}
+@media (max-width: 500px) {
+  .flex-testimonial h3 {
+    font-size: 1.4rem;
+  }
 }
 
 @keyframes slideIn {
@@ -1409,6 +1451,12 @@ form button:hover {
   opacity: 0;
   transition: all 1s ease-in;
   pointer-events: none;
+}
+
+.grow-mob-nav {
+  height: 90vh;
+  transition: all 1s ease-in;
+  opacity: 1;
 }
 
 .slide-in {

@@ -351,6 +351,7 @@ header {
 
     @include media(medium) {
         display: flex;
+        flex-direction: column;
     }
 
     background-color: $less-black;
@@ -358,7 +359,7 @@ header {
     top: 0rem;
     right: 0rem;
     padding: 1rem;
-    width: 100vw;
+    width: 16vw;
     z-index: 10;
 }
 
@@ -497,6 +498,26 @@ header {
     }
 }
 
+// MOBILE NAV
+.mobile-nav {
+    height: 90vh;
+    transition: all 1s ease forwards;
+    opacity: 1;
+    box-shadow: 0 0 1000px 1000px rgba(0, 0, 0, .5);
+
+    p,
+    h3 {
+        color: $less-white;
+        padding-left: 1rem;
+        // text-align: center;
+    }
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+
 // INFO BOXES
 .info-boxes {
     background-color: $less-black;
@@ -527,6 +548,7 @@ header {
 
     @include media(small) {
         height: auto;
+        padding-top: 3rem;
     }
 }
 
@@ -591,6 +613,10 @@ header {
         border-bottom: 1px solid $less-black;
         width: fit-content;
         cursor: pointer;
+
+        @include media(small) {
+            width: 100%;
+        }
     }
 
     p {
@@ -699,6 +725,11 @@ header {
         &:hover {
             background-color: $hover;
         }
+
+        @include media(small) {
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
     }
 
     @include media(medium) {
@@ -708,8 +739,9 @@ header {
     }
 
     @include media(small) {
-        gap: .5rem;
-        margin-top: 8rem;
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -726,7 +758,8 @@ header {
     }
 
     @include media(small) {
-        height: 60dvh;
+        height: 50dvh;
+        justify-content: flex-start;
     }
 }
 
@@ -800,11 +833,16 @@ header {
         color: $less-white;
         font-size: 1.4rem;
         text-align: center;
+
+        @include media(small) {
+            margin-top: 20rem;
+        }
     }
 
     span {
         font-size: 4rem;
     }
+
 }
 
 // ABOUT LISA
@@ -827,14 +865,9 @@ header {
         font-family: 'Anton';
         margin: 0;
         text-align: right;
-        font-size: 20rem;
-
-        @include media(large) {
-            font-size: 15rem;
-        }
+        font-size: clamp(4rem, 25vw, 20rem);
 
         @include media(medium) {
-            font-size: 10rem;
             letter-spacing: .1rem;
         }
     }
@@ -1220,6 +1253,10 @@ header {
     padding: 1rem 2rem;
     @extend %columnJustify;
 
+    @include media(small) {
+        padding: 1rem 2rem 2rem 2rem;
+    }
+
     blockquote {
         font-family: 'Oxygen Mono', monospace;
         margin: 0;
@@ -1273,7 +1310,8 @@ header {
 .testimonials-mob {
     background-color: $less-black;
     position: relative;
-    height: 40dvh;
+    height: 45dvh;
+    padding-bottom: 2rem;
 }
 
 .flex-testimonial {
@@ -1287,6 +1325,12 @@ header {
     animation-duration: 1s;
     text-align: center;
     margin: -6rem 0 2rem 0;
+
+    h3 {
+        @include media(small) {
+            font-size: 1.4rem;
+        }
+    }
 }
 
 @keyframes slideIn {
@@ -1515,6 +1559,12 @@ form {
     opacity: 0;
     transition: all 1s ease-in;
     pointer-events: none;
+}
+
+.grow-mob-nav {
+    height: 90vh;
+    transition: all 1s ease-in;
+    opacity: 1;
 }
 
 .slide-in {
