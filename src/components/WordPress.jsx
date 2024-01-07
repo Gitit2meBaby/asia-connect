@@ -12,7 +12,7 @@ const WordPress = forwardRef(({ refProp, isMobile }, ref) => {
 
     // The two section boxes
     const ref1 = useRef(null);
-    const marginValue = isMobile ? "-200px 0px -200px 0px" : "-100px 0px 100px 0px";
+    const marginValue = isMobile ? "-200px 0px -200px 0px" : "-400px 0px -400px 0px";
     const isInView1 = useInView(ref1, { margin: marginValue });
 
 
@@ -50,7 +50,7 @@ const WordPress = forwardRef(({ refProp, isMobile }, ref) => {
             }
         }
 
-    }, [isInView1, hasRunEffect, hoverEffect, paragraphData, isMobile]);
+    }, [isInView1, hasRunEffect, hoverEffect, isMobile]);
 
     // Handle mobile dropdown toggle
     const toggleDropdown = (itemId) => {

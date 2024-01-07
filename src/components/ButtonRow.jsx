@@ -9,23 +9,23 @@ const ButtonRow = forwardRef(({ setEcommerce, setFullStack, setWebApps, setUi, i
     const [padBottom, setPadBottom] = useState(true)
     const buttonRowRef = useRef(null)
 
-    useEffect(() => {
-        if (!isMobile) {
-            const interval = setInterval(() => {
-                {
-                    !stopEffect &&
-                        setHoverEffect(prevItem => (prevItem < 4 ? prevItem + 1 : 1));
-                }
-            }, 3500);
+    // useEffect(() => {
+    //     if (!isMobile) {
+    //         const interval = setInterval(() => {
+    //             {
+    //                 !stopEffect &&
+    //                     setHoverEffect(prevItem => (prevItem < 4 ? prevItem + 1 : 1));
+    //             }
+    //         }, 3500);
 
 
-            return () => {
-                clearInterval(interval);
-            };
-        } else {
-            setHoverEffect(0)
-        }
-    }, [stopEffect, isMobile]);
+    //         return () => {
+    //             clearInterval(interval);
+    //         };
+    //     } else {
+    //         setHoverEffect(0)
+    //     }
+    // }, [stopEffect, isMobile]);
 
 
 

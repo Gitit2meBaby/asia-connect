@@ -14,9 +14,9 @@ const ContactForm = forwardRef(({ refProp }, ref) => {
     });
 
     const [formErrors, setFormErrors] = useState({
-        nameError: '*Please provide a name...',
-        emailError: '*Please provide a valid email...',
-        cityError: '*Please let us know where you are located...',
+        nameError: '',
+        emailError: '',
+        cityError: '',
     });
 
     // EmailJS authentication and email setup
@@ -89,11 +89,11 @@ const ContactForm = forwardRef(({ refProp }, ref) => {
         const newFormErrors = {};
 
         if (name.trim() === '') {
-            newFormErrors.nameError = 'Name is required';
+            newFormErrors.nameError = '*Please provide a name...';
             isValid = false;
         }
         if (city.trim() === '') {
-            newFormErrors.cityError = 'Please enter a city';
+            newFormErrors.cityError = '*Please provide a valid email...';
             isValid = false;
         }
 

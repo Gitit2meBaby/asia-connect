@@ -57,7 +57,7 @@ button {
 }
 
 .flex-testimonial button,
-.grid-section button, .project-info-box button, .button-row button, .extra-info-btns button, .nav-btn-container button {
+.grid-section button, .project-info-box button, .extra-info-btns button, .nav-btn-container button {
   border: none;
   background-color: transparent;
   color: #efefef;
@@ -68,7 +68,14 @@ button {
   justify-content: center;
 }
 
-.contact-information p, .contact-information h1 {
+.contact-information h1, .project-box h2, .hero-section h2 {
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.contact-information p {
   color: hsla(0, 0%, 100%, 0.1);
   -webkit-background-clip: text;
           background-clip: text;
@@ -181,10 +188,6 @@ button {
   text-align: center;
   line-height: 31vh;
   background-image: url("assets/cityDesk.webp");
-  background-size: cover;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
   letter-spacing: 1rem;
   transition: color 3s, color 3s;
   z-index: -1;
@@ -455,7 +458,7 @@ h3 {
 .info-boxes {
   background-color: #040303;
   gap: 6rem;
-  padding: 12rem 0 2rem 0;
+  padding: 2rem 0 2rem 0;
 }
 @media (max-width: 700px) {
   .info-boxes {
@@ -648,32 +651,41 @@ h3 {
 .button-row {
   background-color: #040303;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 4rem;
+  padding-top: 4rem;
+}
+@media (max-width: 500px) {
+  .button-row {
+    padding-left: 2rem;
+    padding-top: 0rem;
+  }
 }
 .button-row button {
-  font-size: 2rem;
+  text-align: left;
+  padding-left: 1rem;
+  background-color: #040303;
+  color: #efefef;
+  border: none;
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 .button-row button:hover {
-  background-color: rgba(255, 255, 255, 0.4509803922);
+  background-color: #efefef;
+  color: #040303;
+  transform: translateX(2rem);
+  transition: all 0.5s ease-in;
+}
+@media (max-width: 700px) {
+  .button-row button {
+    font-size: 3rem;
+  }
 }
 @media (max-width: 500px) {
   .button-row button {
-    justify-content: space-between;
-    padding: 0 2rem;
-  }
-}
-@media (max-width: 700px) {
-  .button-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-}
-@media (max-width: 500px) {
-  .button-row {
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
+    font-size: 2rem;
   }
 }
 
@@ -914,12 +926,6 @@ h3 {
 .create {
   background-color: #efefef;
   overflow: hidden;
-  margin-top: 4rem;
-}
-@media (max-width: 700px) {
-  .create {
-    margin-top: 0;
-  }
 }
 
 .stunning-text {
@@ -987,7 +993,7 @@ h3 {
 }
 .project-box h2 {
   font-family: "Oxygen Mono", monospace;
-  color: #efefef;
+  background-image: linear-gradient(90deg, rgb(253, 206, 0), red);
   font-size: clamp(2rem, 12vw, 4rem);
   margin: 0;
 }
@@ -1209,6 +1215,7 @@ h3 {
 }
 .grid4 h3 {
   font-size: 2rem;
+  text-align: center;
 }
 
 .grid5 {
@@ -1303,6 +1310,7 @@ h3 {
   }
 }
 .contact-information h1 {
+  background-image: linear-gradient(90deg, rgb(253, 206, 0), red);
   font-size: 1.8rem;
   margin: 0;
   padding-right: 4rem;

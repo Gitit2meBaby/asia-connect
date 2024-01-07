@@ -21,6 +21,7 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
     setIsMobOpen }, ref) => {
     const [designDropdown, setDesignDropdown] = useState(false)
     const [projectsDropdown, setProjectsDropdown] = useState(false)
+    const [growVariant, setGrowVariant] = useState(growX)
     const { scrollY } = useScroll();
     const sidebarOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
@@ -29,7 +30,9 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
         });
     }, [scrollY]);
 
-    const growVariant = isMobile ? growXmob : growX;
+    useEffect(() => {
+        setGrowVariant(isMobile ? growXmob : growX);
+    }, [isMobile]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -60,6 +63,7 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
             setIsMobOpen(!isMobOpen)
         }
     }
+
     const handleProjectsClick = () => {
         if (!isMobile) {
             scrollToProjectsRef();
@@ -74,11 +78,6 @@ const HeroSidebar = forwardRef(({ scrollToAboutRef, scrollToDesignRef, scrollToP
             setProjectsDropdown(!projectsDropdown)
             setIsMobOpen(!isMobOpen)
         }
-    }
-
-    const handleScrollToDesignRef = () => {
-        scrollToDesignRef()
-        setDesignDropdown(prevState => !prevState);
     }
 
     const handleScrollToFrontendRef = () => {

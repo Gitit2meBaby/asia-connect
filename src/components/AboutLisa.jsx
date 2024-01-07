@@ -1,21 +1,15 @@
 import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform, useAnimation, useInView } from 'framer-motion'
 import { slideInRight } from '../animations'
-import Typewriter from "typewriter-effect";
-
 import lisa800 from '../assets/lisa800.webp'
 
 
 const AboutLisa = () => {
     const containerRef = useRef(null);
-    const textRef = useRef(null)
     const [lisaVisible, setLisaVisible] = useState(false);
     const [isSmall, setIsSmall] = useState(() => {
         return window.innerWidth < 500
     });
-    const controls = useAnimation();
-    const isInView = useInView(textRef, { margin: '-200px' });
-
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -93,8 +87,6 @@ const AboutLisa = () => {
                     </motion.span>
                 ))}
             </motion.div>
-
-
         </section>)
 }
 

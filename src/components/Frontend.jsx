@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect, forwardRef } from "react";
 import { useInView } from "framer-motion";
-import Typewriter from "typewriter-effect";
 import { paragraphData } from "../paragraphData";
 import PropTypes from 'prop-types';
 
@@ -13,7 +12,7 @@ const Frontend = forwardRef(({ refProp, isMobile }, ref) => {
 
     // The two section boxes
     const ref2 = useRef(null);
-    const marginValue = isMobile ? "-200px 0px -200px 0px" : "-100px 0px 100px 0px";
+    const marginValue = isMobile ? "-200px 0px -200px 0px" : "-400px 0px -400px 0px";
     const isInView2 = useInView(ref2, { margin: marginValue });
 
 
@@ -33,24 +32,29 @@ const Frontend = forwardRef(({ refProp, isMobile }, ref) => {
         }
     };
 
+    // Inside your component function
+    const hoverEffectRef = useRef(hoverEffect2);
+
     // Hover type animation
     useEffect(() => {
         if (!isMobile) {
             if (isInView2 && !hasRunEffect2) {
                 const interval = setInterval(() => {
-                    setHoverEffect2((prevItem) => (prevItem < 16 ? prevItem + 1 : 9));
-                    setInfoTitle2(paragraphData[hoverEffect2].info);
-                    setHoveredIndex2(hoverEffect2);
+                    hoverEffectRef.current = hoverEffect2 < 16 ? hoverEffect2 + 1 : 9;
+                    setHoverEffect2(hoverEffectRef.current);
+                    setInfoTitle2(paragraphData[hoverEffectRef.current].info);
+                    setHoveredIndex2(hoverEffectRef.current);
                 }, 300);
-                if (hoverEffect2 === 16) {
+                if (hoverEffectRef.current === 16) {
                     setHasRunEffect2(true);
                     setHoveredIndex2(0);
-                    setHoverEffect2(0)
+                    setHoverEffect2(0);
+                    clearInterval(interval);
                 }
                 return () => clearInterval(interval);
             }
         }
-    }, [isInView2, hasRunEffect2, hoverEffect2, paragraphData, isMobile]);
+    }, [isInView2, hasRunEffect2, hoverEffect2, isMobile]);
 
     // Handle mobile dropdown toggle
     const toggleDropdown = (itemId) => {
@@ -166,19 +170,6 @@ const Frontend = forwardRef(({ refProp, isMobile }, ref) => {
                     </div>
                 </div>
             </div>
-
-            <div className="see-more-designs">
-                <Typewriter
-                    options={{
-                        strings: ["Don't see what you are looking for? ...... Click below"],
-                        autoStart: true,
-                        loop: true,
-                        pause: 4000,
-                        delay: 60,
-                    }}
-                />
-            </div>
-
         </section >
     )
 }
